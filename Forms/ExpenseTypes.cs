@@ -28,7 +28,7 @@ namespace Katswiri.Forms
 
         private void loadExpenseTypes()
         {
-            gridControl1.DataSource = db.ExpenseTypes.Where(x => x.Deleted == 0).ToList();
+            gridControl1.DataSource = db.vwExpenseTypes.ToList();
             gridView1.Columns["Deleted"].Visible = false;
             gridView1.Columns["ExpenseTypeId"].Visible = false;
             gridView1.OptionsBehavior.Editable = false;
@@ -93,7 +93,7 @@ namespace Katswiri.Forms
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
             var selectedRows = gridView1.GetSelectedRows();
-            var row = ((ExpenseType)gridView1.GetRow(selectedRows[0]));
+            var row = ((vwExpenseType)gridView1.GetRow(selectedRows[0]));
             if (row.ExpenseTypeId != -1)
             {
                 ExpenseTypeId = row.ExpenseTypeId;

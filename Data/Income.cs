@@ -16,7 +16,7 @@ namespace Katswiri.Data
     {
         public int IncomeId { get; set; }
         public int IncomeTypeId { get; set; }
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
         public int AddedBy { get; set; }
         public int PaymentTypeId { get; set; }
         public System.DateTime IncomeDate { get; set; }
@@ -24,5 +24,6 @@ namespace Katswiri.Data
     
         public virtual IncomeType IncomeType { get; set; }
         public virtual PaymentType PaymentType { get; set; }
+        public virtual User User { get; set; }
     }
 }

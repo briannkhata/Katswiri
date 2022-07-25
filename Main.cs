@@ -301,5 +301,55 @@ namespace Katswiri
             pos.ShowDialog();
         }
 
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowExpenseFom();
+        }
+
+        private void ShowExpenseFom()
+        {
+            Expenses expenses = null;
+            if (expenses == null || expenses.IsDisposed)
+            {
+                expenses = new Expenses();
+            }
+            expenses.Activate();
+            expenses.ShowDialog();
+        }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowShopFom();
+        }
+
+        private void ShowShopFom()
+        {
+            Shops shops = null;
+            if (shops == null || shops.IsDisposed)
+            {
+                shops = new Shops();
+            }
+            shops.Activate();
+            shops.ShowDialog();
+        }
+
+        private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowSettingFom();
+        }
+
+        private void ShowSettingFom()
+        {
+            Settings settngs = null;
+            if (settngs == null || settngs.IsDisposed)
+            {
+                settngs = new Settings();
+            }
+            settngs.Activate();
+            settngs.ShowDialog();
+        }
     }
 }

@@ -20,9 +20,9 @@ namespace Katswiri.Data
         public string Email { get; set; }
         public string Address { get; set; }
         public int CompanyId { get; set; }
-        public int Deleted { get; set; }
         public string Currency { get; set; }
-        public string OpenTime { get; set; }
-        public string CloseTime { get; set; }
+        public int Deleted { get; set; }
+    
+        public virtual Company Company { get; set; }
     }
 }

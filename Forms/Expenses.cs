@@ -1,64 +1,68 @@
 ﻿using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using DevExpress.XtraSplashScreen;
-using DevExpress.XtraEditors.Repository;
 using Katswiri.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraSplashScreen;
 
 namespace Katswiri.Forms
 {
-    public partial class Incomes : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Expenses : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         KEntities db = new KEntities();
-        Income income = new Income();
-        int IncomeId;
-        public Incomes()
+        Expens expense = new Expens();
+        int ExpenseId;
+        public Expenses()
         {
             InitializeComponent();
             clearFields();
-            loadIncomes();
+            loadExpenses();
         }
 
         private void clearFields()
         {
-            AmountTextEdit.Text = IncomeDateEdit.Text = PaymentTypeId.Text = IncomeTypeId.Text = string.Empty;
+            AmountTextEdit.Text = ExpenseDateEdit.Text  = string.Empty;
+            PaymentTypeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+
+            PaymentTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
+            ExpenseTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
+
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
-            IncomeId = 0;
         }
 
-        private void loadIncomes()
+        private void loadExpenses()
         {
-            gridControl1.DataSource = db.vwIncomes.ToList();
+            gridControl1.DataSource = db.vwExpenses.ToList();
             gridView1.OptionsBehavior.Editable = false;
             gridView1.Columns["UserId"].Visible = false;
-            gridView1.Columns["IncomeId"].Visible = false;
+            gridView1.Columns["ExpenseId"].Visible = false;
             gridView1.Columns["AddedBy"].Visible = false;
             gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
 
-            gridView1.Columns["Amount"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridView1.Columns["Amount"].DisplayFormat.FormatString = "c2";
 
             //populate payment types
             PaymentTypeId.Properties.DataSource = db.vwPaymentTypes.ToList();
             PaymentTypeId.Properties.ValueMember = "PaymentTypeId";
             PaymentTypeId.Properties.DisplayMember = "PaymentTypeName";
+            PaymentTypeId.Properties.BestFitMode = BestFitMode.BestFit;
+            PaymentTypeId.Properties.SearchMode = SearchMode.AutoComplete;
 
-            //populate income typs
-            IncomeTypeId.Properties.DataSource = db.vwIncomeTypes.ToList();
-            IncomeTypeId.Properties.ValueMember = "IncomeTypeId";
-            IncomeTypeId.Properties.DisplayMember = "IncomeTypeName";
-
-
+            //populate Expense typs
+            ExpenseTypeId.Properties.DataSource = db.vwExpenseTypes.ToList();
+            ExpenseTypeId.Properties.ValueMember = "ExpenseTypeId";
+            ExpenseTypeId.Properties.DisplayMember = "ExpenseTypeName";
+            ExpenseTypeId.Properties.BestFitMode = BestFitMode.BestFit;
+            ExpenseTypeId.Properties.SearchMode = SearchMode.AutoComplete;
         }
 
         private bool formValid()
@@ -70,10 +74,10 @@ namespace Katswiri.Forms
                 AmountTextEdit.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(IncomeDateEdit.Text))
+            if (String.IsNullOrEmpty(ExpenseDateEdit.Text))
             {
                 result = false;
-                IncomeDateEdit.ErrorText = "Required";
+                ExpenseDateEdit.ErrorText = "Required";
             }
 
             if (String.IsNullOrEmpty(PaymentTypeId.Text))
@@ -82,10 +86,10 @@ namespace Katswiri.Forms
                 PaymentTypeId.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(IncomeTypeId.Text))
+            if (String.IsNullOrEmpty(ExpenseTypeId.Text))
             {
                 result = false;
-                IncomeTypeId.ErrorText = "Required";
+                ExpenseTypeId.ErrorText = "Required";
             }
             return result;
         }
@@ -97,21 +101,21 @@ namespace Katswiri.Forms
                 if (formValid())
                 {
 
-                    income.Amount = Decimal.Parse(AmountTextEdit.Text);
-                    income.IncomeTypeId = Convert.ToInt16(IncomeTypeId.EditValue);
-                    income.PaymentTypeId = Convert.ToInt16(PaymentTypeId.EditValue);
-                    income.IncomeDate = Convert.ToDateTime(IncomeDateEdit.Text.ToString());
-                    income.AddedBy = 1;
-                    if (IncomeId > 0)
-                        db.Entry(income).State = EntityState.Modified;
+                    expense.Amount = Double.Parse(AmountTextEdit.Text);
+                    expense.ExpenseTypeId = Convert.ToInt16(ExpenseTypeId.EditValue);
+                    expense.PaymentTypeId = Convert.ToInt16(PaymentTypeId.EditValue);
+                    expense.ExpenseDate = Convert.ToDateTime(ExpenseDateEdit.Text.ToString());
+                    expense.AddedBy = 1;
+                    if (ExpenseId > 0)
+                        db.Entry(expense).State = EntityState.Modified;
                     else
                     {
-                        db.Incomes.Add(income);
+                        db.Expenses.Add(expense);
                     }
                     db.SaveChanges();
                     clearFields();
-                    loadIncomes();
-                    XtraMessageBox.Show("Income Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadExpenses();
+                    XtraMessageBox.Show("Expense Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -125,10 +129,10 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                db.Incomes.Remove(income);
+                db.Expenses.Remove(expense);
                 db.SaveChanges();
                 clearFields();
-                loadIncomes();
+                loadExpenses();
                 XtraMessageBox.Show("Record Deleted Successfully");
             }
         }
@@ -138,15 +142,15 @@ namespace Katswiri.Forms
             try
             {
                 var selectedRows = gridView1.GetSelectedRows();
-                var row = ((vwIncome)gridView1.GetRow(selectedRows[0]));
-                if (row.IncomeId != -1)
+                var row = ((vwExpens)gridView1.GetRow(selectedRows[0]));
+                if (row.ExpenseId != -1)
                 {
-                    IncomeId = row.IncomeId;
-                    income = db.Incomes.Where(x => x.IncomeId == IncomeId).FirstOrDefault();
-                    AmountTextEdit.Text = income.Amount.ToString();
-                    IncomeTypeId.EditValue = income.IncomeTypeId;
-                    PaymentTypeId.EditValue = income.PaymentTypeId;
-                    IncomeDateEdit.Text = income.IncomeDate.ToString();
+                    ExpenseId = row.ExpenseId;
+                    expense = db.Expenses.Where(x => x.ExpenseId == ExpenseId).FirstOrDefault();
+                    AmountTextEdit.Text = expense.Amount.ToString();
+                    ExpenseTypeId.EditValue = expense.ExpenseTypeId;
+                    PaymentTypeId.EditValue = expense.PaymentTypeId;
+                    ExpenseDateEdit.Text = expense.ExpenseDate.ToString();
                 }
                 btnSave.Caption = "Update";
                 btnDelete.Enabled = true;
@@ -154,7 +158,6 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
@@ -162,7 +165,7 @@ namespace Katswiri.Forms
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             clearFields();
-            loadIncomes();
+            loadExpenses();
         }
     }
 }

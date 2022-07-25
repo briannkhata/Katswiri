@@ -12,18 +12,15 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Expens
+    public partial class vwExpens
     {
-        public int ExpenseId { get; set; }
-        public int ExpenseTypeId { get; set; }
+        public string ExpenseTypeName { get; set; }
+        public string PaymentTypeName { get; set; }
         public double Amount { get; set; }
-        public int AddedBy { get; set; }
-        public int PaymentTypeId { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
         public System.DateTime ExpenseDate { get; set; }
-        public int Deleted { get; set; }
-    
-        public virtual ExpenseType ExpenseType { get; set; }
-        public virtual PaymentType PaymentType { get; set; }
-        public virtual User User { get; set; }
+        public int AddedBy { get; set; }
+        public int ExpenseId { get; set; }
     }
 }

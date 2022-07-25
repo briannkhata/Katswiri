@@ -20,7 +20,6 @@
           </Key>
           <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="varchar(max)" Nullable="false" />
-          <Property Name="Description" Type="varchar(max)" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Company">
@@ -29,22 +28,24 @@
           </Key>
           <Property Name="CompanyId" Type="int" Nullable="false" />
           <Property Name="Address" Type="varchar(max)" Nullable="false" />
-          <Property Name="CompanyName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ceo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Terms" Type="varchar(max)" Nullable="false" />
+          <Property Name="Fee" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Expenses">
           <Key>
             <PropertyRef Name="ExpenseId" />
           </Key>
-          <Property Name="ExpenseId" Type="int" Nullable="false" />
+          <Property Name="ExpenseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExpenseTypeId" Type="int" Nullable="false" />
-          <Property Name="Amount" Type="varchar(max)" Nullable="false" />
-          <Property Name="Description" Type="varchar(max)" Nullable="false" />
-          <Property Name="Deleted" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="AddedBy" Type="int" Nullable="false" />
           <Property Name="PaymentTypeId" Type="int" Nullable="false" />
           <Property Name="ExpenseDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ExpenseTypes">
           <Key>
@@ -60,7 +61,7 @@
           </Key>
           <Property Name="IncomeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IncomeTypeId" Type="int" Nullable="false" />
-          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
           <Property Name="AddedBy" Type="int" Nullable="false" />
           <Property Name="PaymentTypeId" Type="int" Nullable="false" />
           <Property Name="IncomeDate" Type="datetime" Nullable="false" />
@@ -125,7 +126,6 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
             <PropertyRef Name="Role" />
           </Key>
           <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descriprion" Type="varchar(max)" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Shops">
@@ -138,10 +138,8 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar(max)" Nullable="false" />
           <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Currency" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="OpenTime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CloseTime" Type="varchar(max)" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Units">
           <Key>
@@ -179,6 +177,142 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
           <Property Name="VatValue" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="VatStatus" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCategories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwCompanies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCompanies">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Ceo" />
+            <PropertyRef Name="Terms" />
+            <PropertyRef Name="Fee" />
+          </Key>
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ceo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Terms" Type="varchar(max)" Nullable="false" />
+          <Property Name="Fee" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwExpenses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwExpenses">
+          <Key>
+            <PropertyRef Name="ExpenseTypeName" />
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ExpenseDate" />
+            <PropertyRef Name="AddedBy" />
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseTypeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="PaymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExpenseDate" Type="datetime" Nullable="false" />
+          <Property Name="AddedBy" Type="int" Nullable="false" />
+          <Property Name="ExpenseId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwExpenseTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwExpenseTypes">
+          <Key>
+            <PropertyRef Name="ExpenseTypeId" />
+            <PropertyRef Name="ExpenseTypeName" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="ExpenseTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpenseTypeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwIncomes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwIncomes">
+          <Key>
+            <PropertyRef Name="IncomeTypeName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="IncomeId" />
+            <PropertyRef Name="AddedBy" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="IncomeDate" />
+          </Key>
+          <Property Name="IncomeTypeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="PaymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncomeId" Type="int" Nullable="false" />
+          <Property Name="AddedBy" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IncomeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwIncomeTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwIncomeTypes">
+          <Key>
+            <PropertyRef Name="IncomeTypeId" />
+            <PropertyRef Name="IncomeTypeName" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="IncomeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncomeTypeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwPaymentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPaymentTypes">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwShops">
+          <Key>
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="ShopName" />
+            <PropertyRef Name="ShopId" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="Currency" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShopName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Expenses_ExpenseTypes">
           <End Role="ExpenseTypes" Type="Self.ExpenseTypes" Multiplicity="1" />
           <End Role="Expenses" Type="Self.Expenses" Multiplicity="*" />
@@ -200,6 +334,18 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
             </Principal>
             <Dependent Role="Expenses">
               <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expenses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="AddedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -227,6 +373,18 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Incomes_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="AddedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Categories">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -236,6 +394,18 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
             </Principal>
             <Dependent Role="Products">
               <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shops_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Shops" Type="Self.Shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Shops">
+              <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -268,12 +438,92 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
     [Products].[Deleted] AS [Deleted]
     FROM [dbo].[Products] AS [Products]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwCategories" EntityType="Self.vwCategories" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwCategories].[CategoryId] AS [CategoryId], 
+    [vwCategories].[CategoryName] AS [CategoryName], 
+    [vwCategories].[Deleted] AS [Deleted]
+    FROM [dbo].[vwCategories] AS [vwCategories]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwCompanies" EntityType="Self.vwCompanies" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwCompanies].[CompanyId] AS [CompanyId], 
+    [vwCompanies].[Address] AS [Address], 
+    [vwCompanies].[Name] AS [Name], 
+    [vwCompanies].[Email] AS [Email], 
+    [vwCompanies].[Phone] AS [Phone], 
+    [vwCompanies].[Ceo] AS [Ceo], 
+    [vwCompanies].[Terms] AS [Terms], 
+    [vwCompanies].[Fee] AS [Fee]
+    FROM [dbo].[vwCompanies] AS [vwCompanies]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwExpenses" EntityType="Self.vwExpenses" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwExpenses].[ExpenseTypeName] AS [ExpenseTypeName], 
+    [vwExpenses].[PaymentTypeName] AS [PaymentTypeName], 
+    [vwExpenses].[Amount] AS [Amount], 
+    [vwExpenses].[UserId] AS [UserId], 
+    [vwExpenses].[Name] AS [Name], 
+    [vwExpenses].[ExpenseDate] AS [ExpenseDate], 
+    [vwExpenses].[AddedBy] AS [AddedBy], 
+    [vwExpenses].[ExpenseId] AS [ExpenseId]
+    FROM [dbo].[vwExpenses] AS [vwExpenses]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwExpenseTypes" EntityType="Self.vwExpenseTypes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwExpenseTypes].[ExpenseTypeId] AS [ExpenseTypeId], 
+    [vwExpenseTypes].[ExpenseTypeName] AS [ExpenseTypeName], 
+    [vwExpenseTypes].[Deleted] AS [Deleted]
+    FROM [dbo].[vwExpenseTypes] AS [vwExpenseTypes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwIncomes" EntityType="Self.vwIncomes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwIncomes].[IncomeTypeName] AS [IncomeTypeName], 
+    [vwIncomes].[Amount] AS [Amount], 
+    [vwIncomes].[PaymentTypeName] AS [PaymentTypeName], 
+    [vwIncomes].[IncomeId] AS [IncomeId], 
+    [vwIncomes].[AddedBy] AS [AddedBy], 
+    [vwIncomes].[Name] AS [Name], 
+    [vwIncomes].[UserId] AS [UserId], 
+    [vwIncomes].[IncomeDate] AS [IncomeDate]
+    FROM [dbo].[vwIncomes] AS [vwIncomes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwIncomeTypes" EntityType="Self.vwIncomeTypes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwIncomeTypes].[IncomeTypeId] AS [IncomeTypeId], 
+    [vwIncomeTypes].[IncomeTypeName] AS [IncomeTypeName], 
+    [vwIncomeTypes].[Deleted] AS [Deleted]
+    FROM [dbo].[vwIncomeTypes] AS [vwIncomeTypes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPaymentTypes" EntityType="Self.vwPaymentTypes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPaymentTypes].[PaymentTypeId] AS [PaymentTypeId], 
+    [vwPaymentTypes].[PaymentTypeName] AS [PaymentTypeName], 
+    [vwPaymentTypes].[Description] AS [Description], 
+    [vwPaymentTypes].[Deleted] AS [Deleted]
+    FROM [dbo].[vwPaymentTypes] AS [vwPaymentTypes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwShops" EntityType="Self.vwShops" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwShops].[Currency] AS [Currency], 
+    [vwShops].[Address] AS [Address], 
+    [vwShops].[Email] AS [Email], 
+    [vwShops].[Phone] AS [Phone], 
+    [vwShops].[ShopName] AS [ShopName], 
+    [vwShops].[ShopId] AS [ShopId], 
+    [vwShops].[Deleted] AS [Deleted]
+    FROM [dbo].[vwShops] AS [vwShops]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="Self.FK_Expenses_ExpenseTypes">
             <End Role="ExpenseTypes" EntitySet="ExpenseTypes" />
             <End Role="Expenses" EntitySet="Expenses" />
           </AssociationSet>
           <AssociationSet Name="FK_Expenses_PaymentTypes" Association="Self.FK_Expenses_PaymentTypes">
             <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_Users" Association="Self.FK_Expenses_Users">
+            <End Role="Users" EntitySet="Users" />
             <End Role="Expenses" EntitySet="Expenses" />
           </AssociationSet>
           <AssociationSet Name="FK_Incomes_IncomeTypes" Association="Self.FK_Incomes_IncomeTypes">
@@ -284,9 +534,17 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
             <End Role="PaymentTypes" EntitySet="PaymentTypes" />
             <End Role="Incomes" EntitySet="Incomes" />
           </AssociationSet>
+          <AssociationSet Name="FK_Incomes_Users" Association="Self.FK_Incomes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shops_Company" Association="Self.FK_Shops_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Shops" EntitySet="Shops" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -302,41 +560,6 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
           <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="KModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Expens">
-          <Key>
-            <PropertyRef Name="ExpenseId" />
-          </Key>
-          <Property Name="ExpenseId" Type="Int32" Nullable="false" />
-          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AddedBy" Type="Int32" Nullable="false" />
-          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" />
-          <Property Name="ExpenseDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="PaymentType" Relationship="KModel.FK_Expenses_PaymentTypes" FromRole="Expens" ToRole="PaymentType" />
-          <NavigationProperty Name="ExpenseType" Relationship="KModel.FK_Expenses_ExpenseTypes" FromRole="Expens" ToRole="ExpenseType" />
-        </EntityType>
         <EntityType Name="PaymentType">
           <Key>
             <PropertyRef Name="PaymentTypeId" />
@@ -345,8 +568,8 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
           <Property Name="PaymentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Expenses" Relationship="KModel.FK_Expenses_PaymentTypes" FromRole="PaymentType" ToRole="Expens" />
           <NavigationProperty Name="Incomes" Relationship="KModel.FK_Incomes_PaymentTypes" FromRole="PaymentType" ToRole="Income" />
+          <NavigationProperty Name="Expenses" Relationship="KModel.FK_Expenses_PaymentTypes" FromRole="PaymentType" ToRole="Expens" />
         </EntityType>
         <EntityType Name="ProductQuantity">
           <Key>
@@ -358,29 +581,6 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
           <Property Name="StoresQty" Type="Double" Nullable="false" />
           <Property Name="KitchenQty" Type="Double" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="Role1" />
-          </Key>
-          <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descriprion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Shop">
-          <Key>
-            <PropertyRef Name="ShopId" />
-          </Key>
-          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <Property Name="Currency" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OpenTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CloseTime" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -409,6 +609,8 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
           <Property Name="PhysicalAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ContactAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Incomes" Relationship="KModel.FK_Incomes_Users" FromRole="User" ToRole="Income" />
+          <NavigationProperty Name="Expenses" Relationship="KModel.FK_Expenses_Users" FromRole="User" ToRole="Expens" />
         </EntityType>
         <EntityType Name="Vat">
           <Key>
@@ -445,32 +647,25 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
         </EntityType>
         <EntityContainer Name="KEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Banks" EntityType="Self.Bank" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="Companies" EntityType="Self.Company" />
-          <EntitySet Name="Expenses" EntityType="Self.Expens" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
           <EntitySet Name="ProductQuantities" EntityType="Self.ProductQuantity" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Shops" EntityType="Self.Shop" />
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Vats" EntityType="Self.Vat" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <AssociationSet Name="FK_Expenses_PaymentTypes" Association="KModel.FK_Expenses_PaymentTypes">
-            <End Role="PaymentType" EntitySet="PaymentTypes" />
-            <End Role="Expens" EntitySet="Expenses" />
-          </AssociationSet>
+          <EntitySet Name="IncomeTypes" EntityType="KModel.IncomeType" />
+          <EntitySet Name="ExpenseTypes" EntityType="KModel.ExpenseType" />
+          <EntitySet Name="vwIncomeTypes" EntityType="KModel.vwIncomeType" />
+          <EntitySet Name="vwExpenseTypes" EntityType="KModel.vwExpenseType" />
+          <EntitySet Name="vwPaymentTypes" EntityType="KModel.vwPaymentType" />
+          <EntitySet Name="Categories" EntityType="KModel.Category" />
           <AssociationSet Name="FK_Products_Categories" Association="KModel.FK_Products_Categories">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <EntitySet Name="IncomeTypes" EntityType="KModel.IncomeType" />
-          <EntitySet Name="ExpenseTypes" EntityType="KModel.ExpenseType" />
-          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="KModel.FK_Expenses_ExpenseTypes">
-            <End Role="ExpenseType" EntitySet="ExpenseTypes" />
-            <End Role="Expens" EntitySet="Expenses" />
-          </AssociationSet>
+          <EntitySet Name="vwCategories" EntityType="KModel.vwCategory" />
           <EntitySet Name="Incomes" EntityType="KModel.Income" />
+          <EntitySet Name="vwIncomes" EntityType="KModel.vwIncome" />
           <AssociationSet Name="FK_Incomes_IncomeTypes" Association="KModel.FK_Incomes_IncomeTypes">
             <End Role="IncomeType" EntitySet="IncomeTypes" />
             <End Role="Income" EntitySet="Incomes" />
@@ -479,31 +674,34 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
             <End Role="PaymentType" EntitySet="PaymentTypes" />
             <End Role="Income" EntitySet="Incomes" />
           </AssociationSet>
-        </EntityContainer>
-        <Association Name="FK_Expenses_PaymentTypes">
-          <End Type="KModel.PaymentType" Role="PaymentType" Multiplicity="1" />
-          <End Type="KModel.Expens" Role="Expens" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PaymentType">
-              <PropertyRef Name="PaymentTypeId" />
-            </Principal>
-            <Dependent Role="Expens">
-              <PropertyRef Name="PaymentTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Categories">
-          <End Type="KModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="KModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+          <AssociationSet Name="FK_Incomes_Users" Association="KModel.FK_Incomes_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Income" EntitySet="Incomes" />
+          </AssociationSet>
+          <EntitySet Name="Expenses" EntityType="KModel.Expens" />
+          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="KModel.FK_Expenses_ExpenseTypes">
+            <End Role="ExpenseType" EntitySet="ExpenseTypes" />
+            <End Role="Expens" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_PaymentTypes" Association="KModel.FK_Expenses_PaymentTypes">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="Expens" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_Users" Association="KModel.FK_Expenses_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Expens" EntitySet="Expenses" />
+          </AssociationSet>
+          <EntitySet Name="vwExpenses" EntityType="KModel.vwExpens" />
+          <EntitySet Name="Roles" EntityType="KModel.Role" />
+          <EntitySet Name="Shops" EntityType="KModel.Shop" />
+          <EntitySet Name="vwShops" EntityType="KModel.vwShop" />
+          <EntitySet Name="Companies" EntityType="KModel.Company" />
+          <EntitySet Name="vwCompanies" EntityType="KModel.vwCompany" />
+          <AssociationSet Name="FK_Shops_Company" Association="KModel.FK_Shops_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Shop" EntitySet="Shops" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="IncomeType">
           <Key>
             <PropertyRef Name="IncomeTypeId" />
@@ -522,31 +720,103 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Expenses" Relationship="KModel.FK_Expenses_ExpenseTypes" FromRole="ExpenseType" ToRole="Expens" />
         </EntityType>
-        <Association Name="FK_Expenses_ExpenseTypes">
-          <End Type="KModel.ExpenseType" Role="ExpenseType" Multiplicity="1" />
-          <End Type="KModel.Expens" Role="Expens" Multiplicity="*" />
+        <EntityType Name="vwIncomeType">
+          <Key>
+            <PropertyRef Name="IncomeTypeId" />
+            <PropertyRef Name="IncomeTypeName" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncomeTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwExpenseType">
+          <Key>
+            <PropertyRef Name="ExpenseTypeId" />
+            <PropertyRef Name="ExpenseTypeName" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwPaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="KModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Products_Categories">
+          <End Type="KModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="KModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ExpenseType">
-              <PropertyRef Name="ExpenseTypeId" />
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
             </Principal>
-            <Dependent Role="Expens">
-              <PropertyRef Name="ExpenseTypeId" />
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vwCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Income">
           <Key>
             <PropertyRef Name="IncomeId" />
           </Key>
           <Property Name="IncomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IncomeTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="AddedBy" Type="Int32" Nullable="false" />
           <Property Name="PaymentTypeId" Type="Int32" Nullable="false" />
           <Property Name="IncomeDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="IncomeType" Relationship="KModel.FK_Incomes_IncomeTypes" FromRole="Income" ToRole="IncomeType" />
           <NavigationProperty Name="PaymentType" Relationship="KModel.FK_Incomes_PaymentTypes" FromRole="Income" ToRole="PaymentType" />
+          <NavigationProperty Name="User" Relationship="KModel.FK_Incomes_Users" FromRole="Income" ToRole="User" />
+        </EntityType>
+        <EntityType Name="vwIncome">
+          <Key>
+            <PropertyRef Name="IncomeTypeName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="IncomeId" />
+            <PropertyRef Name="AddedBy" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="IncomeDate" />
+          </Key>
+          <Property Name="IncomeTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IncomeId" Type="Int32" Nullable="false" />
+          <Property Name="AddedBy" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IncomeDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Incomes_IncomeTypes">
           <End Type="KModel.IncomeType" Role="IncomeType" Multiplicity="1" />
@@ -572,7 +842,175 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Incomes_Users">
+          <End Type="KModel.User" Role="User" Multiplicity="1" />
+          <End Type="KModel.Income" Role="Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="AddedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Expens">
+          <Key>
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="AddedBy" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ExpenseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExpenseType" Relationship="KModel.FK_Expenses_ExpenseTypes" FromRole="Expens" ToRole="ExpenseType" />
+          <NavigationProperty Name="PaymentType" Relationship="KModel.FK_Expenses_PaymentTypes" FromRole="Expens" ToRole="PaymentType" />
+          <NavigationProperty Name="User" Relationship="KModel.FK_Expenses_Users" FromRole="Expens" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Expenses_ExpenseTypes">
+          <End Type="KModel.ExpenseType" Role="ExpenseType" Multiplicity="1" />
+          <End Type="KModel.Expens" Role="Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpenseType">
+              <PropertyRef Name="ExpenseTypeId" />
+            </Principal>
+            <Dependent Role="Expens">
+              <PropertyRef Name="ExpenseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_PaymentTypes">
+          <End Type="KModel.PaymentType" Role="PaymentType" Multiplicity="1" />
+          <End Type="KModel.Expens" Role="Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="Expens">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_Users">
+          <End Type="KModel.User" Role="User" Multiplicity="1" />
+          <End Type="KModel.Expens" Role="Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Expens">
+              <PropertyRef Name="AddedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwExpens">
+          <Key>
+            <PropertyRef Name="ExpenseTypeName" />
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ExpenseDate" />
+            <PropertyRef Name="AddedBy" />
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpenseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddedBy" Type="Int32" Nullable="false" />
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Role1" />
+          </Key>
+          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShopId" />
+          </Key>
+          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="KModel.FK_Shops_Company" FromRole="Shop" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="vwShop">
+          <Key>
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="ShopName" />
+            <PropertyRef Name="ShopId" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShopName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ceo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Terms" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fee" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Shops" Relationship="KModel.FK_Shops_Company" FromRole="Company" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="vwCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Ceo" />
+            <PropertyRef Name="Terms" />
+            <PropertyRef Name="Fee" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ceo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Terms" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fee" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Shops_Company">
+          <End Type="KModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="KModel.Shop" Role="Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -585,41 +1023,6 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="BankCode" ColumnName="BankCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="KModel.Category">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="KModel.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Expenses">
-            <EntityTypeMapping TypeName="KModel.Expens">
-              <MappingFragment StoreEntitySet="Expenses">
-                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
-                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
-                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
-                <ScalarProperty Name="ExpenseDate" ColumnName="ExpenseDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -642,31 +1045,6 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
                 <ScalarProperty Name="StoresQty" ColumnName="StoresQty" />
                 <ScalarProperty Name="KitchenQty" ColumnName="KitchenQty" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="KModel.Role">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="Role1" ColumnName="Role" />
-                <ScalarProperty Name="Descriprion" ColumnName="Descriprion" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Shops">
-            <EntityTypeMapping TypeName="KModel.Shop">
-              <MappingFragment StoreEntitySet="Shops">
-                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
-                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -743,6 +1121,52 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vwIncomeTypes">
+            <EntityTypeMapping TypeName="KModel.vwIncomeType">
+              <MappingFragment StoreEntitySet="vwIncomeTypes">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="IncomeTypeName" ColumnName="IncomeTypeName" />
+                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwExpenseTypes">
+            <EntityTypeMapping TypeName="KModel.vwExpenseType">
+              <MappingFragment StoreEntitySet="vwExpenseTypes">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
+                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPaymentTypes">
+            <EntityTypeMapping TypeName="KModel.vwPaymentType">
+              <MappingFragment StoreEntitySet="vwPaymentTypes">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="KModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCategories">
+            <EntityTypeMapping TypeName="KModel.vwCategory">
+              <MappingFragment StoreEntitySet="vwCategories">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Incomes">
             <EntityTypeMapping TypeName="KModel.Income">
               <MappingFragment StoreEntitySet="Incomes">
@@ -753,6 +1177,110 @@ warning 6002: The table/view 'katswiri.dbo.Products' does not have a primary key
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
                 <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwIncomes">
+            <EntityTypeMapping TypeName="KModel.vwIncome">
+              <MappingFragment StoreEntitySet="vwIncomes">
+                <ScalarProperty Name="IncomeDate" ColumnName="IncomeDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IncomeTypeName" ColumnName="IncomeTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="KModel.Expens">
+              <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ExpenseDate" ColumnName="ExpenseDate" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwExpenses">
+            <EntityTypeMapping TypeName="KModel.vwExpens">
+              <MappingFragment StoreEntitySet="vwExpenses">
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="ExpenseDate" ColumnName="ExpenseDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+                <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="KModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="KModel.Shop">
+              <MappingFragment StoreEntitySet="Shops">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwShops">
+            <EntityTypeMapping TypeName="KModel.vwShop">
+              <MappingFragment StoreEntitySet="vwShops">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="KModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+                <ScalarProperty Name="Ceo" ColumnName="Ceo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCompanies">
+            <EntityTypeMapping TypeName="KModel.vwCompany">
+              <MappingFragment StoreEntitySet="vwCompanies">
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+                <ScalarProperty Name="Ceo" ColumnName="Ceo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

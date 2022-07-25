@@ -28,7 +28,7 @@ namespace Katswiri.Forms
 
         private void loadIncomeTypes()
         {
-            gridControl1.DataSource = db.IncomeTypes.Where(x => x.Deleted == 0).ToList();
+            gridControl1.DataSource = db.vwIncomeTypes.ToList();
             gridView1.Columns["Deleted"].Visible = false;
             gridView1.Columns["IncomeTypeId"].Visible = false;
             gridView1.OptionsBehavior.Editable = false;
@@ -82,7 +82,7 @@ namespace Katswiri.Forms
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
             var selectedRows = gridView1.GetSelectedRows();
-            var row = ((IncomeType)gridView1.GetRow(selectedRows[0]));
+            var row = ((vwIncomeType)gridView1.GetRow(selectedRows[0]));
             if (row.IncomeTypeId != -1)
             {
                 IncomeTypeId = row.IncomeTypeId;

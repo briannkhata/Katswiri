@@ -6,26 +6,37 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1847eb8dfc42497c938b0b003ffee28c" Name="Diagram1">
         <EntityTypeShape EntityType="KModel.Bank" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.Category" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.Company" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.Expens" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.PaymentType" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.ProductQuantity" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.Role" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.Shop" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Unit" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.User" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Vat" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Product" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
-        <AssociationConnector Association="KModel.FK_Expenses_PaymentTypes" />
-        <AssociationConnector Association="KModel.FK_Products_Categories" />
         <EntityTypeShape EntityType="KModel.IncomeType" Width="1.5" PointX="9.375" PointY="9.875" />
         <EntityTypeShape EntityType="KModel.ExpenseType" Width="1.5" PointX="0.5" PointY="4" />
-        <AssociationConnector Association="KModel.FK_Expenses_ExpenseTypes" />
-        <EntityTypeShape EntityType="KModel.Income" Width="1.5" PointX="12.625" PointY="4.875" />
+        <EntityTypeShape EntityType="KModel.vwIncomeType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KModel.vwExpenseType" Width="1.5" PointX="12.5" PointY="1.25" />
+        <EntityTypeShape EntityType="KModel.vwPaymentType" Width="1.5" PointX="2.5" PointY="13.25" />
+        <EntityTypeShape EntityType="KModel.Category" Width="1.5" PointX="4.5" PointY="16.375" />
+        <AssociationConnector Association="KModel.FK_Products_Categories" />
+        <EntityTypeShape EntityType="KModel.vwCategory" Width="1.5" PointX="11.375" PointY="8.75" />
+        <EntityTypeShape EntityType="KModel.Income" Width="1.5" PointX="12" PointY="4.75" />
+        <EntityTypeShape EntityType="KModel.vwIncome" Width="1.5" PointX="7.375" PointY="13.75" />
         <AssociationConnector Association="KModel.FK_Incomes_IncomeTypes" />
         <AssociationConnector Association="KModel.FK_Incomes_PaymentTypes" />
-      </Diagram>
+        <AssociationConnector Association="KModel.FK_Incomes_Users" />
+        <EntityTypeShape EntityType="KModel.Expens" Width="1.5" PointX="5" PointY="4.375" />
+        <AssociationConnector Association="KModel.FK_Expenses_ExpenseTypes" />
+        <AssociationConnector Association="KModel.FK_Expenses_PaymentTypes" />
+        <AssociationConnector Association="KModel.FK_Expenses_Users" />
+        <EntityTypeShape EntityType="KModel.vwExpens" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="KModel.Role" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="KModel.Shop" Width="1.5" PointX="16" PointY="9.125" />
+        <EntityTypeShape EntityType="KModel.vwShop" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="KModel.Company" Width="1.5" PointX="13.75" PointY="9.125" />
+        <EntityTypeShape EntityType="KModel.vwCompany" Width="1.5" PointX="13.375" PointY="12.75" />
+        <AssociationConnector Association="KModel.FK_Shops_Company" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

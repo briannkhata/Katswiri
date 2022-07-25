@@ -79,6 +79,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="companyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>companyDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\Bank.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -99,6 +104,11 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DBModel1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
@@ -139,6 +149,30 @@
     <Compile Include="Data\Vat.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwCategory.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwCompany.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwExpens.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwExpenseType.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwIncome.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwIncomeType.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwPaymentType.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwShop.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\FormMode.cs" />
     <Compile Include="Enums\ViewingMode.cs" />
     <Compile Include="Forms\Banks.cs">
@@ -153,11 +187,29 @@
     <Compile Include="Forms\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Shops.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Shops.Designer.cs">
+      <DependentUpon>Shops.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CreateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CreateCategory.Designer.cs">
       <DependentUpon>CreateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Expenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Expenses.Designer.cs">
+      <DependentUpon>Expenses.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ExpenseTypes.cs">
       <SubType>Form</SubType>
@@ -217,6 +269,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>katswiriDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="katswiriDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>katswiriDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,14 +288,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shopDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>shopDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Banks.resx">
       <DependentUpon>Banks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Shops.resx">
+      <DependentUpon>Shops.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateCategory.resx">
       <DependentUpon>CreateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Expenses.resx">
+      <DependentUpon>Expenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpenseTypes.resx">
       <DependentUpon>ExpenseTypes.cs</DependentUpon>
@@ -282,8 +353,19 @@
     </Compile>
     <EntityDeploy Include="Data\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="companyDataSet.xsc">
+      <DependentUpon>companyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="companyDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>companyDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="companyDataSet.xss">
+      <DependentUpon>companyDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Data\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </None>
@@ -309,6 +391,17 @@
     <None Include="katswiriDataSet1.xss">
       <DependentUpon>katswiriDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="katswiriDataSet2.xsc">
+      <DependentUpon>katswiriDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="katswiriDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>katswiriDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="katswiriDataSet2.xss">
+      <DependentUpon>katswiriDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -319,6 +412,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="shopDataSet.xsc">
+      <DependentUpon>shopDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="shopDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>shopDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="shopDataSet.xss">
+      <DependentUpon>shopDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

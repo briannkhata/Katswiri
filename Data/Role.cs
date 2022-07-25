@@ -15,7 +15,6 @@ namespace Katswiri.Data
     public partial class Role
     {
         public string Role1 { get; set; }
-        public string Descriprion { get; set; }
         public int Deleted { get; set; }
     }
 }

@@ -107,7 +107,6 @@ namespace Katswiri.Forms
                 {
                     Category category = new Category();
                     category.CategoryName = textEdit1.Text;
-                    category.Description = memoEdit1.Text;
                     db.Categories.Add(category);
                     db.SaveChanges();
                     XtraMessageBox.Show("Category Saved Sucecssfully", "Success Category", MessageBoxButtons.OK, MessageBoxIcon.Information);

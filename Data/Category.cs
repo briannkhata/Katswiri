@@ -22,7 +22,6 @@ namespace Katswiri.Data
     
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public string Description { get; set; }
         public int Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

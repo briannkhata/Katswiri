@@ -20,17 +20,17 @@ namespace Katswiri {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("katswiriDataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("companyDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class katswiriDataSet1 : global::System.Data.DataSet {
+    public partial class companyDataSet : global::System.Data.DataSet {
         
-        private PaymentTypesDataTable tablePaymentTypes;
+        private CompanyDataTable tableCompany;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public katswiriDataSet1() {
+        public companyDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Katswiri {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected katswiriDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected companyDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace Katswiri {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["PaymentTypes"] != null)) {
-                    base.Tables.Add(new PaymentTypesDataTable(ds.Tables["PaymentTypes"]));
+                if ((ds.Tables["Company"] != null)) {
+                    base.Tables.Add(new CompanyDataTable(ds.Tables["Company"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Katswiri {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public PaymentTypesDataTable PaymentTypes {
+        public CompanyDataTable Company {
             get {
-                return this.tablePaymentTypes;
+                return this.tableCompany;
             }
         }
         
@@ -127,7 +127,7 @@ namespace Katswiri {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            katswiriDataSet1 cln = ((katswiriDataSet1)(base.Clone()));
+            companyDataSet cln = ((companyDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace Katswiri {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["PaymentTypes"] != null)) {
-                    base.Tables.Add(new PaymentTypesDataTable(ds.Tables["PaymentTypes"]));
+                if ((ds.Tables["Company"] != null)) {
+                    base.Tables.Add(new CompanyDataTable(ds.Tables["Company"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Katswiri {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tablePaymentTypes = ((PaymentTypesDataTable)(base.Tables["PaymentTypes"]));
+            this.tableCompany = ((CompanyDataTable)(base.Tables["Company"]));
             if ((initTable == true)) {
-                if ((this.tablePaymentTypes != null)) {
-                    this.tablePaymentTypes.InitVars();
+                if ((this.tableCompany != null)) {
+                    this.tableCompany.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace Katswiri {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "katswiriDataSet1";
+            this.DataSetName = "companyDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/katswiriDataSet1.xsd";
+            this.Namespace = "http://tempuri.org/companyDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tablePaymentTypes = new PaymentTypesDataTable();
-            base.Tables.Add(this.tablePaymentTypes);
+            this.tableCompany = new CompanyDataTable();
+            base.Tables.Add(this.tableCompany);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializePaymentTypes() {
+        private bool ShouldSerializeCompany() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace Katswiri {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            katswiriDataSet1 ds = new katswiriDataSet1();
+            companyDataSet ds = new companyDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,27 +270,35 @@ namespace Katswiri {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void PaymentTypesRowChangeEventHandler(object sender, PaymentTypesRowChangeEvent e);
+        public delegate void CompanyRowChangeEventHandler(object sender, CompanyRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class PaymentTypesDataTable : global::System.Data.TypedTableBase<PaymentTypesRow> {
+        public partial class CompanyDataTable : global::System.Data.TypedTableBase<CompanyRow> {
             
-            private global::System.Data.DataColumn columnPaymentTypeId;
+            private global::System.Data.DataColumn columnCompanyId;
             
-            private global::System.Data.DataColumn columnPaymentTypeName;
+            private global::System.Data.DataColumn columnAddress;
             
-            private global::System.Data.DataColumn columnDescription;
+            private global::System.Data.DataColumn columnName;
             
-            private global::System.Data.DataColumn columnDeleted;
+            private global::System.Data.DataColumn columnEmail;
+            
+            private global::System.Data.DataColumn columnPhone;
+            
+            private global::System.Data.DataColumn columnceo;
+            
+            private global::System.Data.DataColumn columnterms;
+            
+            private global::System.Data.DataColumn columnfee;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PaymentTypesDataTable() {
-                this.TableName = "PaymentTypes";
+            public CompanyDataTable() {
+                this.TableName = "Company";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -298,7 +306,7 @@ namespace Katswiri {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal PaymentTypesDataTable(global::System.Data.DataTable table) {
+            internal CompanyDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -315,40 +323,72 @@ namespace Katswiri {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected PaymentTypesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CompanyDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PaymentTypeIdColumn {
+            public global::System.Data.DataColumn CompanyIdColumn {
                 get {
-                    return this.columnPaymentTypeId;
+                    return this.columnCompanyId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn PaymentTypeNameColumn {
+            public global::System.Data.DataColumn AddressColumn {
                 get {
-                    return this.columnPaymentTypeName;
+                    return this.columnAddress;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DescriptionColumn {
+            public global::System.Data.DataColumn NameColumn {
                 get {
-                    return this.columnDescription;
+                    return this.columnName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DeletedColumn {
+            public global::System.Data.DataColumn EmailColumn {
                 get {
-                    return this.columnDeleted;
+                    return this.columnEmail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PhoneColumn {
+                get {
+                    return this.columnPhone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ceoColumn {
+                get {
+                    return this.columnceo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn termsColumn {
+                get {
+                    return this.columnterms;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn feeColumn {
+                get {
+                    return this.columnfee;
                 }
             }
             
@@ -363,55 +403,59 @@ namespace Katswiri {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PaymentTypesRow this[int index] {
+            public CompanyRow this[int index] {
                 get {
-                    return ((PaymentTypesRow)(this.Rows[index]));
+                    return ((CompanyRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event PaymentTypesRowChangeEventHandler PaymentTypesRowChanging;
+            public event CompanyRowChangeEventHandler CompanyRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event PaymentTypesRowChangeEventHandler PaymentTypesRowChanged;
+            public event CompanyRowChangeEventHandler CompanyRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event PaymentTypesRowChangeEventHandler PaymentTypesRowDeleting;
+            public event CompanyRowChangeEventHandler CompanyRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event PaymentTypesRowChangeEventHandler PaymentTypesRowDeleted;
+            public event CompanyRowChangeEventHandler CompanyRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddPaymentTypesRow(PaymentTypesRow row) {
+            public void AddCompanyRow(CompanyRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PaymentTypesRow AddPaymentTypesRow(string PaymentTypeName, string Description, int Deleted) {
-                PaymentTypesRow rowPaymentTypesRow = ((PaymentTypesRow)(this.NewRow()));
+            public CompanyRow AddCompanyRow(int CompanyId, string Address, string Name, string Email, string Phone, string ceo, string terms, string fee) {
+                CompanyRow rowCompanyRow = ((CompanyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        PaymentTypeName,
-                        Description,
-                        Deleted};
-                rowPaymentTypesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowPaymentTypesRow);
-                return rowPaymentTypesRow;
+                        CompanyId,
+                        Address,
+                        Name,
+                        Email,
+                        Phone,
+                        ceo,
+                        terms,
+                        fee};
+                rowCompanyRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCompanyRow);
+                return rowCompanyRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PaymentTypesRow FindByPaymentTypeId(int PaymentTypeId) {
-                return ((PaymentTypesRow)(this.Rows.Find(new object[] {
-                            PaymentTypeId})));
+            public CompanyRow FindByCompanyId(int CompanyId) {
+                return ((CompanyRow)(this.Rows.Find(new object[] {
+                            CompanyId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                PaymentTypesDataTable cln = ((PaymentTypesDataTable)(base.Clone()));
+                CompanyDataTable cln = ((CompanyDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -419,68 +463,85 @@ namespace Katswiri {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new PaymentTypesDataTable();
+                return new CompanyDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnPaymentTypeId = base.Columns["PaymentTypeId"];
-                this.columnPaymentTypeName = base.Columns["PaymentTypeName"];
-                this.columnDescription = base.Columns["Description"];
-                this.columnDeleted = base.Columns["Deleted"];
+                this.columnCompanyId = base.Columns["CompanyId"];
+                this.columnAddress = base.Columns["Address"];
+                this.columnName = base.Columns["Name"];
+                this.columnEmail = base.Columns["Email"];
+                this.columnPhone = base.Columns["Phone"];
+                this.columnceo = base.Columns["ceo"];
+                this.columnterms = base.Columns["terms"];
+                this.columnfee = base.Columns["fee"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnPaymentTypeId = new global::System.Data.DataColumn("PaymentTypeId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentTypeId);
-                this.columnPaymentTypeName = new global::System.Data.DataColumn("PaymentTypeName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentTypeName);
-                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescription);
-                this.columnDeleted = new global::System.Data.DataColumn("Deleted", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDeleted);
+                this.columnCompanyId = new global::System.Data.DataColumn("CompanyId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCompanyId);
+                this.columnAddress = new global::System.Data.DataColumn("Address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAddress);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
+                this.columnPhone = new global::System.Data.DataColumn("Phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhone);
+                this.columnceo = new global::System.Data.DataColumn("ceo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnceo);
+                this.columnterms = new global::System.Data.DataColumn("terms", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnterms);
+                this.columnfee = new global::System.Data.DataColumn("fee", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfee);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnPaymentTypeId}, true));
-                this.columnPaymentTypeId.AutoIncrement = true;
-                this.columnPaymentTypeId.AutoIncrementSeed = -1;
-                this.columnPaymentTypeId.AutoIncrementStep = -1;
-                this.columnPaymentTypeId.AllowDBNull = false;
-                this.columnPaymentTypeId.ReadOnly = true;
-                this.columnPaymentTypeId.Unique = true;
-                this.columnPaymentTypeName.AllowDBNull = false;
-                this.columnPaymentTypeName.MaxLength = 50;
-                this.columnDescription.AllowDBNull = false;
-                this.columnDescription.MaxLength = 2147483647;
-                this.columnDeleted.AllowDBNull = false;
+                                this.columnCompanyId}, true));
+                this.columnCompanyId.AllowDBNull = false;
+                this.columnCompanyId.Unique = true;
+                this.columnAddress.AllowDBNull = false;
+                this.columnAddress.MaxLength = 2147483647;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 2147483647;
+                this.columnEmail.AllowDBNull = false;
+                this.columnEmail.MaxLength = 50;
+                this.columnPhone.AllowDBNull = false;
+                this.columnPhone.MaxLength = 50;
+                this.columnceo.AllowDBNull = false;
+                this.columnceo.MaxLength = 50;
+                this.columnterms.AllowDBNull = false;
+                this.columnterms.MaxLength = 2147483647;
+                this.columnfee.AllowDBNull = false;
+                this.columnfee.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PaymentTypesRow NewPaymentTypesRow() {
-                return ((PaymentTypesRow)(this.NewRow()));
+            public CompanyRow NewCompanyRow() {
+                return ((CompanyRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new PaymentTypesRow(builder);
+                return new CompanyRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(PaymentTypesRow);
+                return typeof(CompanyRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.PaymentTypesRowChanged != null)) {
-                    this.PaymentTypesRowChanged(this, new PaymentTypesRowChangeEvent(((PaymentTypesRow)(e.Row)), e.Action));
+                if ((this.CompanyRowChanged != null)) {
+                    this.CompanyRowChanged(this, new CompanyRowChangeEvent(((CompanyRow)(e.Row)), e.Action));
                 }
             }
             
@@ -488,8 +549,8 @@ namespace Katswiri {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.PaymentTypesRowChanging != null)) {
-                    this.PaymentTypesRowChanging(this, new PaymentTypesRowChangeEvent(((PaymentTypesRow)(e.Row)), e.Action));
+                if ((this.CompanyRowChanging != null)) {
+                    this.CompanyRowChanging(this, new CompanyRowChangeEvent(((CompanyRow)(e.Row)), e.Action));
                 }
             }
             
@@ -497,8 +558,8 @@ namespace Katswiri {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.PaymentTypesRowDeleted != null)) {
-                    this.PaymentTypesRowDeleted(this, new PaymentTypesRowChangeEvent(((PaymentTypesRow)(e.Row)), e.Action));
+                if ((this.CompanyRowDeleted != null)) {
+                    this.CompanyRowDeleted(this, new CompanyRowChangeEvent(((CompanyRow)(e.Row)), e.Action));
                 }
             }
             
@@ -506,14 +567,14 @@ namespace Katswiri {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.PaymentTypesRowDeleting != null)) {
-                    this.PaymentTypesRowDeleting(this, new PaymentTypesRowChangeEvent(((PaymentTypesRow)(e.Row)), e.Action));
+                if ((this.CompanyRowDeleting != null)) {
+                    this.CompanyRowDeleting(this, new CompanyRowChangeEvent(((CompanyRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemovePaymentTypesRow(PaymentTypesRow row) {
+            public void RemoveCompanyRow(CompanyRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -522,7 +583,7 @@ namespace Katswiri {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                katswiriDataSet1 ds = new katswiriDataSet1();
+                companyDataSet ds = new companyDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -540,7 +601,7 @@ namespace Katswiri {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "PaymentTypesDataTable";
+                attribute2.FixedValue = "CompanyDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -584,58 +645,102 @@ namespace Katswiri {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class PaymentTypesRow : global::System.Data.DataRow {
+        public partial class CompanyRow : global::System.Data.DataRow {
             
-            private PaymentTypesDataTable tablePaymentTypes;
+            private CompanyDataTable tableCompany;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal PaymentTypesRow(global::System.Data.DataRowBuilder rb) : 
+            internal CompanyRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablePaymentTypes = ((PaymentTypesDataTable)(this.Table));
+                this.tableCompany = ((CompanyDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int PaymentTypeId {
+            public int CompanyId {
                 get {
-                    return ((int)(this[this.tablePaymentTypes.PaymentTypeIdColumn]));
+                    return ((int)(this[this.tableCompany.CompanyIdColumn]));
                 }
                 set {
-                    this[this.tablePaymentTypes.PaymentTypeIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string PaymentTypeName {
-                get {
-                    return ((string)(this[this.tablePaymentTypes.PaymentTypeNameColumn]));
-                }
-                set {
-                    this[this.tablePaymentTypes.PaymentTypeNameColumn] = value;
+                    this[this.tableCompany.CompanyIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Description {
+            public string Address {
                 get {
-                    return ((string)(this[this.tablePaymentTypes.DescriptionColumn]));
+                    return ((string)(this[this.tableCompany.AddressColumn]));
                 }
                 set {
-                    this[this.tablePaymentTypes.DescriptionColumn] = value;
+                    this[this.tableCompany.AddressColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Deleted {
+            public string Name {
                 get {
-                    return ((int)(this[this.tablePaymentTypes.DeletedColumn]));
+                    return ((string)(this[this.tableCompany.NameColumn]));
                 }
                 set {
-                    this[this.tablePaymentTypes.DeletedColumn] = value;
+                    this[this.tableCompany.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Email {
+                get {
+                    return ((string)(this[this.tableCompany.EmailColumn]));
+                }
+                set {
+                    this[this.tableCompany.EmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Phone {
+                get {
+                    return ((string)(this[this.tableCompany.PhoneColumn]));
+                }
+                set {
+                    this[this.tableCompany.PhoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ceo {
+                get {
+                    return ((string)(this[this.tableCompany.ceoColumn]));
+                }
+                set {
+                    this[this.tableCompany.ceoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string terms {
+                get {
+                    return ((string)(this[this.tableCompany.termsColumn]));
+                }
+                set {
+                    this[this.tableCompany.termsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string fee {
+                get {
+                    return ((string)(this[this.tableCompany.feeColumn]));
+                }
+                set {
+                    this[this.tableCompany.feeColumn] = value;
                 }
             }
         }
@@ -644,22 +749,22 @@ namespace Katswiri {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class PaymentTypesRowChangeEvent : global::System.EventArgs {
+        public class CompanyRowChangeEvent : global::System.EventArgs {
             
-            private PaymentTypesRow eventRow;
+            private CompanyRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PaymentTypesRowChangeEvent(PaymentTypesRow row, global::System.Data.DataRowAction action) {
+            public CompanyRowChangeEvent(CompanyRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PaymentTypesRow Row {
+            public CompanyRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -675,7 +780,7 @@ namespace Katswiri {
         }
     }
 }
-namespace Katswiri.katswiriDataSet1TableAdapters {
+namespace Katswiri.companyDataSetTableAdapters {
     
     
     /// <summary>
@@ -687,7 +792,7 @@ namespace Katswiri.katswiriDataSet1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class PaymentTypesTableAdapter : global::System.ComponentModel.Component {
+    public partial class CompanyTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -701,7 +806,7 @@ namespace Katswiri.katswiriDataSet1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public PaymentTypesTableAdapter() {
+        public CompanyTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -798,43 +903,56 @@ namespace Katswiri.katswiriDataSet1TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "PaymentTypes";
-            tableMapping.ColumnMappings.Add("PaymentTypeId", "PaymentTypeId");
-            tableMapping.ColumnMappings.Add("PaymentTypeName", "PaymentTypeName");
-            tableMapping.ColumnMappings.Add("Description", "Description");
-            tableMapping.ColumnMappings.Add("Deleted", "Deleted");
+            tableMapping.DataSetTable = "Company";
+            tableMapping.ColumnMappings.Add("CompanyId", "CompanyId");
+            tableMapping.ColumnMappings.Add("Address", "Address");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Email", "Email");
+            tableMapping.ColumnMappings.Add("Phone", "Phone");
+            tableMapping.ColumnMappings.Add("ceo", "ceo");
+            tableMapping.ColumnMappings.Add("terms", "terms");
+            tableMapping.ColumnMappings.Add("fee", "fee");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PaymentTypes] WHERE (([PaymentTypeId] = @Original_PaymentTypeI" +
-                "d) AND ([PaymentTypeName] = @Original_PaymentTypeName) AND ([Deleted] = @Origina" +
-                "l_Deleted))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Company] WHERE (([CompanyId] = @Original_CompanyId) AND ([Emai" +
+                "l] = @Original_Email) AND ([Phone] = @Original_Phone) AND ([ceo] = @Original_ceo" +
+                "))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CompanyId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ceo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ceo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PaymentTypes] ([PaymentTypeName], [Description], [Deleted]) VA" +
-                "LUES (@PaymentTypeName, @Description, @Deleted);\r\nSELECT PaymentTypeId, PaymentT" +
-                "ypeName, Description, Deleted FROM PaymentTypes WHERE (PaymentTypeId = SCOPE_IDE" +
-                "NTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Company] ([CompanyId], [Address], [Name], [Email], [Phone], [ceo], [terms], [fee]) VALUES (@CompanyId, @Address, @Name, @Email, @Phone, @ceo, @terms, @fee);
+SELECT CompanyId, Address, Name, Email, Phone, ceo, terms, fee FROM Company WHERE (CompanyId = @CompanyId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deleted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ceo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ceo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@terms", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "terms", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fee", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fee", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PaymentTypes] SET [PaymentTypeName] = @PaymentTypeName, [Description] = @Description, [Deleted] = @Deleted WHERE (([PaymentTypeId] = @Original_PaymentTypeId) AND ([PaymentTypeName] = @Original_PaymentTypeName) AND ([Deleted] = @Original_Deleted));
-SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WHERE (PaymentTypeId = @PaymentTypeId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Company] SET [CompanyId] = @CompanyId, [Address] = @Address, [Name] = @Name, [Email] = @Email, [Phone] = @Phone, [ceo] = @ceo, [terms] = @terms, [fee] = @fee WHERE (([CompanyId] = @Original_CompanyId) AND ([Email] = @Original_Email) AND ([Phone] = @Original_Phone) AND ([ceo] = @Original_ceo));
+SELECT CompanyId, Address, Name, Email, Phone, ceo, terms, fee FROM Company WHERE (CompanyId = @CompanyId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deleted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentTypeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CompanyId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ceo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ceo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@terms", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "terms", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fee", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fee", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CompanyId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CompanyId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Phone", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ceo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ceo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -847,24 +965,18 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM dbo.PaymentTypes" +
-                "";
+            this._commandCollection[0].CommandText = "SELECT CompanyId, Address, Name, Email, Phone, ceo, terms, fee FROM dbo.Company";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM dbo.PaymentTypes" +
-                "";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(katswiriDataSet1.PaymentTypesDataTable dataTable) {
+        public virtual int Fill(companyDataSet.CompanyDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -877,9 +989,9 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual katswiriDataSet1.PaymentTypesDataTable GetData() {
+        public virtual companyDataSet.CompanyDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            katswiriDataSet1.PaymentTypesDataTable dataTable = new katswiriDataSet1.PaymentTypesDataTable();
+            companyDataSet.CompanyDataTable dataTable = new companyDataSet.CompanyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -887,28 +999,15 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(katswiriDataSet1.PaymentTypesDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(katswiriDataSet1.PaymentTypesDataTable dataTable) {
+        public virtual int Update(companyDataSet.CompanyDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(katswiriDataSet1 dataSet) {
-            return this.Adapter.Update(dataSet, "PaymentTypes");
+        public virtual int Update(companyDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Company");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -930,15 +1029,26 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_PaymentTypeId, string Original_PaymentTypeName, int Original_Deleted) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_PaymentTypeId));
-            if ((Original_PaymentTypeName == null)) {
-                throw new global::System.ArgumentNullException("Original_PaymentTypeName");
+        public virtual int Delete(int Original_CompanyId, string Original_Email, string Original_Phone, string Original_ceo) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_CompanyId));
+            if ((Original_Email == null)) {
+                throw new global::System.ArgumentNullException("Original_Email");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_PaymentTypeName));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Email));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Deleted));
+            if ((Original_Phone == null)) {
+                throw new global::System.ArgumentNullException("Original_Phone");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Phone));
+            }
+            if ((Original_ceo == null)) {
+                throw new global::System.ArgumentNullException("Original_ceo");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_ceo));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -959,20 +1069,50 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string PaymentTypeName, string Description, int Deleted) {
-            if ((PaymentTypeName == null)) {
-                throw new global::System.ArgumentNullException("PaymentTypeName");
+        public virtual int Insert(int CompanyId, string Address, string Name, string Email, string Phone, string ceo, string terms, string fee) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CompanyId));
+            if ((Address == null)) {
+                throw new global::System.ArgumentNullException("Address");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(PaymentTypeName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Address));
             }
-            if ((Description == null)) {
-                throw new global::System.ArgumentNullException("Description");
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Description));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Name));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Deleted));
+            if ((Email == null)) {
+                throw new global::System.ArgumentNullException("Email");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Email));
+            }
+            if ((Phone == null)) {
+                throw new global::System.ArgumentNullException("Phone");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Phone));
+            }
+            if ((ceo == null)) {
+                throw new global::System.ArgumentNullException("ceo");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ceo));
+            }
+            if ((terms == null)) {
+                throw new global::System.ArgumentNullException("terms");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(terms));
+            }
+            if ((fee == null)) {
+                throw new global::System.ArgumentNullException("fee");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(fee));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -993,29 +1133,69 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string PaymentTypeName, string Description, int Deleted, int Original_PaymentTypeId, string Original_PaymentTypeName, int Original_Deleted, int PaymentTypeId) {
-            if ((PaymentTypeName == null)) {
-                throw new global::System.ArgumentNullException("PaymentTypeName");
+        public virtual int Update(int CompanyId, string Address, string Name, string Email, string Phone, string ceo, string terms, string fee, int Original_CompanyId, string Original_Email, string Original_Phone, string Original_ceo) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(CompanyId));
+            if ((Address == null)) {
+                throw new global::System.ArgumentNullException("Address");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(PaymentTypeName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Address));
             }
-            if ((Description == null)) {
-                throw new global::System.ArgumentNullException("Description");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Description));
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Deleted));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_PaymentTypeId));
-            if ((Original_PaymentTypeName == null)) {
-                throw new global::System.ArgumentNullException("Original_PaymentTypeName");
+            if ((Name == null)) {
+                throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_PaymentTypeName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Name));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Deleted));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(PaymentTypeId));
+            if ((Email == null)) {
+                throw new global::System.ArgumentNullException("Email");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Email));
+            }
+            if ((Phone == null)) {
+                throw new global::System.ArgumentNullException("Phone");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Phone));
+            }
+            if ((ceo == null)) {
+                throw new global::System.ArgumentNullException("ceo");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ceo));
+            }
+            if ((terms == null)) {
+                throw new global::System.ArgumentNullException("terms");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(terms));
+            }
+            if ((fee == null)) {
+                throw new global::System.ArgumentNullException("fee");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(fee));
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_CompanyId));
+            if ((Original_Email == null)) {
+                throw new global::System.ArgumentNullException("Original_Email");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Email));
+            }
+            if ((Original_Phone == null)) {
+                throw new global::System.ArgumentNullException("Original_Phone");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Phone));
+            }
+            if ((Original_ceo == null)) {
+                throw new global::System.ArgumentNullException("Original_ceo");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_ceo));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1036,8 +1216,8 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string PaymentTypeName, string Description, int Deleted, int Original_PaymentTypeId, string Original_PaymentTypeName, int Original_Deleted) {
-            return this.Update(PaymentTypeName, Description, Deleted, Original_PaymentTypeId, Original_PaymentTypeName, Original_Deleted, Original_PaymentTypeId);
+        public virtual int Update(string Address, string Name, string Email, string Phone, string ceo, string terms, string fee, int Original_CompanyId, string Original_Email, string Original_Phone, string Original_ceo) {
+            return this.Update(Original_CompanyId, Address, Name, Email, Phone, ceo, terms, fee, Original_CompanyId, Original_Email, Original_Phone, Original_ceo);
         }
     }
     
@@ -1053,7 +1233,7 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         
         private UpdateOrderOption _updateOrder;
         
-        private PaymentTypesTableAdapter _paymentTypesTableAdapter;
+        private CompanyTableAdapter _companyTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1075,12 +1255,12 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public PaymentTypesTableAdapter PaymentTypesTableAdapter {
+        public CompanyTableAdapter CompanyTableAdapter {
             get {
-                return this._paymentTypesTableAdapter;
+                return this._companyTableAdapter;
             }
             set {
-                this._paymentTypesTableAdapter = value;
+                this._companyTableAdapter = value;
             }
         }
         
@@ -1103,9 +1283,9 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._paymentTypesTableAdapter != null) 
-                            && (this._paymentTypesTableAdapter.Connection != null))) {
-                    return this._paymentTypesTableAdapter.Connection;
+                if (((this._companyTableAdapter != null) 
+                            && (this._companyTableAdapter.Connection != null))) {
+                    return this._companyTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1120,7 +1300,7 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._paymentTypesTableAdapter != null)) {
+                if ((this._companyTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1132,14 +1312,14 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(katswiriDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(companyDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._paymentTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PaymentTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._companyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Company.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._paymentTypesTableAdapter.Update(updatedRows));
+                    result = (result + this._companyTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1151,13 +1331,13 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(katswiriDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(companyDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._paymentTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PaymentTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._companyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Company.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._paymentTypesTableAdapter.Update(addedRows));
+                    result = (result + this._companyTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1169,13 +1349,13 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(katswiriDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(companyDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._paymentTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PaymentTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._companyTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Company.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._paymentTypesTableAdapter.Update(deletedRows));
+                    result = (result + this._companyTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1211,15 +1391,15 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(katswiriDataSet1 dataSet) {
+        public virtual int UpdateAll(companyDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._paymentTypesTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._paymentTypesTableAdapter.Connection) == false))) {
+            if (((this._companyTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._companyTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -1255,13 +1435,13 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._paymentTypesTableAdapter != null)) {
-                    revertConnections.Add(this._paymentTypesTableAdapter, this._paymentTypesTableAdapter.Connection);
-                    this._paymentTypesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._paymentTypesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._paymentTypesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._paymentTypesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._paymentTypesTableAdapter.Adapter);
+                if ((this._companyTableAdapter != null)) {
+                    revertConnections.Add(this._companyTableAdapter, this._companyTableAdapter.Connection);
+                    this._companyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._companyTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._companyTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._companyTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._companyTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1322,9 +1502,9 @@ SELECT PaymentTypeId, PaymentTypeName, Description, Deleted FROM PaymentTypes WH
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._paymentTypesTableAdapter != null)) {
-                    this._paymentTypesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._paymentTypesTableAdapter]));
-                    this._paymentTypesTableAdapter.Transaction = null;
+                if ((this._companyTableAdapter != null)) {
+                    this._companyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._companyTableAdapter]));
+                    this._companyTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
