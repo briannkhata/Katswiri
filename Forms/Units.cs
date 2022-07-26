@@ -106,7 +106,8 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                db.Units.Remove(unit);
+                unit.Deleted = 1;
+                db.Entry(unit).State = EntityState.Modified;
                 db.SaveChanges();
                 clearFields();
                 loadUnits();

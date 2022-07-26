@@ -15,11 +15,10 @@ namespace Katswiri.Data
     public partial class vwShop
     {
         public string Currency { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
         public string ShopName { get; set; }
         public int ShopId { get; set; }
         public int Deleted { get; set; }
+        public string Location { get; set; }
+        public string District { get; set; }
     }
 }

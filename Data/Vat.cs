@@ -14,7 +14,7 @@ namespace Katswiri.Data
     
     public partial class Vat
     {
-        public int Id { get; set; }
+        public int VatId { get; set; }
         public string VatValue { get; set; }
         public string VatStatus { get; set; }
     }

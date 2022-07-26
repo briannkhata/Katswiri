@@ -125,7 +125,8 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                db.Incomes.Remove(income);
+                income.Deleted = 1;
+                db.Entry(income).State = EntityState.Modified;
                 db.SaveChanges();
                 clearFields();
                 loadIncomes();

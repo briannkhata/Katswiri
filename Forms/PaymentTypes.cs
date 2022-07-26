@@ -63,7 +63,8 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                db.PaymentTypes.Remove(paymentType);
+                paymentType.Deleted = 1;
+                db.Entry(paymentType).State = EntityState.Modified;
                 db.SaveChanges();
                 clearFields();
                 loadPaymentTypes();

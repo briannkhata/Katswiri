@@ -80,7 +80,6 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
@@ -88,7 +87,8 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                db.Banks.Remove(bank);
+                bank.Deleted = 1;
+                db.Entry(bank).State = EntityState.Modified;
                 db.SaveChanges();
                 clearFields();
                 loadBanks();

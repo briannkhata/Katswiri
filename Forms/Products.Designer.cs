@@ -31,27 +31,27 @@ namespace Katswiri.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Products));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.gridControlProducts = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.gridControlProducts = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -77,24 +77,6 @@ namespace Katswiri.Forms
             this.repositoryItemComboBox2});
             this.ribbon.Size = new System.Drawing.Size(1509, 232);
             // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup3,
-            this.ribbonPageGroup4});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Tools";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem3);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Actions";
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "New";
@@ -115,6 +97,86 @@ namespace Katswiri.Forms
             this.barButtonItem3.Id = 3;
             this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
             this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Refresh";
+            this.barButtonItem4.Id = 4;
+            this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Print";
+            this.barButtonItem5.Id = 5;
+            this.barButtonItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "Category";
+            this.barEditItem1.Edit = this.repositoryItemComboBox1;
+            this.barEditItem1.Id = 6;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Caption = "Unit";
+            this.barEditItem2.Edit = this.repositoryItemComboBox2;
+            this.barEditItem2.Id = 7;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
+            // repositoryItemComboBox2
+            // 
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup4});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Tools";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Actions";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem5);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Tools";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barEditItem1);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "Filter By Category";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.barEditItem2);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Unit of Measure";
             // 
             // gridControlProducts
             // 
@@ -131,67 +193,6 @@ namespace Katswiri.Forms
             // 
             this.gridView1.GridControl = this.gridControlProducts;
             this.gridView1.Name = "gridView1";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem5);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Tools";
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Refresh";
-            this.barButtonItem4.Id = 4;
-            this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Print";
-            this.barButtonItem5.Id = 5;
-            this.barButtonItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barEditItem1);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Filter By Category";
-            // 
-            // barEditItem1
-            // 
-            this.barEditItem1.Caption = "Category";
-            this.barEditItem1.Edit = this.repositoryItemComboBox1;
-            this.barEditItem1.Id = 6;
-            this.barEditItem1.Name = "barEditItem1";
-            // 
-            // repositoryItemComboBox1
-            // 
-            this.repositoryItemComboBox1.AutoHeight = false;
-            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barEditItem2);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Unit of Measure";
-            // 
-            // barEditItem2
-            // 
-            this.barEditItem2.Caption = "Unit";
-            this.barEditItem2.Edit = this.repositoryItemComboBox2;
-            this.barEditItem2.Id = 7;
-            this.barEditItem2.Name = "barEditItem2";
-            // 
-            // repositoryItemComboBox2
-            // 
-            this.repositoryItemComboBox2.AutoHeight = false;
-            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
             // 
             // Products
             // 
@@ -210,10 +211,10 @@ namespace Katswiri.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Products";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -15,10 +15,18 @@ namespace Katswiri.Forms
     public partial class Products : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         KEntities db = new KEntities();
+        Product product = new Product();
+        int ProductId;
         public Products()
         {
             InitializeComponent();
+            clearFields();
             loadProducts();
+        }
+
+        private void clearFields()
+        {
+            throw new NotImplementedException();
         }
 
         private void loadProducts()
@@ -29,6 +37,11 @@ namespace Katswiri.Forms
             gridView1.Columns["ProductId"].Visible = false;
             gridView1.OptionsBehavior.Editable = false;
             gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

@@ -86,7 +86,8 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                db.Categories.Remove(category);
+                category.Deleted = 1;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 clearFields();
                 loadCategories();

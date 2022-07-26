@@ -22,6 +22,9 @@ namespace Katswiri.Data
         public int CompanyId { get; set; }
         public string Currency { get; set; }
         public int Deleted { get; set; }
+        public string Location { get; set; }
+        public string District { get; set; }
+        public string Country { get; set; }
     
         public virtual Company Company { get; set; }
     }

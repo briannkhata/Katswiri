@@ -199,12 +199,6 @@
     <Compile Include="Forms\Shops.Designer.cs">
       <DependentUpon>Shops.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CreateCategory.Designer.cs">
-      <DependentUpon>CreateCategory.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Expenses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,9 +298,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Shops.resx">
       <DependentUpon>Shops.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateCategory.resx">
-      <DependentUpon>CreateCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Expenses.resx">
       <DependentUpon>Expenses.cs</DependentUpon>
