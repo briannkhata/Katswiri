@@ -28,7 +28,7 @@ namespace Katswiri.Forms
 
         private void clearFields()
         {
-            ShopNameTextEdit.Text = EmailTextEdit.Text = CurrencyTextEdit.Text = AddressTextEdit.Text  = AddressTextEdit.Text = PhoneTextEdit.Text = string.Empty;
+            ShopNameTextEdit.Text = textEditCountry.Text = CurrencyTextEdit.Text = textEditLocation.Text  = textEditLocation.Text = textEditDistrict.Text = string.Empty;
             btnDelete.Enabled = false;
         }
 
@@ -50,22 +50,22 @@ namespace Katswiri.Forms
                 ShopNameTextEdit.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(AddressTextEdit.Text))
+            if (String.IsNullOrEmpty(textEditLocation.Text))
             {
                 result = false;
-                AddressTextEdit.ErrorText = "Required";
+                textEditLocation.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(EmailTextEdit.Text))
+            if (String.IsNullOrEmpty(textEditCountry.Text))
             {
                 result = false;
-                EmailTextEdit.ErrorText = "Required";
+                textEditCountry.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(PhoneTextEdit.Text))
+            if (String.IsNullOrEmpty(textEditDistrict.Text))
             {
                 result = false;
-                PhoneTextEdit.ErrorText = "Required";
+                textEditDistrict.ErrorText = "Required";
             }
 
             if (String.IsNullOrEmpty(CurrencyTextEdit.Text))
@@ -82,12 +82,12 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    shop.Address = AddressTextEdit.Text;
-                    shop.Phone = PhoneTextEdit.Text;
-                    shop.Email = EmailTextEdit.Text;
+                    shop.Location = textEditLocation.Text;
+                    shop.District = textEditDistrict.Text;
+                    shop.Country = textEditCountry.Text;
                     shop.Currency = CurrencyTextEdit.Text;
                     shop.ShopName = ShopNameTextEdit.Text;
-                    shop.CompanyId = 1;
+                    shop.CompanyId = db.Settings.SingleOrDefault().CompanyId;
                     if (ShopId > 0)
                         db.Entry(shop).State = EntityState.Modified;
                     else
@@ -137,9 +137,9 @@ namespace Katswiri.Forms
                     ShopId = row.ShopId;
                     shop = db.Shops.Where(x => x.ShopId == ShopId).FirstOrDefault();
                     ShopNameTextEdit.Text = shop.ShopName;
-                    PhoneTextEdit.Text = shop.Phone;
-                    EmailTextEdit.Text = shop.Email;
-                    AddressTextEdit.Text = shop.Address;
+                    textEditDistrict.Text = shop.District;
+                    textEditCountry.Text = shop.Country;
+                    textEditLocation.Text = shop.Location;
                     CurrencyTextEdit.Text = shop.Currency;
                 }
                 btnSave.Caption = "Update";
@@ -150,5 +150,7 @@ namespace Katswiri.Forms
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
     }
 }

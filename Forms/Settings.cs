@@ -17,7 +17,7 @@ namespace Katswiri.Forms
     public partial class Settings : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         KEntities db = new KEntities();
-        Company company = new Company();
+        Setting setting = new Setting();
         int CompanyId;
         public Settings()
         {
@@ -29,17 +29,19 @@ namespace Katswiri.Forms
         {
             try
             {
-                company = db.Company.FirstOrDefault();
-                if (company != null)
+                setting = db.Settings.FirstOrDefault();
+                if (setting != null)
                 {
-                    CompanyId = company.CompanyId;
-                    NameTextEdit.Text = company.Name;
-                    PhoneTextEdit.Text = company.Phone;
-                    EmailTextEdit.Text = company.Email;
-                    AddressTextEdit.Text = company.Address;
-                    termsTextEdit.Text = company.Terms;
-                    feeTextEdit.Text = company.Fee;
+                    CompanyId = setting.CompanyId;
+                    NameTextEdit.Text = setting.Name;
+                    PhoneTextEdit.Text = setting.Phone;
+                    EmailTextEdit.Text = setting.Email;
+                    AddressTextEdit.Text = setting.Address;
+                    termsTextEdit.Text = setting.Terms;
+                    feeTextEdit.Text = setting.Fee.ToString();
                 }
+             
+               
             } 
             catch(Exception ex)
             {
@@ -94,22 +96,22 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    company.Name = NameTextEdit.Text.ToString();
-                    company.Address = AddressTextEdit.Text.ToString();
-                    company.Phone = PhoneTextEdit.Text.ToString();
-                    company.Email = EmailTextEdit.Text.ToString();
-                    company.Fee = feeTextEdit.Text;
-                    company.Terms = termsTextEdit.Text.ToString();
+                    setting.Name = NameTextEdit.Text?.ToString();
+                    setting.Address = AddressTextEdit.Text?.ToString();
+                    setting.Phone = PhoneTextEdit.Text?.ToString();
+                    setting.Email = EmailTextEdit.Text?.ToString();
+                    setting.Fee = Convert.ToDouble(feeTextEdit.Text);
+                    setting.Terms = termsTextEdit.Text.ToString();
 
                     if (CompanyId > 0)
-                        db.Entry(company).State = EntityState.Modified;
+                        db.Entry(setting).State = EntityState.Modified;
                     else
                     {
-                        db.Company.Add(company);
+                        db.Settings.Add(setting);
                     }
                     db.SaveChanges();
                     loadDetails();
-                    XtraMessageBox.Show("Details Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //XtraMessageBox.Show("Details Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

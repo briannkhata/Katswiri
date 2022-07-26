@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
 
 namespace Katswiri.Forms
 {
@@ -31,6 +32,11 @@ namespace Katswiri.Forms
         private void clearFields()
         {
             AmountTextEdit.Text = IncomeDateEdit.Text = PaymentTypeId.Text = IncomeTypeId.Text = string.Empty;
+            PaymentTypeId.EditValue = IncomeTypeId.EditValue  = null;
+            PaymentTypeId.EditValue = IncomeTypeId.EditValue = "nulltext";
+            PaymentTypeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            PaymentTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
+            IncomeTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             IncomeId = 0;

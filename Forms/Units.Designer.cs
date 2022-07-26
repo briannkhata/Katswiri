@@ -111,11 +111,11 @@ namespace Katswiri.Forms
             // gridControlUnits
             // 
             this.gridControlUnits.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridControlUnits.Location = new System.Drawing.Point(0, 440);
+            this.gridControlUnits.Location = new System.Drawing.Point(0, 389);
             this.gridControlUnits.MainView = this.gridView1;
             this.gridControlUnits.MenuManager = this.ribbon;
             this.gridControlUnits.Name = "gridControlUnits";
-            this.gridControlUnits.Size = new System.Drawing.Size(747, 319);
+            this.gridControlUnits.Size = new System.Drawing.Size(747, 370);
             this.gridControlUnits.TabIndex = 2;
             this.gridControlUnits.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -142,7 +142,7 @@ namespace Katswiri.Forms
             this.layoutControl1.Location = new System.Drawing.Point(0, 232);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(747, 202);
+            this.layoutControl1.Size = new System.Drawing.Size(747, 151);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -151,16 +151,16 @@ namespace Katswiri.Forms
             this.textEditUnit.Location = new System.Drawing.Point(24, 69);
             this.textEditUnit.MenuManager = this.ribbon;
             this.textEditUnit.Name = "textEditUnit";
-            this.textEditUnit.Size = new System.Drawing.Size(699, 26);
+            this.textEditUnit.Size = new System.Drawing.Size(347, 26);
             this.textEditUnit.StyleController = this.layoutControl1;
             this.textEditUnit.TabIndex = 4;
             // 
             // textEditSubUnit
             // 
-            this.textEditSubUnit.Location = new System.Drawing.Point(24, 118);
+            this.textEditSubUnit.Location = new System.Drawing.Point(375, 69);
             this.textEditSubUnit.MenuManager = this.ribbon;
             this.textEditSubUnit.Name = "textEditSubUnit";
-            this.textEditSubUnit.Size = new System.Drawing.Size(699, 26);
+            this.textEditSubUnit.Size = new System.Drawing.Size(348, 26);
             this.textEditSubUnit.StyleController = this.layoutControl1;
             this.textEditSubUnit.TabIndex = 5;
             // 
@@ -171,25 +171,25 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(747, 202);
+            this.Root.Size = new System.Drawing.Size(747, 151);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2,
-            this.layoutControlItem1});
+            this.layoutControlItem1,
+            this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(727, 182);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(727, 131);
             this.layoutControlGroup1.Text = "Enter Details";
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.textEditSubUnit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem2.Location = new System.Drawing.Point(351, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(703, 83);
+            this.layoutControlItem2.Size = new System.Drawing.Size(352, 81);
             this.layoutControlItem2.Text = "Sub Unit";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(51, 16);
@@ -199,7 +199,7 @@ namespace Katswiri.Forms
             this.layoutControlItem1.Control = this.textEditUnit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(703, 49);
+            this.layoutControlItem1.Size = new System.Drawing.Size(351, 81);
             this.layoutControlItem1.Text = "Unit ";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(51, 16);

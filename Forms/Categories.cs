@@ -43,8 +43,6 @@ namespace Katswiri.Forms
             CategoryId = 0;
         }
 
-
-
         private bool formValid()
         {
             var result = true;
@@ -78,7 +76,6 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 
@@ -112,7 +109,6 @@ namespace Katswiri.Forms
             }catch(Exception ex)
             {
                 XtraMessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-
             }
         }
     }

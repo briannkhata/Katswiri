@@ -90,9 +90,6 @@
     <Compile Include="Data\Category.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Company.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,16 +134,19 @@
     <Compile Include="Data\Role.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Setting.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Shop.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TaxType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Unit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\User.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Vat.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwCategory.cs">
@@ -171,6 +171,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwShop.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwTaxType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Enums\FormMode.cs" />
@@ -241,6 +244,12 @@
     <Compile Include="Forms\Products.Designer.cs">
       <DependentUpon>Products.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TaxTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TaxTypes.Designer.cs">
+      <DependentUpon>TaxTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Units.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +296,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>shopDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="taxTypesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Banks.resx">
       <DependentUpon>Banks.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TaxTypes.resx">
+      <DependentUpon>TaxTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Units.resx">
       <DependentUpon>Units.cs</DependentUpon>
@@ -413,6 +430,17 @@
     </None>
     <None Include="shopDataSet.xss">
       <DependentUpon>shopDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="taxTypesDataSet.xsc">
+      <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="taxTypesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>taxTypesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="taxTypesDataSet.xss">
+      <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

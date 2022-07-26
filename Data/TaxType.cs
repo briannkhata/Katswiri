@@ -12,17 +12,12 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class TaxType
     {
-        public int ProductId { get; set; }
-        public string ProductCode { get; set; }
-        public string ProductName { get; set; }
-        public int UnitId { get; set; }
-        public string BarCode { get; set; }
-        public int CategoryId { get; set; }
-        public double SellingPrice { get; set; }
+        public int TaxTypeId { get; set; }
+        public string TaxTypeName { get; set; }
+        public double TaxTypeValue { get; set; }
+        public string TaxTypeStatus { get; set; }
         public int Deleted { get; set; }
-    
-        public virtual Category Category { get; set; }
     }
 }

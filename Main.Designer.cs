@@ -78,6 +78,8 @@ namespace Katswiri
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.ribbonPageGroup20 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,9 +110,10 @@ namespace Katswiri
             this.barButtonItem7,
             this.barButtonItem10,
             this.barButtonItem16,
-            this.barButtonItem17});
+            this.barButtonItem17,
+            this.barButtonItem18});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 27;
+            this.ribbon.MaxItemId = 28;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -135,7 +138,7 @@ namespace Katswiri
             // 
             // btnProducts
             // 
-            this.btnProducts.Caption = "View Items";
+            this.btnProducts.Caption = "Products";
             this.btnProducts.Id = 2;
             this.btnProducts.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnProducts.ImageOptions.SvgImage")));
             this.btnProducts.Name = "btnProducts";
@@ -143,7 +146,7 @@ namespace Katswiri
             // 
             // btnCategories
             // 
-            this.btnCategories.Caption = "View Categories";
+            this.btnCategories.Caption = "Categories";
             this.btnCategories.Id = 6;
             this.btnCategories.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnCategories.ImageOptions.SvgImage")));
             this.btnCategories.Name = "btnCategories";
@@ -338,7 +341,8 @@ namespace Katswiri
             this.ribbonPageGroup7,
             this.ribbonPageGroup8,
             this.ribbonPageGroup15,
-            this.ribbonPageGroup16});
+            this.ribbonPageGroup16,
+            this.ribbonPageGroup20});
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "Accounts Management";
             // 
@@ -441,6 +445,19 @@ namespace Katswiri
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1688, 36);
             // 
+            // ribbonPageGroup20
+            // 
+            this.ribbonPageGroup20.ItemLinks.Add(this.barButtonItem18);
+            this.ribbonPageGroup20.Name = "ribbonPageGroup20";
+            // 
+            // barButtonItem18
+            // 
+            this.barButtonItem18.Caption = "Tax Types";
+            this.barButtonItem18.Id = 27;
+            this.barButtonItem18.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem18.ImageOptions.SvgImage")));
+            this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
+            // 
             // Main
             // 
             this.Appearance.Options.UseFont = true;
@@ -514,5 +531,7 @@ namespace Katswiri
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup18;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup19;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem18;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup20;
     }
 }

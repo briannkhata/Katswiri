@@ -31,8 +31,10 @@ namespace Katswiri.Forms
         private void clearFields()
         {
             AmountTextEdit.Text = ExpenseDateEdit.Text  = string.Empty;
-            PaymentTypeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            PaymentTypeId.EditValue = ExpenseTypeId.EditValue = null;
+            PaymentTypeId.EditValue = ExpenseTypeId.EditValue = "nulltext";
 
+            PaymentTypeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             PaymentTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
             ExpenseTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
 

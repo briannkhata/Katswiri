@@ -12,10 +12,12 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Vat
+    public partial class vwTaxType
     {
-        public int VatId { get; set; }
-        public string VatValue { get; set; }
-        public string VatStatus { get; set; }
+        public int TaxTypeId { get; set; }
+        public string TaxTypeName { get; set; }
+        public double TaxTypeValue { get; set; }
+        public string TaxTypeStatus { get; set; }
+        public int Deleted { get; set; }
     }
 }

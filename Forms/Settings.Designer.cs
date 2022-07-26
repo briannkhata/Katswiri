@@ -45,7 +45,6 @@ namespace Katswiri.Forms
             this.companyDataSet = new Katswiri.companyDataSet();
             this.EmailTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.PhoneTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.ceoTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.feeTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.termsTextEdit = new DevExpress.XtraEditors.MemoEdit();
             this.AddressTextEdit = new DevExpress.XtraEditors.MemoEdit();
@@ -53,7 +52,6 @@ namespace Katswiri.Forms
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForterms = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForceo = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForPhone = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForEmail = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForName = new DevExpress.XtraLayout.LayoutControlItem();
@@ -68,7 +66,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.companyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhoneTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceoTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.feeTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.termsTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddressTextEdit.Properties)).BeginInit();
@@ -76,7 +73,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForterms)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForceo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForName)).BeginInit();
@@ -123,7 +119,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.Controls.Add(this.NameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.EmailTextEdit);
             this.dataLayoutControl1.Controls.Add(this.PhoneTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.ceoTextEdit);
             this.dataLayoutControl1.Controls.Add(this.feeTextEdit);
             this.dataLayoutControl1.Controls.Add(this.termsTextEdit);
             this.dataLayoutControl1.Controls.Add(this.AddressTextEdit);
@@ -139,7 +134,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(727, 661);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(727, 612);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -183,33 +178,23 @@ namespace Katswiri.Forms
             this.PhoneTextEdit.StyleController = this.dataLayoutControl1;
             this.PhoneTextEdit.TabIndex = 8;
             // 
-            // ceoTextEdit
-            // 
-            this.ceoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "ceo", true));
-            this.ceoTextEdit.Location = new System.Drawing.Point(24, 167);
-            this.ceoTextEdit.MenuManager = this.ribbon;
-            this.ceoTextEdit.Name = "ceoTextEdit";
-            this.ceoTextEdit.Size = new System.Drawing.Size(337, 26);
-            this.ceoTextEdit.StyleController = this.dataLayoutControl1;
-            this.ceoTextEdit.TabIndex = 9;
-            // 
             // feeTextEdit
             // 
             this.feeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "fee", true));
-            this.feeTextEdit.Location = new System.Drawing.Point(365, 167);
+            this.feeTextEdit.Location = new System.Drawing.Point(24, 167);
             this.feeTextEdit.MenuManager = this.ribbon;
             this.feeTextEdit.Name = "feeTextEdit";
-            this.feeTextEdit.Size = new System.Drawing.Size(338, 26);
+            this.feeTextEdit.Size = new System.Drawing.Size(679, 26);
             this.feeTextEdit.StyleController = this.dataLayoutControl1;
             this.feeTextEdit.TabIndex = 11;
             // 
             // termsTextEdit
             // 
             this.termsTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.companyBindingSource, "terms", true));
-            this.termsTextEdit.Location = new System.Drawing.Point(24, 322);
+            this.termsTextEdit.Location = new System.Drawing.Point(24, 304);
             this.termsTextEdit.MenuManager = this.ribbon;
             this.termsTextEdit.Name = "termsTextEdit";
-            this.termsTextEdit.Size = new System.Drawing.Size(679, 315);
+            this.termsTextEdit.Size = new System.Drawing.Size(679, 284);
             this.termsTextEdit.StyleController = this.dataLayoutControl1;
             this.termsTextEdit.TabIndex = 10;
             // 
@@ -219,7 +204,7 @@ namespace Katswiri.Forms
             this.AddressTextEdit.Location = new System.Drawing.Point(24, 216);
             this.AddressTextEdit.MenuManager = this.ribbon;
             this.AddressTextEdit.Name = "AddressTextEdit";
-            this.AddressTextEdit.Size = new System.Drawing.Size(679, 83);
+            this.AddressTextEdit.Size = new System.Drawing.Size(679, 65);
             this.AddressTextEdit.StyleController = this.dataLayoutControl1;
             this.AddressTextEdit.TabIndex = 5;
             // 
@@ -230,7 +215,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(727, 661);
+            this.Root.Size = new System.Drawing.Size(727, 612);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -241,13 +226,12 @@ namespace Katswiri.Forms
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(707, 641);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(707, 592);
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForterms,
-            this.ItemForceo,
             this.ItemForPhone,
             this.ItemForEmail,
             this.ItemForName,
@@ -255,28 +239,18 @@ namespace Katswiri.Forms
             this.ItemForAddress});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(707, 641);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(707, 592);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForterms
             // 
             this.ItemForterms.Control = this.termsTextEdit;
-            this.ItemForterms.Location = new System.Drawing.Point(0, 253);
+            this.ItemForterms.Location = new System.Drawing.Point(0, 235);
             this.ItemForterms.Name = "ItemForterms";
-            this.ItemForterms.Size = new System.Drawing.Size(683, 338);
+            this.ItemForterms.Size = new System.Drawing.Size(683, 307);
             this.ItemForterms.Text = "Terms";
             this.ItemForterms.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForterms.TextSize = new System.Drawing.Size(53, 16);
-            // 
-            // ItemForceo
-            // 
-            this.ItemForceo.Control = this.ceoTextEdit;
-            this.ItemForceo.Location = new System.Drawing.Point(0, 98);
-            this.ItemForceo.Name = "ItemForceo";
-            this.ItemForceo.Size = new System.Drawing.Size(341, 49);
-            this.ItemForceo.Text = "CEO/MD";
-            this.ItemForceo.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForceo.TextSize = new System.Drawing.Size(53, 16);
+            this.ItemForterms.TextSize = new System.Drawing.Size(51, 16);
             // 
             // ItemForPhone
             // 
@@ -286,7 +260,7 @@ namespace Katswiri.Forms
             this.ItemForPhone.Size = new System.Drawing.Size(341, 49);
             this.ItemForPhone.Text = "Phone";
             this.ItemForPhone.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForPhone.TextSize = new System.Drawing.Size(53, 16);
+            this.ItemForPhone.TextSize = new System.Drawing.Size(51, 16);
             // 
             // ItemForEmail
             // 
@@ -296,7 +270,7 @@ namespace Katswiri.Forms
             this.ItemForEmail.Size = new System.Drawing.Size(342, 49);
             this.ItemForEmail.Text = "Email";
             this.ItemForEmail.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForEmail.TextSize = new System.Drawing.Size(53, 16);
+            this.ItemForEmail.TextSize = new System.Drawing.Size(51, 16);
             // 
             // ItemForName
             // 
@@ -306,27 +280,27 @@ namespace Katswiri.Forms
             this.ItemForName.Size = new System.Drawing.Size(683, 49);
             this.ItemForName.Text = "Name";
             this.ItemForName.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForName.TextSize = new System.Drawing.Size(53, 16);
+            this.ItemForName.TextSize = new System.Drawing.Size(51, 16);
             // 
             // ItemForfee
             // 
             this.ItemForfee.Control = this.feeTextEdit;
-            this.ItemForfee.Location = new System.Drawing.Point(341, 98);
+            this.ItemForfee.Location = new System.Drawing.Point(0, 98);
             this.ItemForfee.Name = "ItemForfee";
-            this.ItemForfee.Size = new System.Drawing.Size(342, 49);
+            this.ItemForfee.Size = new System.Drawing.Size(683, 49);
             this.ItemForfee.Text = "Fee";
             this.ItemForfee.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForfee.TextSize = new System.Drawing.Size(53, 16);
+            this.ItemForfee.TextSize = new System.Drawing.Size(51, 16);
             // 
             // ItemForAddress
             // 
             this.ItemForAddress.Control = this.AddressTextEdit;
             this.ItemForAddress.Location = new System.Drawing.Point(0, 147);
             this.ItemForAddress.Name = "ItemForAddress";
-            this.ItemForAddress.Size = new System.Drawing.Size(683, 106);
+            this.ItemForAddress.Size = new System.Drawing.Size(683, 88);
             this.ItemForAddress.Text = "Address";
             this.ItemForAddress.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForAddress.TextSize = new System.Drawing.Size(53, 16);
+            this.ItemForAddress.TextSize = new System.Drawing.Size(51, 16);
             // 
             // companyTableAdapter
             // 
@@ -337,7 +311,7 @@ namespace Katswiri.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(727, 917);
+            this.ClientSize = new System.Drawing.Size(727, 951);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -353,7 +327,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.companyDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhoneTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ceoTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.feeTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.termsTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddressTextEdit.Properties)).EndInit();
@@ -361,7 +334,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForterms)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForceo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPhone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForName)).EndInit();
@@ -386,13 +358,11 @@ namespace Katswiri.Forms
         private TextEdit NameTextEdit;
         private TextEdit EmailTextEdit;
         private TextEdit PhoneTextEdit;
-        private TextEdit ceoTextEdit;
         private TextEdit feeTextEdit;
         private LayoutControlGroup layoutControlGroup1;
         private LayoutControlGroup layoutControlGroup2;
         private LayoutControlItem ItemForfee;
         private LayoutControlItem ItemForterms;
-        private LayoutControlItem ItemForceo;
         private LayoutControlItem ItemForPhone;
         private LayoutControlItem ItemForEmail;
         private LayoutControlItem ItemForName;
