@@ -42,12 +42,17 @@ namespace Katswiri.Data
         public virtual DbSet<Expens> Expenses { get; set; }
         public virtual DbSet<vwExpens> vwExpenses { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<vwCompany> vwCompanies { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
         public virtual DbSet<vwShop> vwShops { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<TaxType> TaxTypes { get; set; }
         public virtual DbSet<vwTaxType> vwTaxTypes { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<vwProduct> vwProducts { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<vwUnit> vwUnits { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<vwBrand> vwBrands { get; set; }
     }
 }

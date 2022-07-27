@@ -14,54 +14,54 @@ using System.Windows.Forms;
 
 namespace Katswiri.Forms
 {
-    public partial class TaxTypes : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Brands : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         KEntities db = new KEntities();
-        TaxType taxType = new TaxType();
-        int TaxTypeId;
-        public TaxTypes()
+        Brand brand = new Brand();
+        int BrandId;
+        public Brands()
         {
             InitializeComponent();
             clearFields();
-            loadTaxTypes();
+            loadBrands();
         }
 
         private void clearFields()
         {
-            TaxTypeNameTextEdit.Text = TaxTypeStatusTextEdit.Text = TaxTypeValueTextEdit.Text = string.Empty;
+            BrandDescriptionTextEdit.Text = BrandNameTextEdit.Text = BrandTagTextEdit.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
-            TaxTypeId = 0;
+            BrandId = 0;
+        }
+
+        private void loadBrands()
+        {
+            gridControl1.DataSource = db.vwBrands.ToList();
+            gridView1.Columns["Deleted"].Visible = false;
+            gridView1.Columns["BrandId"].Visible = false;
+            gridView1.OptionsBehavior.Editable = false;
+            gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
         }
 
         private bool formValid()
         {
             var result = true;
-            if (String.IsNullOrEmpty(TaxTypeNameTextEdit.Text))
+            if (String.IsNullOrEmpty(BrandNameTextEdit.Text))
             {
                 result = false;
-                TaxTypeNameTextEdit.ErrorText = "Required";
+                BrandNameTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(TaxTypeStatusTextEdit.Text))
+            if (String.IsNullOrEmpty(BrandDescriptionTextEdit.Text))
             {
                 result = false;
-                TaxTypeStatusTextEdit.ErrorText = "Required";
+                BrandDescriptionTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(TaxTypeValueTextEdit.Text))
+            if (String.IsNullOrEmpty(BrandTagTextEdit.Text))
             {
                 result = false;
-                TaxTypeValueTextEdit.ErrorText = "Required";
+                BrandTagTextEdit.ErrorText = "Required";
             }
             return result;
-        }
-
-        private void loadTaxTypes()
-        {
-            gridControl1.DataSource = db.vwTaxTypes.ToList();
-            gridView1.Columns["Deleted"].Visible = false;
-            gridView1.Columns["TaxTypeId"].Visible = false;
-            gridView1.OptionsBehavior.Editable = false;
-            gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
         }
 
         private void btnSave_ItemClick(object sender, ItemClickEventArgs e)
@@ -70,18 +70,18 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    taxType.TaxTypeName = TaxTypeNameTextEdit.Text;
-                    taxType.TaxTypeValue = Convert.ToDouble(TaxTypeValueTextEdit.Text);
-                    taxType.TaxTypeStatus = TaxTypeStatusTextEdit.Text; 
-                    if (TaxTypeId > 0)
-                        db.Entry(taxType).State = EntityState.Modified;
+                    brand.BrandName = BrandNameTextEdit.Text;
+                    brand.BrandTag = BrandTagTextEdit.Text;
+                    brand.BrandDescription = BrandDescriptionTextEdit.Text;
+                    if (BrandId > 0)
+                        db.Entry(brand).State = EntityState.Modified;
                     else
                     {
-                        db.TaxTypes.Add(taxType);
+                        db.Brands.Add(brand);
                     }
                     db.SaveChanges();
                     clearFields();
-                    loadTaxTypes();
+                    loadBrands();
                     XtraMessageBox.Show("Tax Type Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -95,11 +95,11 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                taxType.Deleted = 1;
-                db.Entry(taxType).State = EntityState.Modified;
+                brand.Deleted = 1;
+                db.Entry(brand).State = EntityState.Modified;
                 db.SaveChanges();
                 clearFields();
-                loadTaxTypes();
+                loadBrands();
                 XtraMessageBox.Show("Record Deleted Successfully");
             }
         }
@@ -107,18 +107,17 @@ namespace Katswiri.Forms
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
             var selectedRows = gridView1.GetSelectedRows();
-            var row = ((vwTaxType)gridView1.GetRow(selectedRows[0]));
-            if (row.TaxTypeId != -1)
+            var row = ((vwBrand)gridView1.GetRow(selectedRows[0]));
+            if (row.BrandId != -1)
             {
-                TaxTypeId = row.TaxTypeId;
-                taxType = db.TaxTypes.Where(x => x.TaxTypeId == TaxTypeId).FirstOrDefault();
-                TaxTypeNameTextEdit.Text = taxType.TaxTypeName;
-                TaxTypeStatusTextEdit.Text = taxType.TaxTypeStatus;
-                TaxTypeValueTextEdit.Text = taxType.TaxTypeValue.ToString();
+                BrandId = row.BrandId;
+                brand = db.Brands.Where(x => x.BrandId == BrandId).FirstOrDefault();
+                BrandDescriptionTextEdit.Text = brand.BrandDescription;
+                BrandNameTextEdit.Text = brand.BrandName;
+                BrandTagTextEdit.Text = brand.BrandTag;
             }
             btnSave.Caption = "Update";
             btnDelete.Enabled = true;
         }
-
     }
 }

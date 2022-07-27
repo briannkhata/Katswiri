@@ -14,6 +14,16 @@
           <Property Name="BankCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandTag" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -62,6 +72,15 @@
           <Property Name="IncomeTypeName" Type="varchar(max)" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="float" Nullable="false" />
+          <Property Name="Cost" Type="float" Nullable="false" />
+        </EntityType>
         <EntityType Name="PaymentTypes">
           <Key>
             <PropertyRef Name="PaymentTypeId" />
@@ -89,11 +108,13 @@
           <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="UnitId" Type="int" Nullable="false" />
           <Property Name="BarCode" Type="varchar(max)" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="SellingPrice" Type="float" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="TaxTypeId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -132,7 +153,7 @@
           <Key>
             <PropertyRef Name="TaxTypeId" />
           </Key>
-          <Property Name="TaxTypeId" Type="int" Nullable="false" />
+          <Property Name="TaxTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaxTypeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TaxTypeValue" Type="float" Nullable="false" />
           <Property Name="TaxTypeStatus" Type="varchar" MaxLength="50" Nullable="false" />
@@ -165,6 +186,22 @@
           <Property Name="PhysicalAddress" Type="varchar(max)" Nullable="false" />
           <Property Name="ContactAddress" Type="varchar(max)" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwBrands' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwBrands">
+          <Key>
+            <PropertyRef Name="BrandId" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="BrandDescription" />
+            <PropertyRef Name="BrandTag" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="BrandDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BrandTag" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'katswiri.dbo.vwCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -283,6 +320,35 @@ warning 6002: The table/view 'katswiri.dbo.vwPaymentTypes' does not have a prima
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwProducts">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BarCode" />
+            <PropertyRef Name="SellingPrice" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="TaxTypeName" />
+            <PropertyRef Name="TaxTypeValue" />
+            <PropertyRef Name="TaxTypeStatus" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="SubUnit" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BarCode" Type="varchar(max)" Nullable="false" />
+          <Property Name="SellingPrice" Type="float" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="TaxTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaxTypeValue" Type="float" Nullable="false" />
+          <Property Name="TaxTypeStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubUnit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShopName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'katswiri.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwShops">
           <Key>
@@ -310,6 +376,20 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <Property Name="TaxTypeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TaxTypeValue" Type="float" Nullable="false" />
           <Property Name="TaxTypeStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwUnits">
+          <Key>
+            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="SubUnit" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="UnitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubUnit" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Expenses_ExpenseTypes">
@@ -384,18 +464,6 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Products_Categories">
-          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
-          <End Role="Products" Type="Self.Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categories">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Shops_Settings1">
           <End Role="Settings" Type="Self.Settings" Multiplicity="0..1" />
           <End Role="Shops" Type="Self.Shops" Multiplicity="*" />
@@ -410,11 +478,13 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
         </Association>
         <EntityContainer Name="KModelStoreContainer">
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incomes" EntityType="Self.Incomes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductQuantities" EntityType="Self.ProductQuantities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
@@ -424,6 +494,15 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <EntitySet Name="TaxTypes" EntityType="Self.TaxTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwBrands" EntityType="Self.vwBrands" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwBrands].[BrandId] AS [BrandId], 
+    [vwBrands].[BrandName] AS [BrandName], 
+    [vwBrands].[Deleted] AS [Deleted], 
+    [vwBrands].[BrandDescription] AS [BrandDescription], 
+    [vwBrands].[BrandTag] AS [BrandTag]
+    FROM [dbo].[vwBrands] AS [vwBrands]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwCategories" EntityType="Self.vwCategories" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwCategories].[CategoryId] AS [CategoryId], 
@@ -489,6 +568,22 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
     [vwPaymentTypes].[Deleted] AS [Deleted]
     FROM [dbo].[vwPaymentTypes] AS [vwPaymentTypes]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwProducts" EntityType="Self.vwProducts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwProducts].[ProductId] AS [ProductId], 
+    [vwProducts].[ProductCode] AS [ProductCode], 
+    [vwProducts].[ProductName] AS [ProductName], 
+    [vwProducts].[BarCode] AS [BarCode], 
+    [vwProducts].[SellingPrice] AS [SellingPrice], 
+    [vwProducts].[Deleted] AS [Deleted], 
+    [vwProducts].[TaxTypeName] AS [TaxTypeName], 
+    [vwProducts].[TaxTypeValue] AS [TaxTypeValue], 
+    [vwProducts].[TaxTypeStatus] AS [TaxTypeStatus], 
+    [vwProducts].[UnitName] AS [UnitName], 
+    [vwProducts].[SubUnit] AS [SubUnit], 
+    [vwProducts].[ShopName] AS [ShopName]
+    FROM [dbo].[vwProducts] AS [vwProducts]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwShops" EntityType="Self.vwShops" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwShops].[Currency] AS [Currency], 
@@ -507,6 +602,14 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
     [vwTaxTypes].[TaxTypeStatus] AS [TaxTypeStatus], 
     [vwTaxTypes].[Deleted] AS [Deleted]
     FROM [dbo].[vwTaxTypes] AS [vwTaxTypes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwUnits" EntityType="Self.vwUnits" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwUnits].[UnitId] AS [UnitId], 
+    [vwUnits].[UnitName] AS [UnitName], 
+    [vwUnits].[SubUnit] AS [SubUnit], 
+    [vwUnits].[Deleted] AS [Deleted]
+    FROM [dbo].[vwUnits] AS [vwUnits]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="Self.FK_Expenses_ExpenseTypes">
             <End Role="ExpenseTypes" EntitySet="ExpenseTypes" />
@@ -531,10 +634,6 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <AssociationSet Name="FK_Incomes_Users" Association="Self.FK_Incomes_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Incomes" EntitySet="Incomes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Shops_Settings1" Association="Self.FK_Shops_Settings1">
             <End Role="Settings" EntitySet="Settings" />
@@ -584,6 +683,7 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="KModel.FK_Products_Units" FromRole="Unit" ToRole="Product" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -648,11 +748,6 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           </AssociationSet>
           <EntitySet Name="vwExpenses" EntityType="KModel.vwExpens" />
           <EntitySet Name="Roles" EntityType="KModel.Role" />
-          <EntitySet Name="Products" EntityType="KModel.Product" />
-          <AssociationSet Name="FK_Products_Categories" Association="KModel.FK_Products_Categories">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
           <EntitySet Name="vwCompanies" EntityType="KModel.vwCompany" />
           <EntitySet Name="Settings" EntityType="KModel.Setting" />
           <EntitySet Name="vwShops" EntityType="KModel.vwShop" />
@@ -663,6 +758,28 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           </AssociationSet>
           <EntitySet Name="TaxTypes" EntityType="KModel.TaxType" />
           <EntitySet Name="vwTaxTypes" EntityType="KModel.vwTaxType" />
+          <EntitySet Name="Products" EntityType="KModel.Product" />
+          <EntitySet Name="vwProducts" EntityType="KModel.vwProduct" />
+          <AssociationSet Name="FK_Products_Categories" Association="KModel.FK_Products_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Shops" Association="KModel.FK_Products_Shops">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_TaxTypes" Association="KModel.FK_Products_TaxTypes">
+            <End Role="TaxType" EntitySet="TaxTypes" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Units" Association="KModel.FK_Products_Units">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Menus" EntityType="KModel.Menu" />
+          <EntitySet Name="vwUnits" EntityType="KModel.vwUnit" />
+          <EntitySet Name="Brands" EntityType="KModel.Brand" />
+          <EntitySet Name="vwBrands" EntityType="KModel.vwBrand" />
           </EntityContainer>
         <EntityType Name="IncomeType">
           <Key>
@@ -882,32 +999,6 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="SellingPrice" Type="Double" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="KModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
-        </EntityType>
-        <Association Name="FK_Products_Categories">
-          <End Type="KModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="KModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="vwCompany">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -966,6 +1057,7 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Setting" Relationship="KModel.FK_Shops_Settings1" FromRole="Shop" ToRole="Setting" />
+          <NavigationProperty Name="Products" Relationship="KModel.FK_Products_Shops" FromRole="Shop" ToRole="Product" />
         </EntityType>
         <Association Name="FK_Shops_Settings1">
           <End Type="KModel.Setting" Role="Setting" Multiplicity="0..1" />
@@ -988,6 +1080,7 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
           <Property Name="TaxTypeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="KModel.FK_Products_TaxTypes" FromRole="TaxType" ToRole="Product" />
         </EntityType>
         <EntityType Name="vwTaxType">
           <Key>
@@ -1002,6 +1095,145 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
           <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
           <Property Name="TaxTypeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="SellingPrice" Type="Double" Nullable="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="TaxTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="KModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Shop" Relationship="KModel.FK_Products_Shops" FromRole="Product" ToRole="Shop" />
+          <NavigationProperty Name="TaxType" Relationship="KModel.FK_Products_TaxTypes" FromRole="Product" ToRole="TaxType" />
+          <NavigationProperty Name="Unit" Relationship="KModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
+        </EntityType>
+        <EntityType Name="vwProduct">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BarCode" />
+            <PropertyRef Name="SellingPrice" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="TaxTypeName" />
+            <PropertyRef Name="TaxTypeValue" />
+            <PropertyRef Name="TaxTypeStatus" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="SubUnit" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SellingPrice" Type="Double" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="TaxTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
+          <Property Name="TaxTypeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Products_Categories">
+          <End Type="KModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="KModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Shops">
+          <End Type="KModel.Shop" Role="Shop" Multiplicity="1" />
+          <End Type="KModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_TaxTypes">
+          <End Type="KModel.TaxType" Role="TaxType" Multiplicity="1" />
+          <End Type="KModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxType">
+              <PropertyRef Name="TaxTypeId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="TaxTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Units">
+          <End Type="KModel.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="KModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Double" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwUnit">
+          <Key>
+            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="SubUnit" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandTag" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwBrand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="BrandDescription" />
+            <PropertyRef Name="BrandTag" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="BrandDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandTag" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1197,20 +1429,6 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="KModel.Product">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vwCompanies">
             <EntityTypeMapping TypeName="KModel.vwCompany">
               <MappingFragment StoreEntitySet="vwCompanies">
@@ -1284,6 +1502,82 @@ warning 6002: The table/view 'katswiri.dbo.vwTaxTypes' does not have a primary k
                 <ScalarProperty Name="TaxTypeValue" ColumnName="TaxTypeValue" />
                 <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
                 <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="KModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwProducts">
+            <EntityTypeMapping TypeName="KModel.vwProduct">
+              <MappingFragment StoreEntitySet="vwProducts">
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="SubUnit" ColumnName="SubUnit" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="TaxTypeStatus" ColumnName="TaxTypeStatus" />
+                <ScalarProperty Name="TaxTypeValue" ColumnName="TaxTypeValue" />
+                <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="KModel.Menu">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwUnits">
+            <EntityTypeMapping TypeName="KModel.vwUnit">
+              <MappingFragment StoreEntitySet="vwUnits">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="SubUnit" ColumnName="SubUnit" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="KModel.Brand">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
+                <ScalarProperty Name="BrandTag" ColumnName="BrandTag" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwBrands">
+            <EntityTypeMapping TypeName="KModel.vwBrand">
+              <MappingFragment StoreEntitySet="vwBrands">
+                <ScalarProperty Name="BrandTag" ColumnName="BrandTag" />
+                <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

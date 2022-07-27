@@ -368,5 +368,41 @@ namespace Katswiri
             taxTypes.Activate();
             taxTypes.ShowDialog();
         }
+
+        private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowBrandFom();
+        }
+
+        private void ShowBrandFom()
+        {
+            Brands brands = null;
+            if (brands == null || brands.IsDisposed)
+            {
+                brands = new Brands();
+            }
+            brands.Activate();
+            brands.ShowDialog();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowRoleFom();
+        }
+
+        private void ShowRoleFom()
+        {
+            Roles roles = null;
+            if (roles == null || roles.IsDisposed)
+            {
+                roles = new Roles();
+            }
+            roles.Activate();
+            roles.ShowDialog();
+        }
+
+      
     }
 }

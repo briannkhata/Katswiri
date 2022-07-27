@@ -17,12 +17,17 @@ namespace Katswiri.Data
         public int ProductId { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
-        public int UnitId { get; set; }
         public string BarCode { get; set; }
+        public int UnitId { get; set; }
         public int CategoryId { get; set; }
         public double SellingPrice { get; set; }
+        public int ShopId { get; set; }
         public int Deleted { get; set; }
+        public int TaxTypeId { get; set; }
     
         public virtual Category Category { get; set; }
+        public virtual Shop Shop { get; set; }
+        public virtual TaxType TaxType { get; set; }
+        public virtual Unit Unit { get; set; }
     }
 }
