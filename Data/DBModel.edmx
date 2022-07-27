@@ -118,9 +118,9 @@
         </EntityType>
         <EntityType Name="Roles">
           <Key>
-            <PropertyRef Name="Role" />
+            <PropertyRef Name="RoleName" />
           </Key>
-          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Settings">
@@ -747,7 +747,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key 
             <End Role="Expens" EntitySet="Expenses" />
           </AssociationSet>
           <EntitySet Name="vwExpenses" EntityType="KModel.vwExpens" />
-          <EntitySet Name="Roles" EntityType="KModel.Role" />
           <EntitySet Name="vwCompanies" EntityType="KModel.vwCompany" />
           <EntitySet Name="Settings" EntityType="KModel.Setting" />
           <EntitySet Name="vwShops" EntityType="KModel.vwShop" />
@@ -780,6 +779,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key 
           <EntitySet Name="vwUnits" EntityType="KModel.vwUnit" />
           <EntitySet Name="Brands" EntityType="KModel.Brand" />
           <EntitySet Name="vwBrands" EntityType="KModel.vwBrand" />
+          <EntitySet Name="Roles" EntityType="KModel.Role" />
           </EntityContainer>
         <EntityType Name="IncomeType">
           <Key>
@@ -991,13 +991,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key 
           <Property Name="ExpenseDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AddedBy" Type="Int32" Nullable="false" />
           <Property Name="ExpenseId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="Role1" />
-          </Key>
-          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="vwCompany">
           <Key>
@@ -1235,6 +1228,13 @@ warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key 
           <Property Name="BrandDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BrandTag" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleName" />
+          </Key>
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1421,14 +1421,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="KModel.Role">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Role1" ColumnName="Role" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vwCompanies">
             <EntityTypeMapping TypeName="KModel.vwCompany">
               <MappingFragment StoreEntitySet="vwCompanies">
@@ -1578,6 +1570,14 @@ warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key 
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
                 <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="KModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
