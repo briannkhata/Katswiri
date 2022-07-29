@@ -18,7 +18,7 @@ namespace Katswiri.Forms
     {
         KEntities db = new KEntities();
         Role role = new Role();
-        string Role;
+        int RoleId;
         public Roles()
         {
             InitializeComponent();
@@ -31,13 +31,14 @@ namespace Katswiri.Forms
             textEditRole.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
-            Role = "";
+            RoleId = 0;
         }
 
         private void loadRoles()
         {
-            gridControl1.DataSource = db.Roles.ToList();
+            gridControl1.DataSource = db.vwRoles.ToList();
             gridView1.Columns["Deleted"].Visible = false;
+            gridView1.Columns["RoleId"].Visible = false;
             gridView1.OptionsBehavior.Editable = false;
             gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
         }
@@ -61,18 +62,11 @@ namespace Katswiri.Forms
                 {
                     role.RoleName = textEditRole.Text;
                    
-                    if (Role !="")
+                    if (RoleId > 0)
                         db.Entry(role).State = EntityState.Modified;
                     else
                     {
-                        var exits = db.Roles.Where(x => x.RoleName == Role).Count();
-                        if (exits > 0){
-                            XtraMessageBox.Show("Role Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            db.Roles.Add(role);
-                        }
+                        db.Roles.Add(role);
                     }
                     db.SaveChanges();
                     clearFields();
@@ -97,6 +91,25 @@ namespace Katswiri.Forms
                 loadRoles ();
                 XtraMessageBox.Show("Record Deleted Successfully");
             }
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            var selectedRows = gridView1.GetSelectedRows();
+            var row = ((vwRole)gridView1.GetRow(selectedRows[0]));
+            if (row.RoleId != -1)
+            {
+                RoleId = row.RoleId;
+                role = db.Roles.Where(x => x.RoleId == RoleId).FirstOrDefault();
+                textEditRole.Text = role.RoleName;
+            }
+            btnSave.Caption = "Update";
+            btnDelete.Enabled = true;
+        }
+
+        private void Roles_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

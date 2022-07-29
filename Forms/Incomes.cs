@@ -51,8 +51,8 @@ namespace Katswiri.Forms
             gridView1.Columns["AddedBy"].Visible = false;
             gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
 
-            gridView1.Columns["Amount"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            gridView1.Columns["Amount"].DisplayFormat.FormatString = "c2";
+            //gridView1.Columns["Amount"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            //gridView1.Columns["Amount"].DisplayFormat.FormatString = "c2";
 
             //populate payment types
             PaymentTypeId.Properties.DataSource = db.vwPaymentTypes.ToList();

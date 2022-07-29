@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="KModel.PaymentType" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.ProductQuantity" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Unit" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.User" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.IncomeType" Width="1.5" PointX="9.375" PointY="9.875" />
         <EntityTypeShape EntityType="KModel.ExpenseType" Width="1.5" PointX="0.5" PointY="4" />
         <EntityTypeShape EntityType="KModel.vwIncomeType" Width="1.5" PointX="0.75" PointY="0.75" />
@@ -21,11 +20,9 @@
         <EntityTypeShape EntityType="KModel.vwIncome" Width="1.5" PointX="7.375" PointY="13.75" />
         <AssociationConnector Association="KModel.FK_Incomes_IncomeTypes" />
         <AssociationConnector Association="KModel.FK_Incomes_PaymentTypes" />
-        <AssociationConnector Association="KModel.FK_Incomes_Users" />
         <EntityTypeShape EntityType="KModel.Expens" Width="1.5" PointX="5" PointY="4.375" />
         <AssociationConnector Association="KModel.FK_Expenses_ExpenseTypes" />
         <AssociationConnector Association="KModel.FK_Expenses_PaymentTypes" />
-        <AssociationConnector Association="KModel.FK_Expenses_Users" />
         <EntityTypeShape EntityType="KModel.vwExpens" Width="1.5" PointX="11.375" PointY="11.75" />
         <EntityTypeShape EntityType="KModel.vwCompany" Width="1.5" PointX="4.75" PointY="8.75" />
         <EntityTypeShape EntityType="KModel.Setting" Width="1.5" PointX="13.375" PointY="9" />
@@ -34,7 +31,7 @@
         <AssociationConnector Association="KModel.FK_Shops_Settings1" />
         <EntityTypeShape EntityType="KModel.TaxType" Width="1.5" PointX="14.375" PointY="3.75" />
         <EntityTypeShape EntityType="KModel.vwTaxType" Width="1.5" PointX="15.375" PointY="0.75" />
-        <EntityTypeShape EntityType="KModel.Product" Width="1.5" PointX="17.875" PointY="7.625" />
+        <EntityTypeShape EntityType="KModel.Product" Width="1.5" PointX="21.75" PointY="7.25" />
         <EntityTypeShape EntityType="KModel.vwProduct" Width="1.5" PointX="13.375" PointY="12.75" />
         <AssociationConnector Association="KModel.FK_Products_Categories" />
         <AssociationConnector Association="KModel.FK_Products_Shops" />
@@ -44,7 +41,13 @@
         <EntityTypeShape EntityType="KModel.vwUnit" Width="1.5" PointX="15.375" PointY="12.75" />
         <EntityTypeShape EntityType="KModel.Brand" Width="1.5" PointX="15.75" PointY="15.75" />
         <EntityTypeShape EntityType="KModel.vwBrand" Width="1.5" PointX="0.75" PointY="16.75" />
-        <EntityTypeShape EntityType="KModel.Role" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="KModel.vwRole" Width="1.5" PointX="16.375" PointY="3.75" />
+        <EntityTypeShape EntityType="KModel.Role" Width="1.5" PointX="7.5" PointY="7.125" />
+        <EntityTypeShape EntityType="KModel.User" Width="1.5" PointX="9.75" PointY="18.875" />
+        <AssociationConnector Association="KModel.FK_Expenses_Users" />
+        <AssociationConnector Association="KModel.FK_Incomes_Users" />
+        <AssociationConnector Association="KModel.FK_Users_Roles" />
+        <EntityTypeShape EntityType="KModel.vwUser" Width="1.5" PointX="12.375" PointY="17.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -403,6 +403,21 @@ namespace Katswiri
             roles.ShowDialog();
         }
 
-      
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowUserFom();
+        }
+
+        private void ShowUserFom()
+        {
+            Users users = null;
+            if (users == null || users.IsDisposed)
+            {
+                users = new Users();
+            }
+            users.Activate();
+            users.ShowDialog();
+        }
     }
 }

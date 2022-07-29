@@ -12,19 +12,20 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class vwUser
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
-        public int RoleId { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string AltEmail { get; set; }
+        public string Phone { get; set; }
+        public string AltPhone { get; set; }
+        public string PhysicalAddress { get; set; }
+        public string ContactAddress { get; set; }
         public string RoleName { get; set; }
+        public string ShopName { get; set; }
         public int Deleted { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace Katswiri.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Incomes = new HashSet<Income>();
             this.Expenses = new HashSet<Expens>();
+            this.Incomes = new HashSet<Income>();
         }
     
         public int UserId { get; set; }
@@ -31,14 +31,15 @@ namespace Katswiri.Data
         public string AltEmail { get; set; }
         public string Phone { get; set; }
         public string AltPhone { get; set; }
-        public string Role { get; set; }
         public string PhysicalAddress { get; set; }
         public string ContactAddress { get; set; }
         public int Deleted { get; set; }
+        public Nullable<int> RoleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Income> Incomes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expens> Expenses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Income> Incomes { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

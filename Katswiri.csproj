@@ -187,6 +187,9 @@
     <Compile Include="Data\vwProduct.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwRole.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwShop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -196,7 +199,11 @@
     <Compile Include="Data\vwUnit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwUser.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\FormMode.cs" />
+    <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\ViewingMode.cs" />
     <Compile Include="Forms\Banks.cs">
       <SubType>Form</SubType>
@@ -288,6 +295,12 @@
     <Compile Include="Forms\Units.Designer.cs">
       <DependentUpon>Units.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +351,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="usersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>usersDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Banks.resx">
       <DependentUpon>Banks.cs</DependentUpon>
     </EmbeddedResource>
@@ -382,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Units.resx">
       <DependentUpon>Units.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -506,6 +527,17 @@
     </None>
     <None Include="taxTypesDataSet.xss">
       <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="usersDataSet.xsc">
+      <DependentUpon>usersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="usersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>usersDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="usersDataSet.xss">
+      <DependentUpon>usersDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
