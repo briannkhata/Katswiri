@@ -28,7 +28,6 @@ namespace Katswiri.Data
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
         public virtual DbSet<ProductQuantity> ProductQuantities { get; set; }
-        public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<IncomeType> IncomeTypes { get; set; }
         public virtual DbSet<ExpenseType> ExpenseTypes { get; set; }
         public virtual DbSet<vwIncomeType> vwIncomeTypes { get; set; }
@@ -49,12 +48,18 @@ namespace Katswiri.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<vwProduct> vwProducts { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
-        public virtual DbSet<vwUnit> vwUnits { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<vwBrand> vwBrands { get; set; }
         public virtual DbSet<vwRole> vwRoles { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vwUser> vwUsers { get; set; }
+        public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<SaleType> SaleTypes { get; set; }
+        public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<SaleDetail> SaleDetails { get; set; }
+        public virtual DbSet<vwUnit> vwUnits { get; set; }
+        public virtual DbSet<TempSale> TempSales { get; set; }
+        public virtual DbSet<vwTempSale> vwTempSales { get; set; }
     }
 }

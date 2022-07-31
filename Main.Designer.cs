@@ -233,7 +233,7 @@ namespace Katswiri
             // 
             // barButtonItem14
             // 
-            this.barButtonItem14.Caption = "Sale Products";
+            this.barButtonItem14.Caption = "Point Of Sale UI";
             this.barButtonItem14.Id = 20;
             this.barButtonItem14.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem14.ImageOptions.SvgImage")));
             this.barButtonItem14.Name = "barButtonItem14";

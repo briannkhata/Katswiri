@@ -44,6 +44,7 @@ namespace Katswiri.Forms
             gridView1.Columns["TaxTypeName"].Visible = false;
             gridView1.OptionsBehavior.Editable = false;
             gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
+            gridView1.OptionsView.ShowIndicator = false;
 
             CategoryIdLookUpEdit.Properties.DataSource = db.vwCategories.ToList();
             CategoryIdLookUpEdit.Properties.ValueMember = "CategoryId";

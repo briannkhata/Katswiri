@@ -32,8 +32,8 @@ namespace Katswiri.Forms
         private void clearFields()
         {
             AmountTextEdit.Text = IncomeDateEdit.Text = PaymentTypeId.Text = IncomeTypeId.Text = string.Empty;
-            PaymentTypeId.EditValue = IncomeTypeId.EditValue  = null;
-            PaymentTypeId.EditValue = IncomeTypeId.EditValue = "nulltext";
+            PaymentTypeId.EditValue = IncomeTypeId.EditValue = null;
+            PaymentTypeId.EditValue = IncomeTypeId.EditValue = null;
             PaymentTypeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             PaymentTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
             IncomeTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
@@ -49,22 +49,25 @@ namespace Katswiri.Forms
             gridView1.Columns["UserId"].Visible = false;
             gridView1.Columns["IncomeId"].Visible = false;
             gridView1.Columns["AddedBy"].Visible = false;
+            gridView1.OptionsView.ShowIndicator = false;
             gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
 
-            //gridView1.Columns["Amount"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            //gridView1.Columns["Amount"].DisplayFormat.FormatString = "c2";
+            PaymentType();
+            incomeType();
 
-            //populate payment types
+        }
+
+        public void PaymentType(){
             PaymentTypeId.Properties.DataSource = db.vwPaymentTypes.ToList();
             PaymentTypeId.Properties.ValueMember = "PaymentTypeId";
             PaymentTypeId.Properties.DisplayMember = "PaymentTypeName";
+        }
 
-            //populate income typs
-            IncomeTypeId.Properties.DataSource = db.vwIncomeTypes.ToList();
+        public void incomeType()
+        {
+            PaymentTypeId.Properties.DataSource = db.vwIncomeTypes.ToList();
             IncomeTypeId.Properties.ValueMember = "IncomeTypeId";
-            IncomeTypeId.Properties.DisplayMember = "IncomeTypeName";
-
-
+            IncomeTypeId.Properties.DisplayMember = "IncomeType";
         }
 
         private bool formValid()

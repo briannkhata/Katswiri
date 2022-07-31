@@ -14,6 +14,13 @@ namespace Katswiri.Data
     
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product()
+        {
+            this.TempSales = new HashSet<TempSale>();
+            this.ProductQuantities = new HashSet<ProductQuantity>();
+        }
+    
         public int ProductId { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
@@ -24,10 +31,14 @@ namespace Katswiri.Data
         public int ShopId { get; set; }
         public int Deleted { get; set; }
         public int TaxTypeId { get; set; }
+        public Nullable<int> BrandId { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Shop Shop { get; set; }
         public virtual TaxType TaxType { get; set; }
-        public virtual Unit Unit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TempSale> TempSales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductQuantity> ProductQuantities { get; set; }
     }
 }

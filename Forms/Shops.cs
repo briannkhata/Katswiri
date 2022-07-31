@@ -38,6 +38,7 @@ namespace Katswiri.Forms
             gridView1.OptionsBehavior.Editable = false;
             gridView1.Columns["Deleted"].Visible = false;
             gridView1.Columns["ShopId"].Visible = false;
+            gridView1.OptionsView.ShowIndicator = false;
             gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
         }
 

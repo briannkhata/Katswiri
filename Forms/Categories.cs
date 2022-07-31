@@ -33,6 +33,7 @@ namespace Katswiri.Forms
             gridView2.Columns["Deleted"].Visible = false;
             gridView2.Columns["CategoryId"].Visible = false;
             gridView2.OptionsBehavior.Editable = false;
+            gridView1.OptionsView.ShowIndicator = false;
             gridControlCategories.EmbeddedNavigator.Buttons.Append.Visible = false;
         }
         public void clearFields()

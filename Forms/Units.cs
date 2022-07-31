@@ -28,16 +28,17 @@ namespace Katswiri.Forms
 
         private void loadUnits()
         {
-            gridControlUnits.DataSource = db.Units.Where(x => x.Deleted == 0).ToList();
+            gridControlUnits.DataSource = db.vwUnits.Where(x => x.Deleted == 0).ToList();
             gridView1.Columns["Deleted"].Visible = false;
             gridView1.Columns["UnitId"].Visible = false;
             gridView1.OptionsBehavior.Editable = false;
+            gridView1.OptionsView.ShowIndicator = false;
             gridControlUnits.EmbeddedNavigator.Buttons.Append.Visible = false;
         }
 
         public void clearFields()
         {
-            textEditUnit.Text = textEditSubUnit.Text = string.Empty;
+            textEditUnit.Text = textEditSubUnit.Text = textEditSubUnitNameValue.Text = textEditUnitNameValue.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             UnitId = 0;
@@ -51,6 +52,8 @@ namespace Katswiri.Forms
                 {
                     unit.UnitName = textEditUnit.Text;
                     unit.SubUnit = textEditSubUnit.Text;
+                    unit.SubUnitValue = Convert.ToDouble(textEditSubUnitNameValue.Text);
+                    unit.UnitValue = Convert.ToDouble(textEditUnitNameValue.Text);
                     if (UnitId > 0)
                         db.Entry(unit).State = EntityState.Modified;
                     else
@@ -90,13 +93,15 @@ namespace Katswiri.Forms
         private void gridControlUnits_DoubleClick(object sender, EventArgs e)
         {
             var selectedRows = gridView1.GetSelectedRows();
-            var row = ((Unit)gridView1.GetRow(selectedRows[0]));
+            var row = ((vwUnit)gridView1.GetRow(selectedRows[0]));
             if (row.UnitId !=-1)
             {
                 UnitId = row.UnitId;
                 unit = db.Units.Where(x => x.UnitId == UnitId).FirstOrDefault();
                 textEditUnit.Text = unit.UnitName;
                 textEditSubUnit.Text = unit.SubUnit;
+                textEditSubUnitNameValue.Text = unit.SubUnitValue.ToString();
+                textEditUnitNameValue.Text = unit.UnitValue.ToString();
             }
             btnSave.Caption = "Update";
             btnDelete.Enabled = true;

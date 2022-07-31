@@ -12,16 +12,21 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductQuantity
+    public partial class TempSale
     {
+        public int TempId { get; set; }
         public int ProductId { get; set; }
+        public int UserId { get; set; }
         public int ShopId { get; set; }
-        public double ShopQty { get; set; }
-        public double StoresQty { get; set; }
-        public double KitchenQty { get; set; }
-        public int Id { get; set; }
+        public Nullable<double> DiscountPercent { get; set; }
+        public Nullable<double> DiscountAmount { get; set; }
+        public double SellingPrice { get; set; }
+        public double Price { get; set; }
+        public double Qty { get; set; }
+        public double TotalPrice { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Shop Shop { get; set; }
+        public virtual User User { get; set; }
     }
 }

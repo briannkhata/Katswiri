@@ -18,5 +18,7 @@ namespace Katswiri.Data
         public string UnitName { get; set; }
         public string SubUnit { get; set; }
         public int Deleted { get; set; }
+        public double UnitValue { get; set; }
+        public double SubUnitValue { get; set; }
     }
 }

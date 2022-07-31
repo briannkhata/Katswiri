@@ -33,7 +33,7 @@ namespace Katswiri.Forms
             AmountTextEdit.Text = ExpenseDateEdit.Text  = string.Empty;
             PaymentTypeId.EditValue = ExpenseTypeId.EditValue = null;
             PaymentTypeId.EditValue = ExpenseTypeId.EditValue = "nulltext";
-
+            gridView1.OptionsView.ShowIndicator = false;
             PaymentTypeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             PaymentTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
             ExpenseTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
