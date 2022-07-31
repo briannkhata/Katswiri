@@ -45,16 +45,35 @@ namespace Katswiri.Forms
             gridView1.OptionsBehavior.Editable = false;
             gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
             gridView1.OptionsView.ShowIndicator = false;
+            loadTaxTypes();
+            loadCategories();
+            loadUnits();
+            loadBrands();
+        }
 
-            CategoryIdLookUpEdit.Properties.DataSource = db.vwCategories.ToList();
-            CategoryIdLookUpEdit.Properties.ValueMember = "CategoryId";
-            CategoryIdLookUpEdit.Properties.DisplayMember = "CategoryName";
-
+        private void loadTaxTypes()
+        {
             TaxTypeIdLookUpEdit.Properties.DataSource = db.vwTaxTypes.ToList();
             TaxTypeIdLookUpEdit.Properties.ValueMember = "TaxTypeId";
             TaxTypeIdLookUpEdit.Properties.DisplayMember = "TaxTypeName";
+        }
 
+        private void loadCategories()
+        {
+            CategoryIdLookUpEdit.Properties.DataSource = db.vwCategories.ToList();
+            CategoryIdLookUpEdit.Properties.ValueMember = "CategoryId";
+            CategoryIdLookUpEdit.Properties.DisplayMember = "CategoryName";
+        }
 
+        private void loadBrands()
+        {
+            BrandLookUpEdit.Properties.DataSource = db.vwBrands.ToList();
+            BrandLookUpEdit.Properties.ValueMember = "BrandId";
+            BrandLookUpEdit.Properties.DisplayMember = "BrandName";
+        }
+
+        private void loadUnits()
+        {
             UnitIdLookUpEdit.Properties.DataSource = db.vwUnits.ToList();
             UnitIdLookUpEdit.Properties.ValueMember = "UnitId";
             UnitIdLookUpEdit.Properties.DisplayMember = "UnitName";
@@ -98,6 +117,12 @@ namespace Katswiri.Forms
                 result = false;
                 SellingPriceTextEdit.ErrorText = "Required";
             }
+
+            if (String.IsNullOrEmpty(BrandLookUpEdit.Text))
+            {
+                result = false;
+                BrandLookUpEdit.ErrorText = "Required";
+            }
             return result;
         }
 
@@ -111,6 +136,7 @@ namespace Katswiri.Forms
                     product.UnitId = Convert.ToInt32(UnitIdLookUpEdit.EditValue);
                     product.CategoryId = Convert.ToInt32(CategoryIdLookUpEdit.EditValue);
                     product.TaxTypeId = Convert.ToInt32(TaxTypeIdLookUpEdit.EditValue);
+                    product.BrandId = Convert.ToInt32(BrandLookUpEdit.EditValue);
                     product.BarCode = BarCodeTextEdit.Text;
                     product.ProductCode = ProductCodeTextEdit.Text;
                     product.SellingPrice = Convert.ToDouble(SellingPriceTextEdit.Text);
@@ -161,6 +187,7 @@ namespace Katswiri.Forms
                 UnitIdLookUpEdit.EditValue = product.UnitId;
                 CategoryIdLookUpEdit.EditValue = product.CategoryId;
                 TaxTypeIdLookUpEdit.EditValue = product.TaxTypeId;
+                BrandLookUpEdit.EditValue = product.BrandId;
                 SellingPriceTextEdit.Text = product.SellingPrice.ToString();
             }
             btnSave.Caption = "Update";

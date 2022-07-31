@@ -46,7 +46,6 @@ namespace Katswiri.Data
         public virtual DbSet<TaxType> TaxTypes { get; set; }
         public virtual DbSet<vwTaxType> vwTaxTypes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<vwProduct> vwProducts { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<vwBrand> vwBrands { get; set; }
@@ -59,7 +58,8 @@ namespace Katswiri.Data
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
         public virtual DbSet<vwUnit> vwUnits { get; set; }
-        public virtual DbSet<TempSale> TempSales { get; set; }
         public virtual DbSet<vwTempSale> vwTempSales { get; set; }
+        public virtual DbSet<TempSale> TempSales { get; set; }
+        public virtual DbSet<vwProduct> vwProducts { get; set; }
     }
 }

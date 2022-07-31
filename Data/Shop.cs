@@ -18,8 +18,8 @@ namespace Katswiri.Data
         public Shop()
         {
             this.Products = new HashSet<Product>();
-            this.TempSales = new HashSet<TempSale>();
             this.ProductQuantities = new HashSet<ProductQuantity>();
+            this.TempSales = new HashSet<TempSale>();
         }
     
         public int ShopId { get; set; }
@@ -35,8 +35,8 @@ namespace Katswiri.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TempSale> TempSales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductQuantity> ProductQuantities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TempSale> TempSales { get; set; }
     }
 }

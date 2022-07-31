@@ -22,5 +22,6 @@ namespace Katswiri.Data
         public int ShopId { get; set; }
         public int UserId { get; set; }
         public double TotalPrice { get; set; }
+        public int ProductId { get; set; }
     }
 }
