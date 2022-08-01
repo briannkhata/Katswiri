@@ -222,9 +222,10 @@ warning 6002: The table/view 'katswiri.dbo.SaleDetails' does not have a primary 
           <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="DiscountPercent" Type="float" />
           <Property Name="DiscountAmount" Type="float" />
-          <Property Name="SellingPrice" Type="float" Nullable="false" />
-          <Property Name="TotalPrice" Type="float" Nullable="false" />
+          <Property Name="SellingPrice" Type="float" />
+          <Property Name="TotalPrice" Type="float" />
           <Property Name="Qty" Type="float" Nullable="false" />
+          <Property Name="TaxValue" Type="float" />
         </EntityType>
         <EntityType Name="Units">
           <Key>
@@ -466,22 +467,23 @@ warning 6002: The table/view 'katswiri.dbo.vwTempSales' does not have a primary 
         <EntityType Name="vwTempSales">
           <Key>
             <PropertyRef Name="ProductName" />
-            <PropertyRef Name="SellingPrice" />
+            <PropertyRef Name="ProductId" />
             <PropertyRef Name="Qty" />
             <PropertyRef Name="ShopId" />
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="TotalPrice" />
-            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="TempId" />
           </Key>
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SellingPrice" Type="float" Nullable="false" />
-          <Property Name="Qty" Type="float" Nullable="false" />
-          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="SellingPrice" Type="float" />
           <Property Name="DiscountAmount" Type="float" />
+          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="Qty" Type="float" Nullable="false" />
+          <Property Name="TaxValue" Type="float" />
+          <Property Name="TotalPrice" Type="float" />
           <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="TotalPrice" Type="float" Nullable="false" />
-          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="TempId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'katswiri.dbo.vwUnits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -840,14 +842,16 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <EntitySet Name="vwTempSales" EntityType="Self.vwTempSales" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwTempSales].[ProductName] AS [ProductName], 
+    [vwTempSales].[ProductId] AS [ProductId], 
     [vwTempSales].[SellingPrice] AS [SellingPrice], 
-    [vwTempSales].[Qty] AS [Qty], 
-    [vwTempSales].[DiscountPercent] AS [DiscountPercent], 
     [vwTempSales].[DiscountAmount] AS [DiscountAmount], 
+    [vwTempSales].[DiscountPercent] AS [DiscountPercent], 
+    [vwTempSales].[Qty] AS [Qty], 
+    [vwTempSales].[TaxValue] AS [TaxValue], 
+    [vwTempSales].[TotalPrice] AS [TotalPrice], 
     [vwTempSales].[ShopId] AS [ShopId], 
     [vwTempSales].[UserId] AS [UserId], 
-    [vwTempSales].[TotalPrice] AS [TotalPrice], 
-    [vwTempSales].[ProductId] AS [ProductId]
+    [vwTempSales].[TempId] AS [TempId]
     FROM [dbo].[vwTempSales] AS [vwTempSales]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwUnits" EntityType="Self.vwUnits" store:Type="Views" store:Schema="dbo">
@@ -1053,7 +1057,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <End Role="Shop" EntitySet="Shops" />
             <End Role="ProductQuantity" EntitySet="ProductQuantities" />
           </AssociationSet>
-          <EntitySet Name="vwTempSales" EntityType="KModel.vwTempSale" />
+          <EntitySet Name="vwProducts" EntityType="KModel.vwProduct" />
           <EntitySet Name="TempSales" EntityType="KModel.TempSale" />
           <AssociationSet Name="FK_TempSales_Products" Association="KModel.FK_TempSales_Products">
             <End Role="Product" EntitySet="Products" />
@@ -1067,7 +1071,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <End Role="User" EntitySet="Users" />
             <End Role="TempSale" EntitySet="TempSales" />
           </AssociationSet>
-          <EntitySet Name="vwProducts" EntityType="KModel.vwProduct" />
+          <EntitySet Name="vwTempSales" EntityType="KModel.vwTempSale" />
           </EntityContainer>
         <EntityType Name="IncomeType">
           <Key>
@@ -1650,25 +1654,34 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="vwTempSale">
+        <EntityType Name="vwProduct">
           <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="SellingPrice" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="ShopId" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="TotalPrice" />
             <PropertyRef Name="ProductId" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BarCode" />
+            <PropertyRef Name="SellingPrice" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="TaxTypeName" />
+            <PropertyRef Name="TaxTypeValue" />
+            <PropertyRef Name="TaxTypeStatus" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="SubUnit" />
+            <PropertyRef Name="BrandName" />
           </Key>
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SellingPrice" Type="Double" Nullable="false" />
-          <Property Name="Qty" Type="Double" Nullable="false" />
-          <Property Name="DiscountPercent" Type="Double" />
-          <Property Name="DiscountAmount" Type="Double" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="TotalPrice" Type="Double" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SellingPrice" Type="Double" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="TaxTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
+          <Property Name="TaxTypeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TempSale">
           <Key>
@@ -1680,9 +1693,10 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <Property Name="ShopId" Type="Int32" Nullable="false" />
           <Property Name="DiscountPercent" Type="Double" />
           <Property Name="DiscountAmount" Type="Double" />
-          <Property Name="SellingPrice" Type="Double" Nullable="false" />
-          <Property Name="TotalPrice" Type="Double" Nullable="false" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
           <Property Name="Qty" Type="Double" Nullable="false" />
+          <Property Name="TaxValue" Type="Double" />
           <NavigationProperty Name="Product" Relationship="KModel.FK_TempSales_Products" FromRole="TempSale" ToRole="Product" />
           <NavigationProperty Name="Shop" Relationship="KModel.FK_TempSales_Shops" FromRole="TempSale" ToRole="Shop" />
           <NavigationProperty Name="User" Relationship="KModel.FK_TempSales_Users" FromRole="TempSale" ToRole="User" />
@@ -1723,34 +1737,26 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="vwProduct">
+        <EntityType Name="vwTempSale">
           <Key>
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="ProductCode" />
             <PropertyRef Name="ProductName" />
-            <PropertyRef Name="BarCode" />
-            <PropertyRef Name="SellingPrice" />
-            <PropertyRef Name="Deleted" />
-            <PropertyRef Name="TaxTypeName" />
-            <PropertyRef Name="TaxTypeValue" />
-            <PropertyRef Name="TaxTypeStatus" />
-            <PropertyRef Name="UnitName" />
-            <PropertyRef Name="SubUnit" />
-            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="ShopId" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="TempId" />
           </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SellingPrice" Type="Double" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <Property Name="TaxTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
-          <Property Name="TaxTypeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="DiscountPercent" Type="Double" />
+          <Property Name="Qty" Type="Double" Nullable="false" />
+          <Property Name="TaxValue" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TempId" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2158,36 +2164,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwTempSales">
-            <EntityTypeMapping TypeName="KModel.vwTempSale">
-              <MappingFragment StoreEntitySet="vwTempSales">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
-                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TempSales">
-            <EntityTypeMapping TypeName="KModel.TempSale">
-              <MappingFragment StoreEntitySet="TempSales">
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
-                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="TempId" ColumnName="TempId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vwProducts">
             <EntityTypeMapping TypeName="KModel.vwProduct">
               <MappingFragment StoreEntitySet="vwProducts">
@@ -2204,6 +2180,39 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempSales">
+            <EntityTypeMapping TypeName="KModel.TempSale">
+              <MappingFragment StoreEntitySet="TempSales">
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TempId" ColumnName="TempId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwTempSales">
+            <EntityTypeMapping TypeName="KModel.vwTempSale">
+              <MappingFragment StoreEntitySet="vwTempSales">
+                <ScalarProperty Name="TempId" ColumnName="TempId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

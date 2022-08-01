@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
 using Katswiri.Forms;
@@ -418,6 +419,14 @@ namespace Katswiri
             }
             users.Activate();
             users.ShowDialog();
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (XtraMessageBox.Show("Are you sure you would like to exit Katswiri?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

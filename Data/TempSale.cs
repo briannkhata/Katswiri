@@ -20,9 +20,10 @@ namespace Katswiri.Data
         public int ShopId { get; set; }
         public Nullable<double> DiscountPercent { get; set; }
         public Nullable<double> DiscountAmount { get; set; }
-        public double SellingPrice { get; set; }
-        public double TotalPrice { get; set; }
+        public Nullable<double> SellingPrice { get; set; }
+        public Nullable<double> TotalPrice { get; set; }
         public double Qty { get; set; }
+        public Nullable<double> TaxValue { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Shop Shop { get; set; }

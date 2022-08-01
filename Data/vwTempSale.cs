@@ -15,13 +15,15 @@ namespace Katswiri.Data
     public partial class vwTempSale
     {
         public string ProductName { get; set; }
-        public double SellingPrice { get; set; }
-        public double Qty { get; set; }
-        public Nullable<double> DiscountPercent { get; set; }
+        public int ProductId { get; set; }
+        public Nullable<double> SellingPrice { get; set; }
         public Nullable<double> DiscountAmount { get; set; }
+        public Nullable<double> DiscountPercent { get; set; }
+        public double Qty { get; set; }
+        public Nullable<double> TaxValue { get; set; }
+        public Nullable<double> TotalPrice { get; set; }
         public int ShopId { get; set; }
         public int UserId { get; set; }
-        public double TotalPrice { get; set; }
-        public int ProductId { get; set; }
+        public int TempId { get; set; }
     }
 }
