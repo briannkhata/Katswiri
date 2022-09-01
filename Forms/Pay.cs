@@ -21,37 +21,30 @@ namespace Katswiri.Forms
         public Pay()
         {
             InitializeComponent();
+            loadPaymentModes();
         }
 
         private void btnFinishSale_Click(object sender, EventArgs e)
         {
             using (db = new KEntities())
             {
-                cart = db.Carts.Where(p => p.UserId == 1).FirstOrDefault();
-                sale.ShopId = cart.ShopId;
-                sale.DateSold = DateTime.Now;
-                sale.DiscountAmount = cart.DiscountAmount;
-                sale.DiscountPercent = cart.DiscountPercent;
-                sale.SaleTypeId = s;
-                sale.SoldBy = cart.ShopId;
-                sale.SoldTo = cart.ShopId;
-                sale.TotalBill = cart.ShopId;
-                sale.TotalChange = cart.ShopId;
-                sale.TotalTendered = cart.ShopId;
-                sale.TaxAmount = cart.ShopId;
             }
 
+        }
 
-            Application.Exit();
+        private void loadPaymentModes()
+        {
+            using (db = new KEntities())
+            {
+                lookUpEditPayMode.Properties.DataSource = db.vwPaymentTypes.ToList();
+                lookUpEditPayMode.Properties.ValueMember = "PaymentTypeId";
+                lookUpEditPayMode.Properties.DisplayMember = "PaymentTypeName";
+            }
         }
 
         private void Pay_Load(object sender, EventArgs e)
         {
-            using (db = new KEntities())
-            { 
-                var total = db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice);
-                textBoxTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total.ToString(), 2);
-            }
+
         }
     }
 }
