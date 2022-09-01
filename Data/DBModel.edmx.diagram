@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c876713afebe46b8ad6130457697daf3" Name="Diagram1">
+      <Diagram DiagramId="ee9b69ee02684b55958ff62da58a00c6" Name="Diagram1">
         <EntityTypeShape EntityType="KModel.Bank" Width="1.5" PointX="10.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Brand" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Cart" Width="1.5" PointX="2.75" PointY="12.375" IsExpanded="true" />
@@ -18,30 +18,30 @@
         <EntityTypeShape EntityType="KModel.ProductQuantity" Width="1.5" PointX="10.25" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Product" Width="1.5" PointX="8" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Role" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.Sale" Width="1.5" PointX="10.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.SaleType" Width="1.5" PointX="12.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.SaleDetail" Width="1.5" PointX="10.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.Sale" Width="1.5" PointX="12.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.SaleType" Width="1.5" PointX="12.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Setting" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Shop" Width="1.5" PointX="8" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.sysdiagram" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.TaxType" Width="1.5" PointX="12.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.Unit" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.sysdiagram" Width="1.5" PointX="12.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.TaxType" Width="1.5" PointX="12.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.Unit" Width="1.5" PointX="4.75" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.User" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.SaleDetail" Width="1.5" PointX="12.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwBrand" Width="1.5" PointX="4.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwCart" Width="1.5" PointX="14.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwCategory" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwCompany" Width="1.5" PointX="14.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwExpens" Width="1.5" PointX="14.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwExpenseType" Width="1.5" PointX="14.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwIncome" Width="1.5" PointX="6.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwIncomeType" Width="1.5" PointX="8.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwPaymentType" Width="1.5" PointX="14.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwBrand" Width="1.5" PointX="14.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwCart" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwCategory" Width="1.5" PointX="14.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwCompany" Width="1.5" PointX="14.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwExpens" Width="1.5" PointX="14.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwExpenseType" Width="1.5" PointX="12.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwIncome" Width="1.5" PointX="14.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwIncomeType" Width="1.5" PointX="6.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwPaymentType" Width="1.5" PointX="8.75" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.vwProduct" Width="1.5" PointX="16.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.vwRole" Width="1.5" PointX="2.75" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.vwShop" Width="1.5" PointX="16.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.vwTaxType" Width="1.5" PointX="16.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwUnit" Width="1.5" PointX="10.75" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.vwUser" Width="1.5" PointX="16.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwUnit" Width="1.5" PointX="16.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KModel.vwUser" Width="1.5" PointX="16.75" PointY="16.375" IsExpanded="true" />
         <AssociationConnector Association="KModel.FK_Expenses_ExpenseTypes" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Expenses_PaymentTypes" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Expenses_Users" ManuallyRouted="false" />

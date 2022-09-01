@@ -23,5 +23,8 @@ namespace Katswiri.Data
         public double SoldPrice { get; set; }
         public int ShopId { get; set; }
         public double Qty { get; set; }
+        public double TaxValue { get; set; }
+        public int UserId { get; set; }
+        public System.DateTime DateSold { get; set; }
     }
 }
