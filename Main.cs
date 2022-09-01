@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +27,8 @@ namespace Katswiri
         Products productsForm = null;
         Login formLogin = null;
 
+        User users = new User();
+
         Categories categoriesForm = null;
         Units unitsForm = null;
 
@@ -33,7 +36,9 @@ namespace Katswiri
         {
             InitializeComponent();
            this.IsMdiContainer = true;
-            //versionHi.Caption = $"<b>Version : </b>{Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
+           versionHi.Caption = $"Version : {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
+            logout.Caption = "Logout";
+
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -53,9 +58,22 @@ namespace Katswiri
                 try
                 {
                     InitMainView();
-                    ribbon.Enabled = true;
-                    ShowHome();
-                    logger.Info($" User logged into the system");
+                    var role = users.RoleId;
+                    //switch (role)
+                    //{
+                    //    case 1:
+                            ribbon.Enabled = true;
+                            ShowHome();
+                            //break;
+                    //    case 2:
+                    //        ShowPosFom();
+                    //        break;
+                    //    default:
+                    //        // code block
+                    //        break;
+                    //}
+                   
+                    logger.Info($"User logged into the system");
                 }
                 catch (Exception ex)
                 {
@@ -407,11 +425,7 @@ namespace Katswiri
             roles.ShowDialog();
         }
 
-        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowUserFom();
-        }
+     
 
         private void ShowUserFom()
         {
@@ -435,6 +449,12 @@ namespace Katswiri
         private void Main_Shown(object sender, EventArgs e)
         {
             showLogin();
+        }
+
+        private void barButtonItem21_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowUserFom();
         }
     }
 }

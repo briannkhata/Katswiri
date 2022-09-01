@@ -151,26 +151,14 @@
     <Compile Include="Data\Bank.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\BankDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Brand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\BrandDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Cart.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\CartDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Category.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\CategoryDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -187,64 +175,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\DBModelDTO.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Expens.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ExpensDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ExpenseType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ExpenseTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Income.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\IncomeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\IncomeType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\IncomeTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Menu.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\MenuDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\PaymentType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\PaymentTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Product.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ProductDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ProductQuantity.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ProductQuantityDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Role.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\RoleDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Sale.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -252,143 +208,71 @@
     <Compile Include="Data\SaleDetail.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\SaleDetailDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SaleDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\SaleType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SaleTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Setting.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\SettingDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Shop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ShopDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sysdiagram.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\sysdiagramDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\TaxType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TaxTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Unit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\UnitDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\User.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\UserDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwBrand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwBrandDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwCart.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwCartDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwCategory.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwCategoryDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwCompany.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwCompanyDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwExpens.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwExpensDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwExpenseType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwExpenseTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwIncome.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwIncomeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwIncomeType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwIncomeTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwPaymentType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwPaymentTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwProduct.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwProductDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwRole.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwRoleDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwShop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwShopDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwTaxType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwTaxTypeDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwUnit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwUnitDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\vwUser.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\vwUserDto.cs">
-      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Enums\FormMode.cs" />
     <Compile Include="Enums\Gender.cs" />
@@ -742,6 +626,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Data\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
@@ -752,13 +639,6 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Data\DBModelDTO.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBModelDTO.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
