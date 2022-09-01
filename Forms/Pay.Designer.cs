@@ -41,7 +41,7 @@ namespace Katswiri.Forms
             this.textBoxTendered.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTendered.Location = new System.Drawing.Point(11, 133);
             this.textBoxTendered.Name = "textBoxTendered";
-            this.textBoxTendered.Size = new System.Drawing.Size(425, 53);
+            this.textBoxTendered.Size = new System.Drawing.Size(494, 53);
             this.textBoxTendered.TabIndex = 0;
             // 
             // btnFinishSale
@@ -49,7 +49,7 @@ namespace Katswiri.Forms
             this.btnFinishSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinishSale.Location = new System.Drawing.Point(12, 322);
             this.btnFinishSale.Name = "btnFinishSale";
-            this.btnFinishSale.Size = new System.Drawing.Size(425, 73);
+            this.btnFinishSale.Size = new System.Drawing.Size(494, 73);
             this.btnFinishSale.TabIndex = 3;
             this.btnFinishSale.Text = "FINISH SALE";
             this.btnFinishSale.UseVisualStyleBackColor = true;
@@ -60,7 +60,7 @@ namespace Katswiri.Forms
             this.textBoxPayReference.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPayReference.Location = new System.Drawing.Point(12, 231);
             this.textBoxPayReference.Name = "textBoxPayReference";
-            this.textBoxPayReference.Size = new System.Drawing.Size(425, 53);
+            this.textBoxPayReference.Size = new System.Drawing.Size(494, 53);
             this.textBoxPayReference.TabIndex = 4;
             // 
             // lookUpEditPayMode
@@ -72,7 +72,7 @@ namespace Katswiri.Forms
             this.lookUpEditPayMode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditPayMode.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookUpEditPayMode.Size = new System.Drawing.Size(423, 48);
+            this.lookUpEditPayMode.Size = new System.Drawing.Size(492, 48);
             this.lookUpEditPayMode.TabIndex = 9;
             // 
             // Pay
@@ -80,7 +80,9 @@ namespace Katswiri.Forms
             this.AcceptButton = this.btnFinishSale;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 433);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(518, 433);
             this.Controls.Add(this.lookUpEditPayMode);
             this.Controls.Add(this.textBoxPayReference);
             this.Controls.Add(this.btnFinishSale);
@@ -91,6 +93,7 @@ namespace Katswiri.Forms
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pay_FormClosing);
             this.Load += new System.EventHandler(this.Pay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPayMode.Properties)).EndInit();
             this.ResumeLayout(false);

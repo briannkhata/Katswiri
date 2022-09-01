@@ -63,7 +63,7 @@ namespace Katswiri
                     //{
                     //    case 1:
                             ribbon.Enabled = true;
-                            ShowHome();
+                            //ShowHome();
                             //break;
                     //    case 2:
                     //        ShowPosFom();

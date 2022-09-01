@@ -20,10 +20,12 @@ namespace Katswiri.Forms
         Cart cart = new Cart();
         Sale sale;
         SaleDetail saleDetail;
+        public Pos pos;
 
         public Pay()
         {
             InitializeComponent();
+            pos = new Pos();
             loadPaymentModes();
         }
 
@@ -34,13 +36,11 @@ namespace Katswiri.Forms
                 lookUpEditPayMode.Properties.DataSource = db.vwPaymentTypes.ToList();
                 lookUpEditPayMode.Properties.ValueMember = "PaymentTypeId";
                 lookUpEditPayMode.Properties.DisplayMember = "PaymentTypeName";
-
             }
         }
 
         private void Pay_Load(object sender, EventArgs e)
         {
-
             using (db = new KEntities())
             {
                 var totalBill = db.Carts?.Where(x => x.UserId == 1).Sum(x => x.TotalPrice);
@@ -61,12 +61,12 @@ namespace Katswiri.Forms
                         ShopId = 1,
                         SoldBy = 1,
                         SoldTo = 1,
-                        TaxAmount = db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
-                        TotalBill = db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
-                        TotalChange = db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice) - Double.Parse(textBoxTendered.Text),
+                        TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
+                        TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
+                        TotalChange = (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice) - Double.Parse(textBoxTendered.Text)),
                         TotalTendered = Double.Parse(textBoxTendered.Text),
-                        DiscountAmount = db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
-                        DiscountPercent = db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
+                        DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
+                        DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
                     };
 
                     db.Sales.Add(sale);
@@ -79,44 +79,41 @@ namespace Katswiri.Forms
                         saleDetail = new SaleDetail()
                         {
                             SaleId = saleId,
-                            ProductId = item.ProductId,
-                            SellingPrice = item.SellingPrice,
-                            ShopId = item.ShopId,
-                            SoldPrice = item.TotalPrice,
-                            Qty = item.Qty,
-                            DiscountAmount = item.DiscountAmount,
-                            DiscountPercent = item.DiscountPercent,
-                            TaxValue = item.TaxValue,
-                            UserId = item.UserId,
+                            ProductId = (int)item.ProductId,
+                            SellingPrice = (double)item.SellingPrice,
+                            ShopId = (int)item.ShopId,
+                            SoldPrice = (double)item.TotalPrice,
+                            Qty = (double)item.Qty,
+                            DiscountAmount = (double)item.DiscountAmount,
+                            DiscountPercent = (double)item.DiscountPercent,
+                            TaxValue = (double)item.TaxValue,
+                            UserId = (int)item.UserId,
                             DateSold = DateTime.Now
                         };
                         db.SaleDetails.Add(saleDetail);
                         db.SaveChanges();
                     }
 
-                    var cartToRemove = db.Carts.Where(x => x.UserId == 1).ToList();//delete from cart
-                    if (cartToRemove != null)
-                    {
-                        foreach(var remove in cartToRemove)
-                        {
-                            db.Carts.Remove(remove);
-                            db.SaveChanges();
-                        }
-                    }
                     this.Close();
+                    pos.clearmyCart();
+                    pos.clearGrid();
+                    pos.loadCart();
 
-                    //Pos pos = new Pos();
 
-
-                    
 
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
+        }
+
+        private void Pay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            pos.clearmyCart();
+            pos.clearGrid();
+            pos.loadCart();            
         }
     }
 }

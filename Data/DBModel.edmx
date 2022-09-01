@@ -29,15 +29,15 @@
             <PropertyRef Name="CartId" />
           </Key>
           <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="ShopId" Type="int" Nullable="false" />
-          <Property Name="DiscountPercent" Type="float" Nullable="false" />
-          <Property Name="DiscountAmount" Type="float" Nullable="false" />
-          <Property Name="SellingPrice" Type="float" Nullable="false" />
-          <Property Name="TotalPrice" Type="float" Nullable="false" />
-          <Property Name="Qty" Type="float" Nullable="false" />
-          <Property Name="TaxValue" Type="float" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ShopId" Type="int" />
+          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="DiscountAmount" Type="float" />
+          <Property Name="SellingPrice" Type="float" />
+          <Property Name="TotalPrice" Type="float" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="TaxValue" Type="float" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -909,15 +909,15 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <PropertyRef Name="CartId" />
           </Key>
           <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="DiscountPercent" Type="Double" Nullable="false" />
-          <Property Name="DiscountAmount" Type="Double" Nullable="false" />
-          <Property Name="SellingPrice" Type="Double" Nullable="false" />
-          <Property Name="TotalPrice" Type="Double" Nullable="false" />
-          <Property Name="Qty" Type="Double" Nullable="false" />
-          <Property Name="TaxValue" Type="Double" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="DiscountPercent" Type="Double" />
+          <Property Name="DiscountAmount" Type="Double" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="TaxValue" Type="Double" />
         </EntityType>
         <EntityType Name="Category">
           <Key>

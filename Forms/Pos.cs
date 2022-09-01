@@ -22,6 +22,7 @@ namespace Katswiri.Forms
         public Pos()
         {
             InitializeComponent();
+            clearGrid();
             loadCart();
             autoCompleteSearch();
             //clearmyCart();//clear my cart            
@@ -33,20 +34,24 @@ namespace Katswiri.Forms
             //simpleButtonPay.Enabled = false;
 
         }
-        private void clearGrid()
+        public void clearGrid()
         {
             gridControl1.DataSource = null;
+            lblTotalBill.Text = "0.00";
+            lblTaxValue.Text = "0.00";
+            lblSubTotal.Text = "0.00";
 
         }
-        private void loadCart()
+        public void loadCart()
         {
             using (db = new KEntities())
             {
-                gridControl1.DataSource = db.vwCarts.ToList();
+                gridControl1.DataSource = null;
+                gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == 1).ToList();
                 //gridView1.OptionsBehavior.Editable = false;
                 gridView1.Columns["UserId"].Visible = false;
                 gridView1.Columns["ShopId"].Visible = false;
-                //gridView1.Columns["ProductId"].Visible = false;
+                gridView1.Columns["ProductId"].Visible = false;
                 //gridView1.Columns["DiscountPercent"].Visible = false;
                 gridView1.Columns["DiscountAmount"].Visible = false;
                 gridView1.Columns["CartId"].Visible = false;
@@ -89,6 +94,7 @@ namespace Katswiri.Forms
                     lblSubTotal.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", sp, 2);
                 }
             }
+
         }
 
         private void autoCompleteSearch()
@@ -119,11 +125,14 @@ namespace Katswiri.Forms
         }
         public void clearmyCart()
         {
-            var list = db.Carts.Where(x => x.UserId == 1).ToList();
-            foreach (var rm in list)
+            using (var db = new KEntities())
             {
-                db.Carts.Remove(rm);
-                db.SaveChanges();
+                var list = db.Carts.Where(x => x.UserId == 1).ToList();
+                foreach (var rm in list)
+                {
+                    db.Carts.Remove(rm);
+                    db.SaveChanges();
+                }
             }
         }
 
@@ -188,6 +197,8 @@ namespace Katswiri.Forms
                             clearGrid();
                         }
                         loadCart();
+                        gridView1.RefreshData();
+
                     }
                 }
             }
@@ -198,7 +209,7 @@ namespace Katswiri.Forms
             textSearchProduct.Text = string.Empty;
         }
       
-        private void refreshCart()
+        public void refreshCart()
         {
             try
             {
@@ -225,9 +236,9 @@ namespace Katswiri.Forms
                         db.Entry(cart).State = EntityState.Modified;
                         db.SaveChanges();
                     }
+                    loadCart();
                 }
-                loadCart();
-
+                gridControl1.RefreshDataSource();
             }
             catch (Exception ex)
             {
