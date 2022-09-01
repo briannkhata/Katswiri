@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Katswiri.Data;
+using Katswiri.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace Katswiri.Forms
             InitializeComponent();
             clearFields();
             loadTaxTypes();
+            loadtaxTypesStatus();
         }
 
         private void clearFields()
@@ -32,6 +34,14 @@ namespace Katswiri.Forms
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             TaxTypeId = 0;
+        }
+
+        private void loadtaxTypesStatus()
+        {
+            Dictionary<int, string> taxTypesStatus = Enum.GetValues(typeof(TaxTypesStatus)).Cast<TaxTypesStatus>().ToDictionary(x => (int)x, x => x.ToString());
+            TaxTypeStatusTextEdit.Properties.DataSource = taxTypesStatus;
+            TaxTypeStatusTextEdit.Properties.ValueMember = "Value";
+            TaxTypeStatusTextEdit.Properties.DisplayMember = "Value";
         }
 
         private bool formValid()
@@ -114,7 +124,7 @@ namespace Katswiri.Forms
                 TaxTypeId = row.TaxTypeId;
                 taxType = db.TaxTypes.Where(x => x.TaxTypeId == TaxTypeId).FirstOrDefault();
                 TaxTypeNameTextEdit.Text = taxType.TaxTypeName;
-                TaxTypeStatusTextEdit.Text = taxType.TaxTypeStatus;
+                TaxTypeStatusTextEdit.EditValue = taxType.TaxTypeStatus;
                 TaxTypeValueTextEdit.Text = taxType.TaxTypeValue.ToString();
             }
             btnSave.Caption = "Update";

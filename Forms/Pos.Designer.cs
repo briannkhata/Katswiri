@@ -36,17 +36,17 @@ namespace Katswiri.Forms
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton18 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonNew = new DevExpress.XtraEditors.SimpleButton();
             this.btnClearCart = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton14 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonPay = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonPause = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonDelete = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonBackSpace = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
@@ -138,17 +138,17 @@ namespace Katswiri.Forms
             // panelControl4
             // 
             this.panelControl4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelControl4.Controls.Add(this.simpleButton18);
+            this.panelControl4.Controls.Add(this.simpleButtonNew);
             this.panelControl4.Controls.Add(this.btnClearCart);
-            this.panelControl4.Controls.Add(this.simpleButton16);
-            this.panelControl4.Controls.Add(this.simpleButton15);
-            this.panelControl4.Controls.Add(this.simpleButton14);
+            this.panelControl4.Controls.Add(this.simpleButtonPay);
+            this.panelControl4.Controls.Add(this.simpleButtonPause);
+            this.panelControl4.Controls.Add(this.simpleButtonDelete);
             this.panelControl4.Controls.Add(this.simpleButton13);
             this.panelControl4.Controls.Add(this.simpleButton12);
             this.panelControl4.Controls.Add(this.simpleButton11);
             this.panelControl4.Controls.Add(this.simpleButton10);
             this.panelControl4.Controls.Add(this.simpleButton9);
-            this.panelControl4.Controls.Add(this.simpleButton7);
+            this.panelControl4.Controls.Add(this.simpleButtonBackSpace);
             this.panelControl4.Controls.Add(this.simpleButton6);
             this.panelControl4.Controls.Add(this.simpleButton5);
             this.panelControl4.Controls.Add(this.simpleButton4);
@@ -161,16 +161,15 @@ namespace Katswiri.Forms
             this.panelControl4.Size = new System.Drawing.Size(530, 449);
             this.panelControl4.TabIndex = 10;
             // 
-            // simpleButton18
+            // simpleButtonNew
             // 
-            this.simpleButton18.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton18.Appearance.Options.UseFont = true;
-            this.simpleButton18.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton18.ImageOptions.SvgImage")));
-            this.simpleButton18.Location = new System.Drawing.Point(245, 356);
-            this.simpleButton18.Name = "simpleButton18";
-            this.simpleButton18.Size = new System.Drawing.Size(270, 78);
-            this.simpleButton18.TabIndex = 17;
-            this.simpleButton18.Text = "New Sale";
+            this.simpleButtonNew.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButtonNew.Appearance.Options.UseFont = true;
+            this.simpleButtonNew.Location = new System.Drawing.Point(245, 356);
+            this.simpleButtonNew.Name = "simpleButtonNew";
+            this.simpleButtonNew.Size = new System.Drawing.Size(270, 78);
+            this.simpleButtonNew.TabIndex = 17;
+            this.simpleButtonNew.Text = "New Sale";
             // 
             // btnClearCart
             // 
@@ -184,39 +183,39 @@ namespace Katswiri.Forms
             this.btnClearCart.Text = "Clear Cart";
             this.btnClearCart.Click += new System.EventHandler(this.btnClearCart_Click);
             // 
-            // simpleButton16
+            // simpleButtonPay
             // 
-            this.simpleButton16.Appearance.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton16.Appearance.Options.UseFont = true;
-            this.simpleButton16.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton16.ImageOptions.SvgImage")));
-            this.simpleButton16.Location = new System.Drawing.Point(245, 271);
-            this.simpleButton16.Name = "simpleButton16";
-            this.simpleButton16.Size = new System.Drawing.Size(272, 78);
-            this.simpleButton16.TabIndex = 15;
-            this.simpleButton16.Text = "Pay";
+            this.simpleButtonPay.Appearance.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButtonPay.Appearance.Options.UseFont = true;
+            this.simpleButtonPay.Location = new System.Drawing.Point(245, 271);
+            this.simpleButtonPay.Name = "simpleButtonPay";
+            this.simpleButtonPay.Size = new System.Drawing.Size(272, 78);
+            this.simpleButtonPay.TabIndex = 15;
+            this.simpleButtonPay.Text = "Pay";
+            this.simpleButtonPay.Click += new System.EventHandler(this.simpleButton16_Click);
             // 
-            // simpleButton15
+            // simpleButtonPause
             // 
-            this.simpleButton15.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton15.Appearance.Options.UseFont = true;
-            this.simpleButton15.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton15.ImageOptions.SvgImage")));
-            this.simpleButton15.Location = new System.Drawing.Point(357, 186);
-            this.simpleButton15.Name = "simpleButton15";
-            this.simpleButton15.Size = new System.Drawing.Size(160, 78);
-            this.simpleButton15.TabIndex = 14;
-            this.simpleButton15.Text = "Pause ";
+            this.simpleButtonPause.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButtonPause.Appearance.Options.UseFont = true;
+            this.simpleButtonPause.Location = new System.Drawing.Point(357, 186);
+            this.simpleButtonPause.Name = "simpleButtonPause";
+            this.simpleButtonPause.Size = new System.Drawing.Size(160, 78);
+            this.simpleButtonPause.TabIndex = 14;
+            this.simpleButtonPause.Text = "Pause ";
             // 
-            // simpleButton14
+            // simpleButtonDelete
             // 
-            this.simpleButton14.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton14.Appearance.Options.UseFont = true;
-            this.simpleButton14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.simpleButton14.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton14.ImageOptions.SvgImage")));
-            this.simpleButton14.Location = new System.Drawing.Point(359, 99);
-            this.simpleButton14.Name = "simpleButton14";
-            this.simpleButton14.Size = new System.Drawing.Size(160, 78);
-            this.simpleButton14.TabIndex = 13;
-            this.simpleButton14.Text = "Delete";
+            this.simpleButtonDelete.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButtonDelete.Appearance.Options.UseFont = true;
+            this.simpleButtonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.simpleButtonDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButtonDelete.ImageOptions.SvgImage")));
+            this.simpleButtonDelete.Location = new System.Drawing.Point(359, 99);
+            this.simpleButtonDelete.Name = "simpleButtonDelete";
+            this.simpleButtonDelete.Size = new System.Drawing.Size(160, 78);
+            this.simpleButtonDelete.TabIndex = 13;
+            this.simpleButtonDelete.Text = "Delete";
+            this.simpleButtonDelete.Click += new System.EventHandler(this.simpleButtonDelete_Click);
             // 
             // simpleButton13
             // 
@@ -273,17 +272,17 @@ namespace Katswiri.Forms
             this.simpleButton9.Text = "7";
             this.simpleButton9.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // simpleButton7
+            // simpleButtonBackSpace
             // 
-            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopLeft;
-            this.simpleButton7.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton7.ImageOptions.SvgImage")));
-            this.simpleButton7.Location = new System.Drawing.Point(357, 12);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(160, 78);
-            this.simpleButton7.TabIndex = 7;
-            this.simpleButton7.Text = "BackSpace";
+            this.simpleButtonBackSpace.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButtonBackSpace.Appearance.Options.UseFont = true;
+            this.simpleButtonBackSpace.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopLeft;
+            this.simpleButtonBackSpace.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButtonBackSpace.ImageOptions.SvgImage")));
+            this.simpleButtonBackSpace.Location = new System.Drawing.Point(357, 12);
+            this.simpleButtonBackSpace.Name = "simpleButtonBackSpace";
+            this.simpleButtonBackSpace.Size = new System.Drawing.Size(160, 78);
+            this.simpleButtonBackSpace.TabIndex = 7;
+            this.simpleButtonBackSpace.Text = "BackSpace";
             // 
             // simpleButton6
             // 
@@ -444,8 +443,6 @@ namespace Katswiri.Forms
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gridControl1.TextChanged += new System.EventHandler(this.gridControl1_TextChanged);
-            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             this.gridControl1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridControl1_KeyUp);
             // 
             // gridView1
@@ -510,17 +507,17 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonBackSpace;
         private DevExpress.XtraEditors.SimpleButton simpleButton12;
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
         private DevExpress.XtraEditors.SimpleButton simpleButton13;
-        private DevExpress.XtraEditors.SimpleButton simpleButton14;
-        private DevExpress.XtraEditors.SimpleButton simpleButton16;
-        private DevExpress.XtraEditors.SimpleButton simpleButton15;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonDelete;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonPay;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonPause;
         private System.Windows.Forms.TextBox textSearchProduct;
-        private DevExpress.XtraEditors.SimpleButton simpleButton18;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonNew;
         private DevExpress.XtraEditors.SimpleButton btnClearCart;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;

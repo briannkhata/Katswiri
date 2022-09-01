@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Katswiri.Enums
 {
-    public enum ViewingMode
+    public enum TaxTypesStatus
     {
-        Viewonly,
-        Edit
+        Inclusive,
+        Exclusive,
+        Exempted
     }
 }

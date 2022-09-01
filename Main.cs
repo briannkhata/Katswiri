@@ -24,6 +24,8 @@ namespace Katswiri
         Home home = null;
         Main main = null;
         Products productsForm = null;
+        Login formLogin = null;
+
         Categories categoriesForm = null;
         Units unitsForm = null;
 
@@ -37,33 +39,34 @@ namespace Katswiri
         private void Main_Load(object sender, EventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            //showLogin();
         }
 
 
-        //private void showLogin()
-        //{
-        //    formLogin = new Login();
-        //    ribbon.Enabled = false;
-        //    SplashScreenManager.CloseDefaultSplashScreen();
-        //    if (formLogin.ShowDialog() == DialogResult.OK)
-        //    {
-        //        try
-        //        {
-        //            InitMainView();
-        //            ribbon.Enabled = true;
-        //            Showhome();
-        //            logger.Info($" User logged into the system");
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            logger.Error(ex, ex.Message);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Application.Exit();
-        //    }
-        //}
+        private void showLogin()
+        {
+            formLogin = new Login();
+            ribbon.Enabled = false;
+            SplashScreenManager.CloseDefaultSplashScreen();
+            if (formLogin.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    InitMainView();
+                    ribbon.Enabled = true;
+                    ShowHome();
+                    logger.Info($" User logged into the system");
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex, ex.Message);
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
 
         private void ShowHome()
         {
@@ -427,6 +430,11 @@ namespace Katswiri
             {
                 e.Cancel = true;
             }
+        }
+
+        private void Main_Shown(object sender, EventArgs e)
+        {
+            showLogin();
         }
     }
 }

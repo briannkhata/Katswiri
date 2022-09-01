@@ -19,7 +19,6 @@ namespace Katswiri.Data
         {
             this.Expenses = new HashSet<Expens>();
             this.Incomes = new HashSet<Income>();
-            this.TempSales = new HashSet<TempSale>();
         }
     
         public int UserId { get; set; }
@@ -42,7 +41,5 @@ namespace Katswiri.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Income> Incomes { get; set; }
         public virtual Role Role { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TempSale> TempSales { get; set; }
     }
 }

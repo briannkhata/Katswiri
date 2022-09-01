@@ -51,6 +51,45 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>packages\FluentValidation.11.1.0\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="MailChimp.Net, Version=5.3.1.0, Culture=neutral, PublicKeyToken=37d26d538413c581, processorArchitecture=MSIL">
+      <HintPath>packages\MailChimp.Net.V3.5.3.1\lib\net472\MailChimp.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.3.1.8\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.8\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Http, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Http.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.3.1.8\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -59,14 +98,33 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -93,11 +151,26 @@
     <Compile Include="Data\Bank.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\BankDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Brand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\BrandDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Cart.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CartDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Category.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CategoryDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -114,37 +187,64 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\DBModel1.Designer.cs">
+    <Compile Include="Data\DBModelDTO.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.edmx</DependentUpon>
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Expens.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ExpensDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ExpenseType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ExpenseTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Income.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\IncomeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\IncomeType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IncomeTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Menu.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\MenuDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\PaymentType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PaymentTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Product.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ProductDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ProductQuantity.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ProductQuantityDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Role.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RoleDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Sale.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -152,75 +252,147 @@
     <Compile Include="Data\SaleDetail.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\SaleDetailDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SaleDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\SaleType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SaleTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Setting.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\SettingDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Shop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ShopDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagram.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagramDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\TaxType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\TempSale.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Data\TaxTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Unit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\UnitDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\User.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwBrand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwBrandDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwCart.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwCartDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwCategory.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwCategoryDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwCompany.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwCompanyDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwExpens.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwExpensDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwExpenseType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwExpenseTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwIncome.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwIncomeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwIncomeType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwIncomeTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwPaymentType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwPaymentTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwProduct.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwProductDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwRole.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwRoleDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwShop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwShopDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwTaxType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwTempSale.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Data\vwTaxTypeDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwUnit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwUnitDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwUser.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwUserDto.cs">
+      <DependentUpon>DBModelDTO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\FormMode.cs" />
     <Compile Include="Enums\Gender.cs" />
-    <Compile Include="Enums\ViewingMode.cs" />
+    <Compile Include="Enums\TaxTypesStatus.cs" />
     <Compile Include="Forms\Banks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +410,12 @@
     </Compile>
     <Compile Include="Forms\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Pay.Designer.cs">
+      <DependentUpon>Pay.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Roles.cs">
       <SubType>Form</SubType>
@@ -381,6 +559,9 @@
     <EmbeddedResource Include="Forms\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pay.resx">
+      <DependentUpon>Pay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>
     </EmbeddedResource>
@@ -439,10 +620,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Data\DBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="brandsDataSet3.xsc">
       <DependentUpon>brandsDataSet3.xsd</DependentUpon>
     </None>
@@ -465,6 +642,10 @@
     <None Include="companyDataSet.xss">
       <DependentUpon>companyDataSet.xsd</DependentUpon>
     </None>
+    <EntityDeploy Include="Data\DBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Data\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </None>
@@ -570,6 +751,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\DBModelDTO.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBModelDTO.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

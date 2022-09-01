@@ -18,7 +18,6 @@ namespace Katswiri.Data
         public Product()
         {
             this.ProductQuantities = new HashSet<ProductQuantity>();
-            this.TempSales = new HashSet<TempSale>();
         }
     
         public int ProductId { get; set; }
@@ -33,12 +32,7 @@ namespace Katswiri.Data
         public int TaxTypeId { get; set; }
         public Nullable<int> BrandId { get; set; }
     
-        public virtual Category Category { get; set; }
-        public virtual Shop Shop { get; set; }
-        public virtual TaxType TaxType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductQuantity> ProductQuantities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TempSale> TempSales { get; set; }
     }
 }
