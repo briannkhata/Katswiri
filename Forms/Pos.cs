@@ -16,7 +16,6 @@ namespace Katswiri.Forms
         KEntities db;
         Cart cart = new Cart();
         Product product;
-        ProductQuantity productQuantity = new ProductQuantity();
         int CartId;
 
         Sale sale;
@@ -31,7 +30,7 @@ namespace Katswiri.Forms
             loadCart();
             autoCompleteSearch();
             loadSaleTypes();
-           
+
             //clearmyCart();//clear my cart            
             //lblCompany.Text = db.Settings.FirstOrDefault().Name;
             //lblShop.Text = db.Shops.FirstOrDefault().ShopName;
@@ -39,6 +38,8 @@ namespace Katswiri.Forms
             //simpleButtonBackSpace.Enabled = false;
             //simpleButtonDelete.Enabled = false;
             //simpleButtonPay.Enabled = false;
+            textEditTendered.Text = String.Format("{0:c}", textEditTendered.Text);
+            textEditTendered.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
         }
         public void clearGrid()
@@ -125,8 +126,6 @@ namespace Katswiri.Forms
             }
         }
 
-      
-
         private void Pos_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (XtraMessageBox.Show("Are you sure you would like to cancel POS UI?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -195,7 +194,7 @@ namespace Katswiri.Forms
                         {
                             cart.ProductId = product.ProductId;
                             cart.SellingPrice = product.SellingPrice;
-                            cart.ShopId = db.Shops.FirstOrDefault().ShopId;
+                            cart.ShopId = db.Users.Where(x => x.UserId == 1).Single().ShopId;
                             cart.UserId = 1;
                             cart.DiscountAmount = 0;
                             cart.DiscountPercent = 0;
@@ -207,8 +206,6 @@ namespace Katswiri.Forms
                             clearGrid();
                         }
                         loadCart();
-                        gridView1.RefreshData();
-
                     }
                 }
             }
@@ -322,9 +319,6 @@ namespace Katswiri.Forms
             }
         }
 
-       
-
-
         //private void printReceipt()
         //{
         //    var heda = db.Shops.FirstOrDefault().ShopName;
@@ -431,10 +425,6 @@ namespace Katswiri.Forms
 
         //}
 
-
-
-
-
         private void Pos_Shown(object sender, EventArgs e)
         {
             using (db = new KEntities())
@@ -445,7 +435,14 @@ namespace Katswiri.Forms
 
         private void dispalyChange()
         {
-            lblChange.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", (Convert.ToDouble(textEditTendered.Text) - Convert.ToDouble(lblTotalBill.Text)).ToString(),2);
+            if (textEditTendered.Text != string.Empty)
+            {
+                lblChange.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", (Convert.ToDouble(textEditTendered.Text.Trim()) - Convert.ToDouble(lblTotalBill.Text)).ToString(), 2);
+            }
+            else
+            {
+                lblChange.Text = string.Empty;
+            }
         }
 
         private void simpleButtonPay2_Click(object sender, EventArgs e)
@@ -458,11 +455,12 @@ namespace Katswiri.Forms
                     {
                         DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
                         SaleTypeId = (int)lookUpEditSaleType.EditValue,
-                        ShopId = 1,
+                        ShopId = db.Users.Where(x=>x.UserId == 1).Single().ShopId,
                         SoldBy = 1,
                         SoldTo = 1,
                         TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
                         TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
+                        SubTotal = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.SellingPrice),
                         TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
                         TotalTendered = Double.Parse(textEditTendered.Text),
                         DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
@@ -494,8 +492,8 @@ namespace Katswiri.Forms
                         db.SaleDetails.Add(saleDetail);
                         db.SaveChanges();
                     }
-                    this.Close();
                     resetCartUI();
+                    textSearchProduct.Focus();
                 }
             }
             catch (Exception ex)
@@ -507,7 +505,9 @@ namespace Katswiri.Forms
 
         private void textEditTendered_KeyUp(object sender, KeyEventArgs e)
         {
+           
             dispalyChange();
+            //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", textEditTendered.Text, 2);
         }
     }
 }

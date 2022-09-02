@@ -148,6 +148,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>companyDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Data\AccountActivity.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Bank.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -196,7 +199,7 @@
     <Compile Include="Data\Product.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ProductQuantity.cs">
+    <Compile Include="Data\Quantity.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Role.cs">

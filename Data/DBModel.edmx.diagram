@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="KModel.IncomeType" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Menu" Width="1.5" PointX="4.75" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.PaymentType" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KModel.ProductQuantity" Width="1.5" PointX="10.25" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Product" Width="1.5" PointX="8" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.Role" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KModel.SaleDetail" Width="1.5" PointX="10.75" PointY="12.375" IsExpanded="true" />
@@ -48,11 +47,11 @@
         <AssociationConnector Association="KModel.FK_Incomes_IncomeTypes" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Incomes_PaymentTypes" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Incomes_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="KModel.FK_ProductQuantities_Products" ManuallyRouted="false" />
-        <AssociationConnector Association="KModel.FK_ProductQuantities_Shops" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Users_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Shops_Settings1" ManuallyRouted="false" />
         <EntityTypeShape EntityType="KModel.vwSaleType" Width="1.5" PointX="11.375" PointY="18.75" />
+        <EntityTypeShape EntityType="KModel.AccountActivity" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KModel.Quantity" Width="1.5" PointX="19.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

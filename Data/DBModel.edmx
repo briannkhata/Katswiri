@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="KModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountActivities">
+          <Key>
+            <PropertyRef Name="AccountActivityId" />
+          </Key>
+          <Property Name="AccountActivityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OpeningBalance" Type="float" Nullable="false" />
+          <Property Name="ClosingBalance" Type="float" Nullable="false" />
+          <Property Name="ProfitLoss" Type="float" Nullable="false" />
+          <Property Name="ActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Banks">
           <Key>
             <PropertyRef Name="BankId" />
@@ -105,17 +116,6 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="ProductQuantities">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="ShopId" Type="int" Nullable="false" />
-          <Property Name="ShopQty" Type="float" Nullable="false" />
-          <Property Name="StoresQty" Type="float" Nullable="false" />
-          <Property Name="KitchenQty" Type="float" Nullable="false" />
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -131,6 +131,17 @@
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="TaxTypeId" Type="int" Nullable="false" />
           <Property Name="BrandId" Type="int" />
+        </EntityType>
+        <EntityType Name="Quantities">
+          <Key>
+            <PropertyRef Name="QuantityId" />
+          </Key>
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ShopId" Type="int" />
+          <Property Name="ShopQty" Type="float" />
+          <Property Name="StoresQty" Type="float" />
+          <Property Name="KitchenQty" Type="float" />
+          <Property Name="QuantityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -175,6 +186,7 @@
           <Property Name="SaleTypeId" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="txnId" Type="varchar(max)" />
+          <Property Name="SubTotal" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleTypes">
           <Key>
@@ -621,30 +633,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductQuantities_Products">
-          <End Role="Products" Type="Self.Products" Multiplicity="1" />
-          <End Role="ProductQuantities" Type="Self.ProductQuantities" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="ProductQuantities">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductQuantities_Shops">
-          <End Role="Shops" Type="Self.Shops" Multiplicity="1" />
-          <End Role="ProductQuantities" Type="Self.ProductQuantities" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shops">
-              <PropertyRef Name="ShopId" />
-            </Principal>
-            <Dependent Role="ProductQuantities">
-              <PropertyRef Name="ShopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Shops_Settings1">
           <End Role="Settings" Type="Self.Settings" Multiplicity="0..1" />
           <End Role="Shops" Type="Self.Shops" Multiplicity="*" />
@@ -670,6 +658,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="KModelStoreContainer">
+          <EntitySet Name="AccountActivities" EntityType="Self.AccountActivities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
@@ -680,8 +669,8 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductQuantities" EntityType="Self.ProductQuantities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quantities" EntityType="Self.Quantities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleDetails" EntityType="Self.SaleDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
@@ -880,14 +869,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <End Role="Users" EntitySet="Users" />
             <End Role="Incomes" EntitySet="Incomes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductQuantities_Products" Association="Self.FK_ProductQuantities_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="ProductQuantities" EntitySet="ProductQuantities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductQuantities_Shops" Association="Self.FK_ProductQuantities_Shops">
-            <End Role="Shops" EntitySet="Shops" />
-            <End Role="ProductQuantities" EntitySet="ProductQuantities" />
-          </AssociationSet>
           <AssociationSet Name="FK_Shops_Settings1" Association="Self.FK_Shops_Settings1">
             <End Role="Settings" EntitySet="Settings" />
             <End Role="Shops" EntitySet="Shops" />
@@ -1011,19 +992,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <NavigationProperty Name="Expenses" Relationship="Self.FK_Expenses_PaymentTypes" FromRole="PaymentTypes" ToRole="Expenses" />
           <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_PaymentTypes" FromRole="PaymentTypes" ToRole="Incomes" />
         </EntityType>
-        <EntityType Name="ProductQuantity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="ShopQty" Type="Double" Nullable="false" />
-          <Property Name="StoresQty" Type="Double" Nullable="false" />
-          <Property Name="KitchenQty" Type="Double" Nullable="false" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductQuantities_Products" FromRole="ProductQuantities" ToRole="Products" />
-          <NavigationProperty Name="Shop" Relationship="Self.FK_ProductQuantities_Shops" FromRole="ProductQuantities" ToRole="Shops" />
-        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -1039,7 +1007,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="TaxTypeId" Type="Int32" Nullable="false" />
           <Property Name="BrandId" Type="Int32" />
-          <NavigationProperty Name="ProductQuantities" Relationship="Self.FK_ProductQuantities_Products" FromRole="Products" ToRole="ProductQuantities" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1085,6 +1052,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <Property Name="SaleTypeId" Type="Int32" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="txnId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotal" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleType">
           <Key>
@@ -1121,7 +1089,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ProductQuantities" Relationship="Self.FK_ProductQuantities_Shops" FromRole="Shops" ToRole="ProductQuantities" />
           <NavigationProperty Name="Setting" Relationship="Self.FK_Shops_Settings1" FromRole="Shops" ToRole="Settings" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -1497,30 +1464,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductQuantities_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductQuantities" Type="Self.ProductQuantity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="ProductQuantities">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductQuantities_Shops">
-          <End Role="Shops" Type="Self.Shop" Multiplicity="1" />
-          <End Role="ProductQuantities" Type="Self.ProductQuantity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shops">
-              <PropertyRef Name="ShopId" />
-            </Principal>
-            <Dependent Role="ProductQuantities">
-              <PropertyRef Name="ShopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Users_Roles">
           <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
@@ -1556,7 +1499,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
           <EntitySet Name="Menus" EntityType="Self.Menu" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
-          <EntitySet Name="ProductQuantities" EntityType="Self.ProductQuantity" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="SaleDetails" EntityType="Self.SaleDetail" />
@@ -1607,14 +1549,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <End Role="Users" EntitySet="Users" />
             <End Role="Incomes" EntitySet="Incomes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductQuantities_Products" Association="Self.FK_ProductQuantities_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="ProductQuantities" EntitySet="ProductQuantities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductQuantities_Shops" Association="Self.FK_ProductQuantities_Shops">
-            <End Role="Shops" EntitySet="Shops" />
-            <End Role="ProductQuantities" EntitySet="ProductQuantities" />
-          </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
@@ -1624,6 +1558,8 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <End Role="Shops" EntitySet="Shops" />
           </AssociationSet>
           <EntitySet Name="vwSaleTypes" EntityType="KModel.vwSaleType" />
+          <EntitySet Name="AccountActivities" EntityType="KModel.AccountActivity" />
+          <EntitySet Name="Quantities" EntityType="KModel.Quantity" />
         </EntityContainer>
         <EntityType Name="vwSaleType">
           <Key>
@@ -1632,6 +1568,28 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           </Key>
           <Property Name="SaleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SaleTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AccountActivity">
+          <Key>
+            <PropertyRef Name="AccountActivityId" />
+          </Key>
+          <Property Name="AccountActivityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OpeningBalance" Type="Double" Nullable="false" />
+          <Property Name="ClosingBalance" Type="Double" Nullable="false" />
+          <Property Name="ProfitLoss" Type="Double" Nullable="false" />
+          <Property Name="ActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Quantity">
+          <Key>
+            <PropertyRef Name="QuantityId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="ShopQty" Type="Double" />
+          <Property Name="StoresQty" Type="Double" />
+          <Property Name="KitchenQty" Type="Double" />
+          <Property Name="QuantityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1749,18 +1707,6 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductQuantities">
-            <EntityTypeMapping TypeName="KModel.ProductQuantity">
-              <MappingFragment StoreEntitySet="ProductQuantities">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="ShopQty" ColumnName="ShopQty" />
-                <ScalarProperty Name="StoresQty" ColumnName="StoresQty" />
-                <ScalarProperty Name="KitchenQty" ColumnName="KitchenQty" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="KModel.Product">
               <MappingFragment StoreEntitySet="Products">
@@ -1808,6 +1754,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="KModel.Sale">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="txnId" ColumnName="txnId" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="TotalTendered" ColumnName="TotalTendered" />
@@ -2110,6 +2057,30 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
               <MappingFragment StoreEntitySet="vwSaleTypes">
                 <ScalarProperty Name="SaleTypeName" ColumnName="SaleTypeName" />
                 <ScalarProperty Name="SaleTypeId" ColumnName="SaleTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountActivities">
+            <EntityTypeMapping TypeName="KModel.AccountActivity">
+              <MappingFragment StoreEntitySet="AccountActivities">
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+                <ScalarProperty Name="ProfitLoss" ColumnName="ProfitLoss" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountActivityId" ColumnName="AccountActivityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quantities">
+            <EntityTypeMapping TypeName="KModel.Quantity">
+              <MappingFragment StoreEntitySet="Quantities">
+                <ScalarProperty Name="QuantityId" ColumnName="QuantityId" />
+                <ScalarProperty Name="KitchenQty" ColumnName="KitchenQty" />
+                <ScalarProperty Name="StoresQty" ColumnName="StoresQty" />
+                <ScalarProperty Name="ShopQty" ColumnName="ShopQty" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

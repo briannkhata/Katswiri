@@ -14,12 +14,6 @@ namespace Katswiri.Data
     
     public partial class Shop
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shop()
-        {
-            this.ProductQuantities = new HashSet<ProductQuantity>();
-        }
-    
         public int ShopId { get; set; }
         public string ShopName { get; set; }
         public string Location { get; set; }
@@ -29,8 +23,6 @@ namespace Katswiri.Data
         public int Deleted { get; set; }
         public string Country { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductQuantity> ProductQuantities { get; set; }
         public virtual Setting Setting { get; set; }
     }
 }

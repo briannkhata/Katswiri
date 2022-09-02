@@ -38,7 +38,6 @@ namespace Katswiri.Forms
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButtonPay2 = new DevExpress.XtraEditors.SimpleButton();
-            this.lblChange = new DevExpress.XtraEditors.LabelControl();
             this.textEditTendered = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonNew = new DevExpress.XtraEditors.SimpleButton();
             this.btnClearCart = new DevExpress.XtraEditors.SimpleButton();
@@ -49,6 +48,7 @@ namespace Katswiri.Forms
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.textEditTxnId = new DevExpress.XtraEditors.TextEdit();
+            this.lblChange = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -136,9 +136,9 @@ namespace Katswiri.Forms
             // 
             this.panelControl4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.panelControl4.Controls.Add(this.lblChange);
             this.panelControl4.Controls.Add(this.textEditTxnId);
             this.panelControl4.Controls.Add(this.simpleButtonPay2);
-            this.panelControl4.Controls.Add(this.lblChange);
             this.panelControl4.Controls.Add(this.textEditTendered);
             this.panelControl4.Controls.Add(this.simpleButtonNew);
             this.panelControl4.Controls.Add(this.btnClearCart);
@@ -161,23 +161,12 @@ namespace Katswiri.Forms
             this.simpleButtonPay2.Text = "Pay";
             this.simpleButtonPay2.Click += new System.EventHandler(this.simpleButtonPay2_Click);
             // 
-            // lblChange
-            // 
-            this.lblChange.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.Appearance.Options.UseFont = true;
-            this.lblChange.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblChange.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.lblChange.Location = new System.Drawing.Point(15, 201);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(498, 75);
-            this.lblChange.TabIndex = 20;
-            // 
             // textEditTendered
             // 
             this.textEditTendered.Location = new System.Drawing.Point(12, 30);
             this.textEditTendered.Name = "textEditTendered";
             this.textEditTendered.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEditTendered.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.textEditTendered.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.textEditTendered.Properties.Appearance.Options.UseFont = true;
             this.textEditTendered.Properties.Appearance.Options.UseForeColor = true;
             this.textEditTendered.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
@@ -271,7 +260,7 @@ namespace Katswiri.Forms
             // 
             // textEditTxnId
             // 
-            this.textEditTxnId.Location = new System.Drawing.Point(10, 141);
+            this.textEditTxnId.Location = new System.Drawing.Point(10, 139);
             this.textEditTxnId.Name = "textEditTxnId";
             this.textEditTxnId.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textEditTxnId.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -280,6 +269,17 @@ namespace Katswiri.Forms
             this.textEditTxnId.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.textEditTxnId.Size = new System.Drawing.Size(505, 54);
             this.textEditTxnId.TabIndex = 22;
+            // 
+            // lblChange
+            // 
+            this.lblChange.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChange.Location = new System.Drawing.Point(12, 213);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(501, 83);
+            this.lblChange.TabIndex = 23;
+            this.lblChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Pos
             // 
@@ -334,9 +334,9 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.SimpleButton btnClearCart;
         private DevExpress.XtraEditors.SimpleButton simpleButtonPay;
         private DevExpress.XtraEditors.SimpleButton simpleButtonPause;
-        private DevExpress.XtraEditors.LabelControl lblChange;
         private DevExpress.XtraEditors.TextEdit textEditTendered;
         private DevExpress.XtraEditors.SimpleButton simpleButtonPay2;
         private DevExpress.XtraEditors.TextEdit textEditTxnId;
+        private System.Windows.Forms.Label lblChange;
     }
 }
