@@ -164,22 +164,22 @@ namespace Katswiri
         //    showLogin();
         //}
 
-        //private void doSignOut()
-        //{
-        //    try
-        //    {
-        //        this.closeAllMdiChildren();
-        //        //Globals.User = null;
-        //        //Globals.AuthenticationHeader = null;
-        //        //usernameLabel.Caption = "";
-        //        showLogin();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        logger.Error(ex);
-        //        Application.Exit();
-        //    }
-        //}
+        private void doSignOut()
+        {
+            try
+            {
+                //this.closeAllMdiChildren();
+                //Globals.User = null;
+                //Globals.AuthenticationHeader = null;
+                //usernameLabel.Caption = "";
+                showLogin();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                Application.Exit();
+            }
+        }
 
         private void closeAllMdiChildren()
         {
@@ -306,11 +306,7 @@ namespace Katswiri
             incomes.ShowDialog();
         }
 
-        private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowPosFom();
-        }
+      
 
         private void ShowPosFom()
         {
@@ -425,8 +421,6 @@ namespace Katswiri
             roles.ShowDialog();
         }
 
-     
-
         private void ShowUserFom()
         {
             Users users = null;
@@ -456,5 +450,18 @@ namespace Katswiri
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             ShowUserFom();
         }
+
+        private void logout_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            doSignOut();
+        }
+
+        private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowPosFom();
+        }
+
+   
     }
 }

@@ -82,7 +82,7 @@ namespace Katswiri.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(518, 433);
+            this.ClientSize = new System.Drawing.Size(518, 490);
             this.Controls.Add(this.lookUpEditPayMode);
             this.Controls.Add(this.textBoxPayReference);
             this.Controls.Add(this.btnFinishSale);

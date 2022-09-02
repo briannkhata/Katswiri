@@ -301,6 +301,12 @@
     <Compile Include="Forms\Pay.Designer.cs">
       <DependentUpon>Pay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PosTouch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PosTouch.Designer.cs">
+      <DependentUpon>PosTouch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Roles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pay.resx">
       <DependentUpon>Pay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PosTouch.resx">
+      <DependentUpon>PosTouch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Roles.resx">
       <DependentUpon>Roles.cs</DependentUpon>

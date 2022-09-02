@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Katswiri.Forms
 {
-    public partial class Pos : DevExpress.XtraEditors.XtraForm
+    public partial class PosTouch : DevExpress.XtraEditors.XtraForm
     {
         KEntities db;
         Cart cart = new Cart();
@@ -19,12 +19,7 @@ namespace Katswiri.Forms
         ProductQuantity productQuantity = new ProductQuantity();
         int CartId;
 
-        Sale sale;
-        SaleDetail saleDetail;
-        public Pos pos;
-
-
-        public Pos()
+        public PosTouch()
         {
             InitializeComponent();
             clearGrid();
@@ -43,6 +38,7 @@ namespace Katswiri.Forms
         {
             gridControl1.DataSource = null;
             lblTotalBill.Text = "0.00";
+            lblSubTotal.Text = "0.00";
 
         }
         public void loadCart()
@@ -87,12 +83,12 @@ namespace Katswiri.Forms
                     lblTotalBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
                 }
 
-              
+               
 
-                //if (sp != null)
-                //{
-                //    lblSubTotal.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", sp, 2);
-                //}
+                if (sp != null)
+                {
+                    lblSubTotal.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", sp, 2);
+                }
             }
 
         }
@@ -106,7 +102,7 @@ namespace Katswiri.Forms
                 {
                     autoText.Add(product.ProductName);
                     //autoText.Add(product.ProductCode);
-                    //autoText.Add(product.BarCode);
+                    // autoText.Add(product.BarCode);
                 }
                 textSearchProduct.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 textSearchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -116,9 +112,9 @@ namespace Katswiri.Forms
 
       
 
-        private void Pos_FormClosing(object sender, FormClosingEventArgs e)
+        private void PosTouch_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you would like to cancel POS UI?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (XtraMessageBox.Show("Are you sure you would like to cancel PosTouch UI?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 e.Cancel = true;
             }
@@ -146,6 +142,7 @@ namespace Katswiri.Forms
             //gridControl1.DataSource = null;
             loadCart();
             lblTotalBill.Text = "0.00";
+            lblSubTotal.Text = "0.00";
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -301,67 +298,6 @@ namespace Katswiri.Forms
 
             }
             loadCart();
-        }
-
-        private void simpleButton1_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                using (db = new KEntities())
-                {
-                    sale = new Sale()
-                    {
-                        DateSold =  DateTime.Parse(dateTimePickerSaleDate.Text),
-                        //SaleTypeId = (int)lookUpEditPayMode.EditValue,
-                        ShopId = 1,
-                        SoldBy = 1,
-                        SoldTo = 1,
-                        TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
-                        TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
-                        TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
-                        TotalTendered = Double.Parse(textEditTendered.Text),
-                        DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
-                        DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
-                    };
-
-                    db.Sales.Add(sale);
-                    db.SaveChanges();
-                    var saleId = sale.SaleId;//get recently inserted id
-
-                    var cart = db.Carts.Where(x => x.UserId == 1).ToList();
-                    foreach (var item in cart)
-                    {
-                        saleDetail = new SaleDetail()
-                        {
-                            SaleId = saleId,
-                            ProductId = (int)item.ProductId,
-                            SellingPrice = (double)item.SellingPrice,
-                            ShopId = (int)item.ShopId,
-                            SoldPrice = (double)item.TotalPrice,
-                            Qty = (double)item.Qty,
-                            DiscountAmount = (double)item.DiscountAmount,
-                            DiscountPercent = (double)item.DiscountPercent,
-                            TaxValue = (double)item.TaxValue,
-                            UserId = (int)item.UserId,
-                            DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
-                        };
-                        db.SaleDetails.Add(saleDetail);
-                        db.SaveChanges();
-                    }
-
-                    this.Close();
-                    clearmyCart();
-                    //clearGrid();
-                    loadCart();
-
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
     }
 }

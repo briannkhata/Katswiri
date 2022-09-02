@@ -63,7 +63,7 @@ namespace Katswiri.Forms
                         SoldTo = 1,
                         TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
                         TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
-                        TotalChange = (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice) - Double.Parse(textBoxTendered.Text)),
+                        TotalChange = Double.Parse(textBoxTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
                         TotalTendered = Double.Parse(textBoxTendered.Text),
                         DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
                         DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
