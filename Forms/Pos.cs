@@ -20,7 +20,8 @@ namespace Katswiri.Forms
 
         Sale sale;
         SaleDetail saleDetail;
-        public Pos pos;
+        Pos pos;
+        Quantity quantity;
 
 
         public Pos()
@@ -46,7 +47,6 @@ namespace Katswiri.Forms
         {
             gridControl1.DataSource = null;
             lblTotalBill.Text = "0.00";
-
         }
 
         public void resetCartUI()
@@ -251,7 +251,6 @@ namespace Katswiri.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-         
         }
 
         private void gridControl1_KeyUp(object sender, KeyEventArgs e)
@@ -491,7 +490,20 @@ namespace Katswiri.Forms
                         };
                         db.SaleDetails.Add(saleDetail);
                         db.SaveChanges();
+
+                        quantity = new Quantity()
+                        {
+                            ProductId = saleDetail.ProductId,
+                            ShopQty = quantity.ShopQty - saleDetail.Qty,
+                            //StoresQty = saleDetail.Qty,
+                            //KitchenQty = saleDetail.Qty,
+                        };
+                        db.Quantities.Add(quantity);
+                        db.SaveChanges();
+
                     }
+
+
                     resetCartUI();
                     textSearchProduct.Focus();
                 }
