@@ -16,7 +16,6 @@ namespace Katswiri.Forms
         KEntities db;
         Cart cart = new Cart();
         Product product;
-        ProductQuantity productQuantity = new ProductQuantity();
         int CartId;
 
         public PosTouch()

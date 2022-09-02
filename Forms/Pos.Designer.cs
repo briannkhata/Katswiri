@@ -37,6 +37,8 @@ namespace Katswiri.Forms
             this.dateTimePickerSaleDate = new System.Windows.Forms.DateTimePicker();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.lblChange = new System.Windows.Forms.Label();
+            this.textEditTxnId = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonPay2 = new DevExpress.XtraEditors.SimpleButton();
             this.textEditTendered = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonNew = new DevExpress.XtraEditors.SimpleButton();
@@ -47,8 +49,7 @@ namespace Katswiri.Forms
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.textEditTxnId = new DevExpress.XtraEditors.TextEdit();
-            this.lblChange = new System.Windows.Forms.Label();
+            this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -56,12 +57,13 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTxnId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTendered.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTxnId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -94,6 +96,7 @@ namespace Katswiri.Forms
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.lookUpEditPaymentType);
             this.panelControl2.Controls.Add(this.lblTotalBill);
             this.panelControl2.Controls.Add(this.dateTimePickerSaleDate);
             this.panelControl2.Controls.Add(this.lookUpEditSaleType);
@@ -118,9 +121,9 @@ namespace Katswiri.Forms
             // 
             // dateTimePickerSaleDate
             // 
-            this.dateTimePickerSaleDate.Location = new System.Drawing.Point(317, 18);
+            this.dateTimePickerSaleDate.Location = new System.Drawing.Point(346, 18);
             this.dateTimePickerSaleDate.Name = "dateTimePickerSaleDate";
-            this.dateTimePickerSaleDate.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerSaleDate.Size = new System.Drawing.Size(160, 22);
             this.dateTimePickerSaleDate.TabIndex = 12;
             // 
             // lookUpEditSaleType
@@ -129,7 +132,7 @@ namespace Katswiri.Forms
             this.lookUpEditSaleType.Name = "lookUpEditSaleType";
             this.lookUpEditSaleType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditSaleType.Size = new System.Drawing.Size(181, 26);
+            this.lookUpEditSaleType.Size = new System.Drawing.Size(160, 26);
             this.lookUpEditSaleType.TabIndex = 11;
             // 
             // panelControl4
@@ -150,6 +153,29 @@ namespace Katswiri.Forms
             this.panelControl4.Size = new System.Drawing.Size(530, 616);
             this.panelControl4.TabIndex = 10;
             // 
+            // lblChange
+            // 
+            this.lblChange.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChange.Location = new System.Drawing.Point(12, 213);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(501, 83);
+            this.lblChange.TabIndex = 23;
+            this.lblChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textEditTxnId
+            // 
+            this.textEditTxnId.Location = new System.Drawing.Point(10, 139);
+            this.textEditTxnId.Name = "textEditTxnId";
+            this.textEditTxnId.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEditTxnId.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.textEditTxnId.Properties.Appearance.Options.UseFont = true;
+            this.textEditTxnId.Properties.Appearance.Options.UseForeColor = true;
+            this.textEditTxnId.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.textEditTxnId.Size = new System.Drawing.Size(505, 54);
+            this.textEditTxnId.TabIndex = 22;
+            // 
             // simpleButtonPay2
             // 
             this.simpleButtonPay2.Appearance.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,14 +191,16 @@ namespace Katswiri.Forms
             // 
             this.textEditTendered.Location = new System.Drawing.Point(12, 30);
             this.textEditTendered.Name = "textEditTendered";
-            this.textEditTendered.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEditTendered.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textEditTendered.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.textEditTendered.Properties.Appearance.Options.UseFont = true;
             this.textEditTendered.Properties.Appearance.Options.UseForeColor = true;
-            this.textEditTendered.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
-            this.textEditTendered.Size = new System.Drawing.Size(505, 54);
+            this.textEditTendered.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.textEditTendered.Size = new System.Drawing.Size(505, 58);
             this.textEditTendered.TabIndex = 18;
+            this.textEditTendered.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEditTendered_KeyPress);
             this.textEditTendered.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEditTendered_KeyUp);
+            this.textEditTendered.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textEditTendered_MouseClick);
             // 
             // simpleButtonNew
             // 
@@ -198,13 +226,13 @@ namespace Katswiri.Forms
             // 
             // simpleButtonPay
             // 
-            this.simpleButtonPay.Appearance.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButtonPay.Appearance.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonPay.Appearance.Options.UseFont = true;
             this.simpleButtonPay.Location = new System.Drawing.Point(243, 440);
             this.simpleButtonPay.Name = "simpleButtonPay";
             this.simpleButtonPay.Size = new System.Drawing.Size(272, 78);
             this.simpleButtonPay.TabIndex = 15;
-            this.simpleButtonPay.Text = "Pay";
+            this.simpleButtonPay.Text = "FINISH SALE";
             this.simpleButtonPay.Click += new System.EventHandler(this.simpleButton16_Click);
             // 
             // simpleButtonPause
@@ -258,28 +286,14 @@ namespace Katswiri.Forms
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
-            // textEditTxnId
+            // lookUpEditPaymentType
             // 
-            this.textEditTxnId.Location = new System.Drawing.Point(10, 139);
-            this.textEditTxnId.Name = "textEditTxnId";
-            this.textEditTxnId.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEditTxnId.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.textEditTxnId.Properties.Appearance.Options.UseFont = true;
-            this.textEditTxnId.Properties.Appearance.Options.UseForeColor = true;
-            this.textEditTxnId.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
-            this.textEditTxnId.Size = new System.Drawing.Size(505, 54);
-            this.textEditTxnId.TabIndex = 22;
-            // 
-            // lblChange
-            // 
-            this.lblChange.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.Location = new System.Drawing.Point(12, 213);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(501, 83);
-            this.lblChange.TabIndex = 23;
-            this.lblChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lookUpEditPaymentType.Location = new System.Drawing.Point(181, 18);
+            this.lookUpEditPaymentType.Name = "lookUpEditPaymentType";
+            this.lookUpEditPaymentType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditPaymentType.Size = new System.Drawing.Size(160, 26);
+            this.lookUpEditPaymentType.TabIndex = 13;
             // 
             // Pos
             // 
@@ -307,12 +321,13 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTxnId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTendered.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditTxnId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,5 +353,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.SimpleButton simpleButtonPay2;
         private DevExpress.XtraEditors.TextEdit textEditTxnId;
         private System.Windows.Forms.Label lblChange;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditPaymentType;
     }
 }

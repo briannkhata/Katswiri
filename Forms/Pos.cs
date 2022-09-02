@@ -17,10 +17,8 @@ namespace Katswiri.Forms
         Cart cart = new Cart();
         Product product;
         int CartId;
-
         Sale sale;
         SaleDetail saleDetail;
-        Pos pos;
         Quantity quantity;
 
 
@@ -31,7 +29,7 @@ namespace Katswiri.Forms
             loadCart();
             autoCompleteSearch();
             loadSaleTypes();
-
+            loadPaymentTypes();
             //clearmyCart();//clear my cart            
             //lblCompany.Text = db.Settings.FirstOrDefault().Name;
             //lblShop.Text = db.Shops.FirstOrDefault().ShopName;
@@ -48,7 +46,6 @@ namespace Katswiri.Forms
             gridControl1.DataSource = null;
             lblTotalBill.Text = "0.00";
         }
-
         public void resetCartUI()
         {
             lblTotalBill.Text = "00.00";
@@ -97,18 +94,33 @@ namespace Katswiri.Forms
                 if (total != null)
                 {
                     lblTotalBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
+                    textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
                 }
-
-              
 
                 //if (sp != null)
                 //{
                 //    lblSubTotal.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", sp, 2);
                 //}
             }
-
         }
+        public bool isNumber(char ch, string text)
+        {
+            bool res = true;
+            char decimalChar = Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
 
+            //check if it´s a decimal separator and if doesn´t already have one in the text string
+            if (ch == decimalChar && text.IndexOf(decimalChar) != -1)
+            {
+                res = false;
+                return res;
+            }
+
+            //check if it´s a digit, decimal separator and backspace
+            if (!Char.IsDigit(ch) && ch != decimalChar && ch != (char)Keys.Back)
+                res = false;
+
+            return res;
+        }
         private void autoCompleteSearch()
         {
             using (db = new KEntities())
@@ -125,7 +137,6 @@ namespace Katswiri.Forms
                 textSearchProduct.AutoCompleteCustomSource = autoText;
             }
         }
-
         private void Pos_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (XtraMessageBox.Show("Are you sure you would like to cancel POS UI?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -220,7 +231,6 @@ namespace Katswiri.Forms
         {
             try
             {
-                //Cart cart = new Cart();
                 var selectedRows = gridView1.GetSelectedRows();
                 var row = ((vwCart)gridView1.GetRow(selectedRows[0]));
                 using (var db = new KEntities())
@@ -245,7 +255,6 @@ namespace Katswiri.Forms
                     }
                     loadCart();
                 }
-                gridControl1.RefreshDataSource();
             }
             catch (Exception ex)
             {
@@ -318,6 +327,17 @@ namespace Katswiri.Forms
             }
         }
 
+        private void loadPaymentTypes()
+        {
+            using (db = new KEntities())
+            {
+                lookUpEditPaymentType.Properties.DataSource = db.vwPaymentTypes.ToList();
+                lookUpEditPaymentType.Properties.ValueMember = "PaymentTypeId";
+                lookUpEditPaymentType.Properties.DisplayMember = "PaymentTypeName";
+            }
+        }
+
+
         //private void printReceipt()
         //{
         //    var heda = db.Shops.FirstOrDefault().ShopName;
@@ -331,7 +351,7 @@ namespace Katswiri.Forms
         //    double DiscountPer = (double)(db.Sales.FirstOrDefault().DiscountPercent);
         //    DateTime SaleDate = (DateTime)(db.Sales.FirstOrDefault().DateSold);
 
-        
+
 
         //    int lineHeight = 20;
         //    int supplementaryLines = 15;
@@ -448,64 +468,70 @@ namespace Katswiri.Forms
         {
             try
             {
-                using (db = new KEntities())
+                var bill = Double.Parse(lblTotalBill.Text);
+                var Tendered = Double.Parse(textEditTendered.Text);
+
+                if (Tendered < bill || textEditTendered.Text == string.Empty)
                 {
-                    sale = new Sale()
+                    using (db = new KEntities())
                     {
-                        DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
-                        SaleTypeId = (int)lookUpEditSaleType.EditValue,
-                        ShopId = db.Users.Where(x=>x.UserId == 1).Single().ShopId,
-                        SoldBy = 1,
-                        SoldTo = 1,
-                        TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
-                        TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
-                        SubTotal = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.SellingPrice),
-                        TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
-                        TotalTendered = Double.Parse(textEditTendered.Text),
-                        DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
-                        DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
-                        txnId = textEditTxnId.Text,
-                    };
-
-                    db.Sales.Add(sale);
-                    db.SaveChanges();
-                    var saleId = sale.SaleId;//get recently inserted id
-
-                    var cart = db.Carts.Where(x => x.UserId == 1).ToList();
-                    foreach (var item in cart)
-                    {
-                        saleDetail = new SaleDetail()
+                        sale = new Sale()
                         {
-                            SaleId = saleId,
-                            ProductId = (int)item.ProductId,
-                            SellingPrice = (double)item.SellingPrice,
-                            ShopId = (int)item.ShopId,
-                            SoldPrice = (double)item.TotalPrice,
-                            Qty = (double)item.Qty,
-                            DiscountAmount = (double)item.DiscountAmount,
-                            DiscountPercent = (double)item.DiscountPercent,
-                            TaxValue = (double)item.TaxValue,
-                            UserId = (int)item.UserId,
                             DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
+                            SaleTypeId = (int)lookUpEditSaleType.EditValue,
+                            ShopId = db.Users.Where(x => x.UserId == 1).Single().ShopId,
+                            SoldBy = 1,
+                            SoldTo = 1,
+                            TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
+                            TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
+                            SubTotal = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.SellingPrice),
+                            TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
+                            TotalTendered = Double.Parse(textEditTendered.Text),
+                            DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
+                            DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
+                            txnId = textEditTxnId.Text,
                         };
-                        db.SaleDetails.Add(saleDetail);
-                        db.SaveChanges();
 
-                        quantity = new Quantity()
+                        db.Sales.Add(sale);
+                        db.SaveChanges();
+                        var saleId = sale.SaleId;//get recently inserted id
+
+                        var cart = db.Carts.Where(x => x.UserId == 1).ToList();
+                        foreach (var item in cart)
                         {
-                            ProductId = saleDetail.ProductId,
-                            ShopQty = quantity.ShopQty - saleDetail.Qty,
-                            //StoresQty = saleDetail.Qty,
-                            //KitchenQty = saleDetail.Qty,
-                        };
-                        db.Quantities.Add(quantity);
-                        db.SaveChanges();
+                            saleDetail = new SaleDetail()
+                            {
+                                SaleId = saleId,
+                                ProductId = (int)item.ProductId,
+                                SellingPrice = (double)item.SellingPrice,
+                                ShopId = (int)item.ShopId,
+                                SoldPrice = (double)item.TotalPrice,
+                                Qty = (double)item.Qty,
+                                DiscountAmount = (double)item.DiscountAmount,
+                                DiscountPercent = (double)item.DiscountPercent,
+                                TaxValue = (double)item.TaxValue,
+                                UserId = (int)item.UserId,
+                                DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
+                            };
+                            db.SaleDetails.Add(saleDetail);
+                            db.SaveChanges();
 
+                            //quantity = new Quantity()
+                            //{
+                            //    ProductId = item.ProductId,
+                            //    ShopQty = quantity.ShopQty - item.Qty,
+                            //};
+                            //db.Quantities.Add(quantity);
+                            //db.SaveChanges();
+
+                        }
+                        resetCartUI();
+                        textSearchProduct.Focus();
                     }
-
-
-                    resetCartUI();
-                    textSearchProduct.Focus();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Please Enter Amount Corresponding to the Bill", "Katswiri", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -520,6 +546,17 @@ namespace Katswiri.Forms
            
             dispalyChange();
             //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", textEditTendered.Text, 2);
+        }
+
+        private void textEditTendered_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!isNumber(e.KeyChar, textEditTendered.Text))
+                e.Handled = true;
+        }
+
+        private void textEditTendered_MouseClick(object sender, MouseEventArgs e)
+        {
+            textEditTendered.Text = string.Empty;
         }
     }
 }
