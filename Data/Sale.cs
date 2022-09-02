@@ -27,5 +27,6 @@ namespace Katswiri.Data
         public double TotalChange { get; set; }
         public int SaleTypeId { get; set; }
         public int Deleted { get; set; }
+        public string txnId { get; set; }
     }
 }

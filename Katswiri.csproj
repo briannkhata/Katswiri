@@ -262,6 +262,9 @@
     <Compile Include="Data\vwRole.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwSaleType.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwShop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

@@ -52,6 +52,7 @@
         <AssociationConnector Association="KModel.FK_ProductQuantities_Shops" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Users_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="KModel.FK_Shops_Settings1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KModel.vwSaleType" Width="1.5" PointX="11.375" PointY="18.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

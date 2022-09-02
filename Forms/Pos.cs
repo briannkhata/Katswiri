@@ -30,6 +30,8 @@ namespace Katswiri.Forms
             clearGrid();
             loadCart();
             autoCompleteSearch();
+            loadSaleTypes();
+           
             //clearmyCart();//clear my cart            
             //lblCompany.Text = db.Settings.FirstOrDefault().Name;
             //lblShop.Text = db.Shops.FirstOrDefault().ShopName;
@@ -44,6 +46,15 @@ namespace Katswiri.Forms
             gridControl1.DataSource = null;
             lblTotalBill.Text = "0.00";
 
+        }
+
+        public void resetCartUI()
+        {
+            lblTotalBill.Text = "00.00";
+            //lblChange.Text = "00.00";
+            textEditTendered.Text = "00.00";
+            clearmyCart();
+            loadCart();
         }
         public void loadCart()
         {
@@ -156,6 +167,7 @@ namespace Katswiri.Forms
 
         private void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
         {
+            lblChange.Text = string.Empty;
             try
             {
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
@@ -279,15 +291,13 @@ namespace Katswiri.Forms
 
         private void ShowPayFom()
         {
-
                 Pay pay = null;
                 if (pay == null || pay.IsDisposed)
                 {
-                pay = new Pay();
+                    pay = new Pay();
                 }
                 pay.Activate();
                 pay.ShowDialog();
-
         }
 
         private void gridControl1_ProcessGridKey(object sender, KeyEventArgs e)
@@ -298,12 +308,147 @@ namespace Katswiri.Forms
                     this.gridView1.MoveNext();
                 else
                     this.gridView1.MoveFirst();
-
             }
             loadCart();
         }
 
-        private void simpleButton1_Click_1(object sender, EventArgs e)
+        private void loadSaleTypes()
+        {
+            using (db = new KEntities())
+            {
+                lookUpEditSaleType.Properties.DataSource = db.vwSaleTypes.ToList();
+                lookUpEditSaleType.Properties.ValueMember = "SaleTypeId";
+                lookUpEditSaleType.Properties.DisplayMember = "SaleType";
+            }
+        }
+
+       
+
+
+        //private void printReceipt()
+        //{
+        //    var heda = db.Shops.FirstOrDefault().ShopName;
+        //    var futa = "Thank you for Shopping With Us";
+
+        //    int SaleId = (int)(db.Sales.FirstOrDefault().SaleId);
+        //    double Tendered = (double)(db.Sales.FirstOrDefault().TotalTendered);
+        //    double Tax = (double)(db.Sales.FirstOrDefault().TaxAmount);
+        //    double Change = (double)(db.Sales.FirstOrDefault().TotalChange);
+        //    double DiscountAmt = (double)(db.Sales.FirstOrDefault().DiscountAmount);
+        //    double DiscountPer = (double)(db.Sales.FirstOrDefault().DiscountPercent);
+        //    DateTime SaleDate = (DateTime)(db.Sales.FirstOrDefault().DateSold);
+
+        
+
+        //    int lineHeight = 20;
+        //    int supplementaryLines = 15;
+
+        //    //Bitmap bitm = new Bitmap(heda.Length * 30, (supplementaryLines + dataGridView1.Rows.Count) * lineHeight);
+        //    StringFormat format = new StringFormat(StringFormatFlags.DirectionRightToLeft);
+        //    using (Graphics graphic = Graphics.FromImage(bitm))
+        //    {
+        //        int startX = 0;
+        //        int startY = 0;
+        //        int offsetY = 0;
+        //        Font newfont2 = null;
+        //        Font itemFont = null;
+        //        SolidBrush black = null;
+        //        SolidBrush white = null;
+
+        //        try
+        //        {
+        //            //Font newfont = new Font("Arial Black", 8);
+        //            newfont2 = new Font("Calibri", 11);
+        //            itemFont = new Font("Calibri", 11);
+
+        //            black = new SolidBrush(Color.Black);
+        //            white = new SolidBrush(Color.White);
+
+        //            //PointF point = new PointF(40f, 2f);
+
+        //            graphic.FillRectangle(white, 0, 0, bitm.Width, bitm.Height);
+        //            graphic.DrawString("" + InvoiceNo + "رقم الفاتورة ", newfont2, black, startX + 150, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+
+        //            //PointF pointPrice = new PointF(15f, 45f);
+        //            graphic.DrawString("" + InvoiceDate + "", newfont2, black, startX, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //            offsetY = offsetY + lineHeight;
+
+        //            graphic.DrawString("إسم المنتج             " + "الكمية      " + "السعر", newfont2, black, startX + 15, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //            offsetY = offsetY + lineHeight;
+        //            graphic.DrawString("--------------------------------------------------", newfont2, black, startX, startY + offsetY);
+        //            //PointF pointPname = new PointF(10f, 65f);
+        //            //PointF pointBar = new PointF(10f, 65f);
+
+        //            offsetY = offsetY + lineHeight;
+        //            offsetY = offsetY + lineHeight;
+
+        //            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+        //            {
+        //                int ii = 1;
+        //                ii++;
+
+        //                graphic.DrawString(" " + dataGridView1.Rows[i].Cells[3].Value + "  " + dataGridView1.Rows[i].Cells[2].Value + "  " + dataGridView1.Rows[i].Cells[1].Value + "", itemFont,
+        //                         black, startX + 15, startY + offsetY);
+        //                offsetY = offsetY + lineHeight;
+        //            }
+        //            offsetY = offsetY + lineHeight;
+        //            graphic.DrawString("--------------------------------------------------", newfont2, black, startX, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //            graphic.DrawString("الإجمالي :" + gross + "", newfont2, black, startX + 15, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //            graphic.DrawString("الخصم :" + discount + "", newfont2, black, startX + 15, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //            graphic.DrawString("الصافي :" + net + "", newfont2, black, startX + 15, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //            offsetY = offsetY + lineHeight;
+        //            graphic.DrawString("--------------------------------------------------", newfont2, black, startX, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //            graphic.DrawString("" + welcome + "", newfont2, black, startX, startY + offsetY);
+        //            offsetY = offsetY + lineHeight;
+        //        }
+        //        finally
+        //        {
+        //            black.Dispose();
+        //            white.Dispose();
+        //            itemFont.Dispose();
+        //            newfont2.Dispose();
+        //        }
+        //    }
+
+        //    //using (MemoryStream Mmst = new MemoryStream())
+        //    //{
+        //    //    bitm.Save("ms", ImageFormat.Jpeg);
+        //    //    pictureBox1.Image = bitm;
+        //    //    pictureBox1.Width = bitm.Width;
+        //    //    pictureBox1.Height = bitm.Height;
+
+
+        //    //}
+
+
+        //}
+
+
+
+
+
+        private void Pos_Shown(object sender, EventArgs e)
+        {
+            using (db = new KEntities())
+            {
+                lookUpEditSaleType.EditValue = db.vwSaleTypes.ToList()[0].SaleTypeId;
+            }
+        }
+
+        private void dispalyChange()
+        {
+            lblChange.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", (Convert.ToDouble(textEditTendered.Text) - Convert.ToDouble(lblTotalBill.Text)).ToString(),2);
+        }
+
+        private void simpleButtonPay2_Click(object sender, EventArgs e)
         {
             try
             {
@@ -311,8 +456,8 @@ namespace Katswiri.Forms
                 {
                     sale = new Sale()
                     {
-                        DateSold =  DateTime.Parse(dateTimePickerSaleDate.Text),
-                        //SaleTypeId = (int)lookUpEditPayMode.EditValue,
+                        DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
+                        SaleTypeId = (int)lookUpEditSaleType.EditValue,
                         ShopId = 1,
                         SoldBy = 1,
                         SoldTo = 1,
@@ -322,6 +467,7 @@ namespace Katswiri.Forms
                         TotalTendered = Double.Parse(textEditTendered.Text),
                         DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
                         DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
+                        txnId = textEditTxnId.Text,
                     };
 
                     db.Sales.Add(sale);
@@ -348,20 +494,20 @@ namespace Katswiri.Forms
                         db.SaleDetails.Add(saleDetail);
                         db.SaveChanges();
                     }
-
                     this.Close();
-                    clearmyCart();
-                    //clearGrid();
-                    loadCart();
-
-
-
+                    resetCartUI();
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        
+      }
+
+        private void textEditTendered_KeyUp(object sender, KeyEventArgs e)
+        {
+            dispalyChange();
         }
     }
 }

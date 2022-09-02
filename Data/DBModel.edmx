@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Banks">
           <Key>
             <PropertyRef Name="BankId" />
@@ -174,6 +174,7 @@
           <Property Name="TotalChange" Type="float" Nullable="false" />
           <Property Name="SaleTypeId" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="txnId" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SaleTypes">
           <Key>
@@ -460,6 +461,16 @@ warning 6002: The table/view 'katswiri.dbo.vwRoles' does not have a primary key 
           <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'katswiri.dbo.vwSaleTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwSaleTypes">
+          <Key>
+            <PropertyRef Name="SaleTypeId" />
+            <PropertyRef Name="SaleTypeName" />
+          </Key>
+          <Property Name="SaleTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleTypeName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'katswiri.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -793,6 +804,12 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
     [vwRoles].[RoleId] AS [RoleId]
     FROM [dbo].[vwRoles] AS [vwRoles]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwSaleTypes" EntityType="Self.vwSaleTypes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwSaleTypes].[SaleTypeId] AS [SaleTypeId], 
+    [vwSaleTypes].[SaleTypeName] AS [SaleTypeName]
+    FROM [dbo].[vwSaleTypes] AS [vwSaleTypes]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwShops" EntityType="Self.vwShops" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwShops].[Currency] AS [Currency], 
@@ -880,8 +897,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1068,6 +1084,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <Property Name="TotalChange" Type="Double" Nullable="false" />
           <Property Name="SaleTypeId" Type="Int32" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="txnId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SaleType">
           <Key>
@@ -1606,7 +1623,16 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
             <End Role="Settings" EntitySet="Settings" />
             <End Role="Shops" EntitySet="Shops" />
           </AssociationSet>
+          <EntitySet Name="vwSaleTypes" EntityType="KModel.vwSaleType" />
         </EntityContainer>
+        <EntityType Name="vwSaleType">
+          <Key>
+            <PropertyRef Name="SaleTypeId" />
+            <PropertyRef Name="SaleTypeName" />
+          </Key>
+          <Property Name="SaleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1782,6 +1808,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="KModel.Sale">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="txnId" ColumnName="txnId" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="TotalTendered" ColumnName="TotalTendered" />
                 <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
@@ -2075,6 +2102,14 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="ShopName" ColumnName="ShopName" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwSaleTypes">
+            <EntityTypeMapping TypeName="KModel.vwSaleType">
+              <MappingFragment StoreEntitySet="vwSaleTypes">
+                <ScalarProperty Name="SaleTypeName" ColumnName="SaleTypeName" />
+                <ScalarProperty Name="SaleTypeId" ColumnName="SaleTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -62,5 +62,6 @@ namespace Katswiri.Data
         public virtual DbSet<vwTaxType> vwTaxTypes { get; set; }
         public virtual DbSet<vwUnit> vwUnits { get; set; }
         public virtual DbSet<vwUser> vwUsers { get; set; }
+        public virtual DbSet<vwSaleType> vwSaleTypes { get; set; }
     }
 }
