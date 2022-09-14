@@ -15,6 +15,7 @@
           <Property Name="ClosingBalance" Type="float" Nullable="false" />
           <Property Name="ProfitLoss" Type="float" Nullable="false" />
           <Property Name="ActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Banks">
           <Key>
@@ -187,6 +188,7 @@
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="txnId" Type="varchar(max)" />
           <Property Name="SubTotal" Type="float" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleTypes">
           <Key>
@@ -1053,6 +1055,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="txnId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubTotal" Type="Double" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleType">
           <Key>
@@ -1579,6 +1582,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <Property Name="ClosingBalance" Type="Double" Nullable="false" />
           <Property Name="ProfitLoss" Type="Double" Nullable="false" />
           <Property Name="ActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Quantity">
           <Key>
@@ -1754,6 +1758,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="KModel.Sale">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="txnId" ColumnName="txnId" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
@@ -2063,6 +2068,7 @@ warning 6002: The table/view 'katswiri.dbo.vwUsers' does not have a primary key 
           <EntitySetMapping Name="AccountActivities">
             <EntityTypeMapping TypeName="KModel.AccountActivity">
               <MappingFragment StoreEntitySet="AccountActivities">
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
                 <ScalarProperty Name="ProfitLoss" ColumnName="ProfitLoss" />
                 <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />

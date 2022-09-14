@@ -20,5 +20,6 @@ namespace Katswiri.Data
         public double ClosingBalance { get; set; }
         public double ProfitLoss { get; set; }
         public System.DateTime ActivityDate { get; set; }
+        public int ShopId { get; set; }
     }
 }

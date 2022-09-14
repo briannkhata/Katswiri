@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
+using Katswiri.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace Katswiri
     public partial class Login : DevExpress.XtraEditors.XtraForm
     {
         KEntities db = new KEntities();
-        User users = new User();
+
         public Login()
         {
             InitializeComponent();
@@ -31,17 +32,14 @@ namespace Katswiri
             {
                 var username = textEditUserName.Text.ToLower();
                 var password = textEditPassWord.Text;
-                var loggedInUser = string.Empty;
-                var loggedInRole = string.Empty;
                 try
                 {  
                         var user = db.Users.Where(x => x.UserName == username && x.PassWord == password).ToList();
                         if (user.Count == 1)
                         {
-                            var loggedIn = db.Users.Where(x => x.UserName == username).Single();
-                             users.UserName = loggedIn.UserName;
-                             users.Role = loggedIn.Role;
-                            this.DialogResult = DialogResult.OK;
+                            LoginInfo.UserName = db.Users.Where(x => x.UserName == username && x.PassWord == password).Single().UserName;
+                            LoginInfo.UserId = db.Users.Where(x => x.UserName == username && x.PassWord == password).Single().UserId;
+                            this.DialogResult = DialogResult.OK;                            
                         }
                         else
                         {
@@ -62,7 +60,7 @@ namespace Katswiri
             catch (Exception) { }
         }
 
-         private bool formValid()
+        private bool formValid()
         {
             var result = true;
             var username = textEditUserName.Text.Trim();

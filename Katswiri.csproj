@@ -17,7 +17,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -283,24 +283,7 @@
     <Compile Include="Enums\FormMode.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\TaxTypesStatus.cs" />
-    <Compile Include="Forms\Banks.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Banks.Designer.cs">
-      <DependentUpon>Banks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Brands.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Brands.Designer.cs">
-      <DependentUpon>Brands.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Categories.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Categories.Designer.cs">
-      <DependentUpon>Categories.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Forms\LoginInfo.cs" />
     <Compile Include="Forms\Pay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,12 +296,6 @@
     <Compile Include="Forms\PosTouch.Designer.cs">
       <DependentUpon>PosTouch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Roles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Roles.Designer.cs">
-      <DependentUpon>Roles.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,30 +307,6 @@
     </Compile>
     <Compile Include="Forms\Shops.Designer.cs">
       <DependentUpon>Shops.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Expenses.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Expenses.Designer.cs">
-      <DependentUpon>Expenses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ExpenseTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ExpenseTypes.Designer.cs">
-      <DependentUpon>ExpenseTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Incomes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Incomes.Designer.cs">
-      <DependentUpon>Incomes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\IncomeTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\IncomeTypes.Designer.cs">
-      <DependentUpon>IncomeTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PaymentTypes.cs">
       <SubType>Form</SubType>
@@ -446,41 +399,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>usersDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Banks.resx">
-      <DependentUpon>Banks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Brands.resx">
-      <DependentUpon>Brands.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Categories.resx">
-      <DependentUpon>Categories.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pay.resx">
       <DependentUpon>Pay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PosTouch.resx">
       <DependentUpon>PosTouch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Roles.resx">
-      <DependentUpon>Roles.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Shops.resx">
       <DependentUpon>Shops.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Expenses.resx">
-      <DependentUpon>Expenses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ExpenseTypes.resx">
-      <DependentUpon>ExpenseTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Incomes.resx">
-      <DependentUpon>Incomes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\IncomeTypes.resx">
-      <DependentUpon>IncomeTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PaymentTypes.resx">
       <DependentUpon>PaymentTypes.cs</DependentUpon>

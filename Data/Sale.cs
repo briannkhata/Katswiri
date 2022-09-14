@@ -29,5 +29,6 @@ namespace Katswiri.Data
         public int Deleted { get; set; }
         public string txnId { get; set; }
         public double SubTotal { get; set; }
+        public int PaymentTypeId { get; set; }
     }
 }

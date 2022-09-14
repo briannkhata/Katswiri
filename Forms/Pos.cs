@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace Katswiri.Forms
     {
         KEntities db;
         Cart cart = new Cart();
-        Product product;
         int CartId;
         Sale sale;
         SaleDetail saleDetail;
@@ -30,15 +30,17 @@ namespace Katswiri.Forms
             autoCompleteSearch();
             loadSaleTypes();
             loadPaymentTypes();
+
             //clearmyCart();//clear my cart            
             //lblCompany.Text = db.Settings.FirstOrDefault().Name;
             //lblShop.Text = db.Shops.FirstOrDefault().ShopName;
 
-            //simpleButtonBackSpace.Enabled = false;
-            //simpleButtonDelete.Enabled = false;
-            //simpleButtonPay.Enabled = false;
             textEditTendered.Text = String.Format("{0:c}", textEditTendered.Text);
-            textEditTendered.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            //textEditTendered.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            using (var db = new KEntities())
+            {
+                lblCashier.Text = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().Name;
+            }
 
         }
         public void clearGrid()
@@ -59,7 +61,7 @@ namespace Katswiri.Forms
             using (db = new KEntities())
             {
                 gridControl1.DataSource = null;
-                gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == 1).ToList();
+                gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
                 //gridView1.OptionsBehavior.Editable = false;
                 gridView1.Columns["UserId"].Visible = false;
                 gridView1.Columns["ShopId"].Visible = false;
@@ -87,14 +89,16 @@ namespace Katswiri.Forms
 
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
 
-                var total = db.Carts?.Where(x => x.UserId == 1).Sum(x => x.TotalPrice);
-                var tax = db.Carts?.Where(x => x.UserId == 1).Sum(x => x.TaxValue);
-                var sp = db.Carts?.Where(x => x.UserId == 1).Sum(x => x.SellingPrice);
+                var total = db.Carts?.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TotalPrice);
+                var tax = db.Carts?.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TaxValue);
+                var sp = db.Carts?.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.SellingPrice);
 
                 if (total != null)
                 {
                     lblTotalBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
-                    textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
+                    //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
+                    textEditTendered.Text = "0";
+
                 }
 
                 //if (sp != null)
@@ -148,7 +152,7 @@ namespace Katswiri.Forms
         {
             using (var db = new KEntities())
             {
-                var list = db.Carts.Where(x => x.UserId == 1).ToList();
+                var list = db.Carts.Where(x => x.UserId == LoginInfo.UserId).ToList();
                 foreach (var rm in list)
                 {
                     db.Carts.Remove(rm);
@@ -205,8 +209,8 @@ namespace Katswiri.Forms
                         {
                             cart.ProductId = product.ProductId;
                             cart.SellingPrice = product.SellingPrice;
-                            cart.ShopId = db.Users.Where(x => x.UserId == 1).Single().ShopId;
-                            cart.UserId = 1;
+                            cart.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId;
+                            cart.UserId = LoginInfo.UserId;
                             cart.DiscountAmount = 0;
                             cart.DiscountPercent = 0;
                             cart.Qty = 1;
@@ -291,7 +295,88 @@ namespace Katswiri.Forms
         private void simpleButton16_Click(object sender, EventArgs e)
         {
             //SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowPayFom();
+            //ShowPayFom();
+
+
+            try
+            {
+
+                using (db = new KEntities())
+                {
+
+                    //var bill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice);
+                    //var Tendered = Double.Parse(textEditTendered.Text);
+
+                    //if (Tendered < bill || textEditTendered.Text == "")
+                    //{
+
+                    sale = new Sale()
+                    {
+                        DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
+                        SaleTypeId = (int)lookUpEditSaleType.EditValue,
+                        PaymentTypeId = (int)lookUpEditPaymentType.EditValue,
+                        ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId,
+                        SoldBy = LoginInfo.UserId,
+                        SoldTo = 1,
+                        TaxAmount = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TaxValue),
+                        TotalBill = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TotalPrice),
+                        SubTotal = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.SellingPrice),
+                        TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
+                        TotalTendered = Double.Parse(textEditTendered.Text),
+                        DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
+                        DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
+                        txnId = textEditTxnId.Text,
+                    };
+
+                    db.Sales.Add(sale);
+                    db.SaveChanges();
+                    var saleId = sale.SaleId;//get recently inserted id
+
+                    var cart = db.Carts.Where(x => x.UserId == LoginInfo.UserId).ToList();
+                    foreach (var item in cart)
+                    {
+                        saleDetail = new SaleDetail()
+                        {
+                            SaleId = saleId,
+                            ProductId = (int)item.ProductId,
+                            SellingPrice = (double)item.SellingPrice,
+                            ShopId = (int)item.ShopId,
+                            SoldPrice = (double)item.TotalPrice,
+                            Qty = (double)item.Qty,
+                            DiscountAmount = (double)item.DiscountAmount,
+                            DiscountPercent = (double)item.DiscountPercent,
+                            TaxValue = (double)item.TaxValue,
+                            UserId = (int)item.UserId,
+                            DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
+                        };
+                        db.SaleDetails.Add(saleDetail);
+                        db.SaveChanges();
+
+                        //quantity = new Quantity()
+                        //{
+                        //    ProductId = item.ProductId,
+                        //    ShopQty = quantity.ShopQty - item.Qty,
+                        //};
+                        //db.Quantities.Add(quantity);
+                        //db.SaveChanges();
+                    }
+
+                    //}
+                    //else
+                    //{
+                    //    XtraMessageBox.Show("Please Enter Amount Corresponding to the Bill", "Katswiri", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
+                    resetCartUI();
+                    textSearchProduct.Focus();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void ShowPayFom()
@@ -323,7 +408,7 @@ namespace Katswiri.Forms
             {
                 lookUpEditSaleType.Properties.DataSource = db.vwSaleTypes.ToList();
                 lookUpEditSaleType.Properties.ValueMember = "SaleTypeId";
-                lookUpEditSaleType.Properties.DisplayMember = "SaleType";
+                lookUpEditSaleType.Properties.DisplayMember = "SaleTypeName";
             }
         }
 
@@ -336,6 +421,12 @@ namespace Katswiri.Forms
                 lookUpEditPaymentType.Properties.DisplayMember = "PaymentTypeName";
             }
         }
+
+        //    private void TextBox_GotFocus(object sender, EventArgs e)
+        //{
+
+        //    System.Diagnostics.Process.Start("osk.exe");
+        //}
 
 
         //private void printReceipt()
@@ -449,6 +540,7 @@ namespace Katswiri.Forms
             using (db = new KEntities())
             {
                 lookUpEditSaleType.EditValue = db.vwSaleTypes.ToList()[0].SaleTypeId;
+                lookUpEditPaymentType.EditValue = db.vwPaymentTypes.ToList()[0].PaymentTypeId;
             }
         }
 
@@ -464,83 +556,6 @@ namespace Katswiri.Forms
             }
         }
 
-        private void simpleButtonPay2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var bill = Double.Parse(lblTotalBill.Text);
-                var Tendered = Double.Parse(textEditTendered.Text);
-
-                if (Tendered < bill || textEditTendered.Text == string.Empty)
-                {
-                    using (db = new KEntities())
-                    {
-                        sale = new Sale()
-                        {
-                            DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
-                            SaleTypeId = (int)lookUpEditSaleType.EditValue,
-                            ShopId = db.Users.Where(x => x.UserId == 1).Single().ShopId,
-                            SoldBy = 1,
-                            SoldTo = 1,
-                            TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
-                            TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
-                            SubTotal = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.SellingPrice),
-                            TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
-                            TotalTendered = Double.Parse(textEditTendered.Text),
-                            DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
-                            DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
-                            txnId = textEditTxnId.Text,
-                        };
-
-                        db.Sales.Add(sale);
-                        db.SaveChanges();
-                        var saleId = sale.SaleId;//get recently inserted id
-
-                        var cart = db.Carts.Where(x => x.UserId == 1).ToList();
-                        foreach (var item in cart)
-                        {
-                            saleDetail = new SaleDetail()
-                            {
-                                SaleId = saleId,
-                                ProductId = (int)item.ProductId,
-                                SellingPrice = (double)item.SellingPrice,
-                                ShopId = (int)item.ShopId,
-                                SoldPrice = (double)item.TotalPrice,
-                                Qty = (double)item.Qty,
-                                DiscountAmount = (double)item.DiscountAmount,
-                                DiscountPercent = (double)item.DiscountPercent,
-                                TaxValue = (double)item.TaxValue,
-                                UserId = (int)item.UserId,
-                                DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
-                            };
-                            db.SaleDetails.Add(saleDetail);
-                            db.SaveChanges();
-
-                            //quantity = new Quantity()
-                            //{
-                            //    ProductId = item.ProductId,
-                            //    ShopQty = quantity.ShopQty - item.Qty,
-                            //};
-                            //db.Quantities.Add(quantity);
-                            //db.SaveChanges();
-
-                        }
-                        resetCartUI();
-                        textSearchProduct.Focus();
-                    }
-                }
-                else
-                {
-                    XtraMessageBox.Show("Please Enter Amount Corresponding to the Bill", "Katswiri", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        
-      }
-
         private void textEditTendered_KeyUp(object sender, KeyEventArgs e)
         {
            
@@ -554,9 +569,22 @@ namespace Katswiri.Forms
                 e.Handled = true;
         }
 
-        private void textEditTendered_MouseClick(object sender, MouseEventArgs e)
+      
+
+        private void lookUpEditPaymentType_EditValueChanged(object sender, EventArgs e)
         {
+            if((int)lookUpEditPaymentType.EditValue != 1)
+            {
+                textEditTxnId.Enabled = false;
+                //textEditTxnId.Enabled = true;
+            }
+        }
+
+        private void textEditTendered_MouseEnter(object sender, EventArgs e)
+        {
+            //Process process = Process.Start(new ProcessStartInfo(((Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\osk.exe"))));
             textEditTendered.Text = string.Empty;
+
         }
     }
 }
